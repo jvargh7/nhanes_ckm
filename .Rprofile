@@ -12,6 +12,6 @@ if(Sys.info()["user"] == "JVARGH7"){
   path_nhanes_ckm_repo <- "C:/code/external/nhanes_ckm"
 }
 if(Sys.info()["user"] == "krishnasanaka"){
-  path_nhanes_ckm_folder <- ""
-  path_nhanes_ckm_repo <- ""
+  path_nhanes_ckm_folder <- "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES CKM Cascade"
+  path_nhanes_ckm_repo <- "/Users/krishnasanaka/nhanes_ckm"
 }
