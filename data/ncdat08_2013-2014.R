@@ -159,6 +159,13 @@ trigly20132014 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2013-2014/TRIGLY_H.XPT")
   rename_with(~ trigly_variables[!is.na(trigly_variables$`2013-2014`),]$variable[which(na.omit(trigly_variables$`2013-2014`) == .x)], 
               .cols = na.omit(trigly_variables$`2013-2014`))
 
+dxx20132014 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2013-2014/DXX_H.XPT")) %>%
+  # Select columns
+  select(all_of(na.omit(dxx_variables$`2013-2014`))) %>%
+  # Rename columns
+  rename_with(~ dxx_variables[!is.na(dxx_variables$`2013-2014`),]$variable[which(na.omit(dxx_variables$`2013-2014`) == .x)], 
+              .cols = na.omit(dxx_variables$`2013-2014`))
+
 # Perform the joins
 nhanes_20132014 <- alb20132014 %>%
   left_join(biopro20132014, by = "respondentid") %>%
@@ -181,6 +188,7 @@ nhanes_20132014 <- alb20132014 %>%
   left_join(smq20132014, by = "respondentid") %>%
   left_join(smqrtu20132014, by = "respondentid") %>%
   left_join(tchol20132014, by = "respondentid") %>%
-  left_join(trigly20132014, by = "respondentid")
+  left_join(trigly20132014, by = "respondentid") %>%
+  left_join(dxx20132014, by = "respondentid")
 
 saveRDS(nhanes_20132014, file = paste0(path_nhanes_ckm_cleaned,"/nhanes_20132014.rds"))

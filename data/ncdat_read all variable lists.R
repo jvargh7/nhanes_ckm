@@ -51,5 +51,8 @@ tchol_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="TCHO
 
 trigly_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="TRIGLY")
 
+# Added 28th September
+dxx_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="DXX")
+
 
 

@@ -165,6 +165,13 @@ trigly20172018 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2017-2018/TRIGLY_J.XPT")
   rename_with(~ trigly_variables[!is.na(trigly_variables$`2017-2018`),]$variable[which(na.omit(trigly_variables$`2017-2018`) == .x)], 
               .cols = na.omit(trigly_variables$`2017-2018`))
 
+dxx20172018 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2017-2018/DXX_J.XPT")) %>%
+  # Select columns
+  select(all_of(na.omit(dxx_variables$`2017-2018`))) %>%
+  # Rename columns
+  rename_with(~ dxx_variables[!is.na(dxx_variables$`2017-2018`),]$variable[which(na.omit(dxx_variables$`2017-2018`) == .x)], 
+              .cols = na.omit(dxx_variables$`2017-2018`))
+
 # Perform the joins
 nhanes_20172018 <- alb20172018 %>%
   left_join(biopro20172018, by = "respondentid") %>%
@@ -188,7 +195,8 @@ nhanes_20172018 <- alb20172018 %>%
   left_join(smqrtu20172018, by = "respondentid") %>%
   left_join(ssagp20172018, by = "respondentid") %>%
   left_join(tchol20172018, by = "respondentid") %>%
-  left_join(trigly20172018, by = "respondentid")
+  left_join(trigly20172018, by = "respondentid") %>%
+  left_join(dxx20172018, by = "respondentid")
 
 
 saveRDS(nhanes_20172018, file = paste0(path_nhanes_ckm_cleaned,"/nhanes_20172018.rds"))
