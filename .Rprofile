@@ -25,3 +25,12 @@ if(Sys.info()["user"] == "krishnasanaka"){
   path_nhanes_ckm_variable_list <- paste0(path_nhanes_ckm_repo,"/data/CKM Variable List.xlsx")
   
 }
+if(Sys.info()["user"] == "JGUO258"){
+  path_nhanes_ckm_folder <- "C:/Users/JGUO258/OneDrive - Emory/NHANES CKM Cascade"
+  path_nhanes_ckm_repo <- "C:/Users/JGUO258/Documents/JGUO/nhanes_ckm"
+  
+  path_nhanes_ckm_raw <- paste0(path_nhanes_ckm_folder,"/working/raw")
+  path_nhanes_ckm_cleaned <- paste0(path_nhanes_ckm_folder,"/working/cleaned")
+  path_nhanes_ckm_variable_list <- paste0(path_nhanes_ckm_repo,"/data/CKM Variable List.xlsx")
+  
+}
