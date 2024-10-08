@@ -200,3 +200,5 @@ nhanes_2017Mar2020 <- alb2017Mar2020 %>%
   left_join(trigly2017Mar2020, by = "respondentid")
 
 saveRDS(nhanes_2017Mar2020, file = paste0(path_nhanes_ckm_cleaned,"/nhanes_2017Mar2020.rds"))
+
+rm(list = ls())
