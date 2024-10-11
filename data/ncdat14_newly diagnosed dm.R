@@ -91,6 +91,48 @@ newdm_nhanes_20172018 <- filter_newdm(nhanes_20172018)
 
 newdm_nhanes_2017Mar2020 <- filter_newdm(nhanes_2017Mar2020)
 
+# Creating formulas for filtering equations based on which data sets have which variables:
+filtering1 <- function(data) {
+  filtered_data <- data %>%
+    dplyr::filter(
+      !is.na(bmi) & !is.na(glycohemoglobin)
+    )
+  # Return the filtered dataset
+  return(filtered_data)
+}
+
+filtering2 <- function(data) {
+  filtered_data <- data %>%
+    dplyr::filter(
+      !is.na(bmi) & !is.na(a1c)
+    )
+  # Return the filtered dataset
+  return(filtered_data)
+}
+
+# Applying these new filtering formulas:
+newdm_nhanes_19992000 <- filtering1(newdm_nhanes_19992000)
+
+newdm_nhanes_20012002 <- filtering1(newdm_nhanes_20012002)
+
+newdm_nhanes_20032004 <- filtering1(newdm_nhanes_20032004)
+
+newdm_nhanes_20052006 <- filtering2(newdm_nhanes_20052006)
+
+newdm_nhanes_20072008 <- filtering2(newdm_nhanes_20072008)
+
+newdm_nhanes_20092010 <- filtering1(newdm_nhanes_20092010)
+
+newdm_nhanes_20112012 <- filtering2(newdm_nhanes_20112012)
+
+newdm_nhanes_20132014 <- filtering2(newdm_nhanes_20132014)
+
+newdm_nhanes_20152016 <- filtering2(newdm_nhanes_20152016)
+
+newdm_nhanes_20172018 <- filtering2(newdm_nhanes_20172018)
+
+newdm_nhanes_2017Mar2020 <- filtering2(newdm_nhanes_2017Mar2020)
+
 # Saving the data sets:
 saveRDS(newdm_nhanes_19992000, file = paste0(path_nhanes_ckm_newdm,"/newdm_nhanes_19992000.rds"))
 
