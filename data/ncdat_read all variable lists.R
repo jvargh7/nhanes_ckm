@@ -54,5 +54,8 @@ trigly_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="TRI
 # Added 28th September
 dxx_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="DXX")
 
+# Added 15th October
+hiq_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="HIQ")
+
 
 

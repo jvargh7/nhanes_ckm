@@ -173,6 +173,13 @@ trigly2017Mar2020 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2017-Mar2020/P_TRIGLY
   rename_with(~ trigly_variables[!is.na(trigly_variables$`2017-Mar2020`),]$variable[which(na.omit(trigly_variables$`2017-Mar2020`) == .x)], 
               .cols = na.omit(trigly_variables$`2017-Mar2020`))
 
+hiq2017Mar2020 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2017-Mar2020/P_hiq.XPT")) %>%
+  # Select columns
+  select(all_of(na.omit(hiq_variables$`2017-Mar2020`))) %>%
+  # Rename columns
+  rename_with(~ hiq_variables[!is.na(hiq_variables$`2017-Mar2020`),]$variable[which(na.omit(hiq_variables$`2017-Mar2020`) == .x)], 
+              .cols = na.omit(hiq_variables$`2017-Mar2020`))
+
 # Perform the joins
 nhanes_2017Mar2020 <- alb2017Mar2020 %>%
   left_join(biopro2017Mar2020, by = "respondentid") %>%
@@ -197,7 +204,28 @@ nhanes_2017Mar2020 <- alb2017Mar2020 %>%
   left_join(smqrtu2017Mar2020, by = "respondentid") %>%
   left_join(ssagp2017Mar2020, by = "respondentid") %>%
   left_join(tchol2017Mar2020, by = "respondentid") %>%
-  left_join(trigly2017Mar2020, by = "respondentid")
+  left_join(trigly2017Mar2020, by = "respondentid") %>%
+  left_join(hiq2017Mar2020, by = "respondentid")
+
+# Calculating body fat percentage based on Relative Fat Mass (https://www.nature.com/articles/s41598-018-29362-1):
+nhanes_2017Mar2020 <- nhanes_2017Mar2020 %>%
+  dplyr::mutate(fat_percentage = ifelse(gender == 1,
+                                        64 - (20 * (height / waistcircumference)),  # RFM for men
+                                        76 - (20 * (height / waistcircumference)))) # RFM for women
+
+# Adding eGFR variable according to (https://www.kidney.org/ckd-epi-creatinine-equation-2021):
+nhanes_2017Mar2020 <- nhanes_2017Mar2020 %>%
+  dplyr::mutate(
+    # CKD-EPI equation for males
+    eGFR = case_when(
+      gender == 1 & serum_creatinine <= 0.9 ~ 141 * (serum_creatinine / 0.9)^(-0.411) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      gender == 1 & serum_creatinine > 0.9 ~ 141 * (serum_creatinine / 0.9)^(-1.209) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      
+      # CKD-EPI equation for females
+      gender == 2 & serum_creatinine <= 0.7 ~ 144 * (serum_creatinine / 0.7)^(-0.329) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      gender == 2 & serum_creatinine > 0.7 ~ 144 * (serum_creatinine / 0.7)^(-1.209) * (0.993^age) * ifelse(race == 4, 1.159, 1)
+    )
+  )
 
 saveRDS(nhanes_2017Mar2020, file = paste0(path_nhanes_ckm_cleaned,"/nhanes_2017Mar2020.rds"))
 

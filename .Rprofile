@@ -3,6 +3,11 @@ library(tidyverse)
 library(survey)
 library(srvyr)
 library(lubridate)
+library(reticulate)
+
+# Install the necessary Python packages
+reticulate::use_virtualenv("~/.virtualenvs/r-reticulate", required = TRUE)
+reticulate::py_install(c("numpy", "pandas", "scikit-learn", "matplotlib", "seaborn", "kneed"), pip = TRUE)
 
 options(survey.adjust.domain.lonely=TRUE)
 options(survey.lonely.psu="adjust")
