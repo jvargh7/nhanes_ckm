@@ -91,3 +91,6 @@ plt.legend(title='Variable', bbox_to_anchor=(1.01, 1), loc=2, borderaxespad=0.)
 
 plt.tight_layout()  # Adjust the layout to make room for the legend
 plt.show()
+
+# Save the plot to a file
+plt.savefig(path_nhanes_ckm_folder + '/figures/boxplot_clusters.png', format='png', dpi=300, bbox_inches='tight')
