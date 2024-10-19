@@ -37,6 +37,7 @@ if(Sys.info()["user"] == "JGUO258"){
   
   path_nhanes_ckm_raw <- paste0(path_nhanes_ckm_folder,"/working/raw")
   path_nhanes_ckm_cleaned <- paste0(path_nhanes_ckm_folder,"/working/cleaned")
+  path_nhanes_ckm_newdm <- paste0(path_nhanes_ckm_folder,"/working/new diabetes")
   path_nhanes_ckm_variable_list <- paste0(path_nhanes_ckm_repo,"/data/CKM Variable List.xlsx")
   
 }
