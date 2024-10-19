@@ -13,10 +13,10 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import StandardScaler
 
-if os.getlogin()=="JVARGH7":
-    path_diabetes_subphenotypes_youth_folder = "C:/Cloud/OneDrive - Emory University/Papers/Subphenotypes in Youth-onset T2DM"
-if os.getlogin()=='JGUO258':
-    path_diabetes_subphenotypes_youth_folder = "C:/Users/JGUO258/OneDrive - Emory/Subphenotypes in Youth-onset T2DM"
+if os.getlogin() == "JVARGH7":
+    path_nhanes_ckm_folder = "C:/Cloud/OneDrive - Emory University/Papers/NHANES CKM Cascade"
+elif os.getlogin() == 'JGUO258':
+    path_nhanes_ckm_folder = "C:/Users/JGUO258/OneDrive - Emory/NHANES CKM Cascade"
 elif os.getlogin() == 'krishnasanaka':
     path_nhanes_ckm_folder = "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES CKM Cascade"
 elif os.getlogin() == 'root':
@@ -29,7 +29,7 @@ analytic_dataset = pd.read_csv(path_nhanes_ckm_folder + '/working/new diabetes/k
 # cluster variables: "bmi","dm_age","glycohemoglobin","HOMA2 %B","HOMA2 IR"
 
 # List of columns to keep
-columns_to_keep = ['dm_age', 'bmi', 'glycohemoglobin', 'HOMA2 %B', 'HOMA2 IR', 'ldl', 'hdl', 'triglyceride', 'alt', 'ast', 'sbp', 'dbp', 'eGFR', 'waistcircumference']
+columns_to_keep = ['dm_age', 'bmi', 'glycohemoglobin', 'homa2b', 'homa2ir', 'ldl', 'hdl', 'triglyceride', 'alt', 'ast', 'sbp', 'dbp', 'egfr', 'waistcircumference']
 
 # Select only the columns you want to keep
 analytic_dataset_cluster = analytic_dataset[columns_to_keep].copy()
@@ -39,9 +39,9 @@ other_vars = analytic_dataset.drop(columns=columns_to_keep)
 
 # Standardize the data
 scaler = StandardScaler()
-data_scaled = scaler.fit_transform(analytic_dataset[['bmi','dm_age','glycohemoglobin','HOMA2 %B','HOMA2 IR']])
+data_scaled = scaler.fit_transform(analytic_dataset[['bmi','dm_age','glycohemoglobin','homa2b', 'homa2ir']])
 
-data_scaled = pd.DataFrame(data_scaled, columns=['bmi','dm_age','glycohemoglobin','HOMA2 %B','HOMA2 IR'])
+data_scaled = pd.DataFrame(data_scaled, columns=['bmi','dm_age','glycohemoglobin','homa2b', 'homa2ir'])
 
 # Perform KMeans clustering
 kmeans = KMeans(init="random", n_clusters=4, n_init=10, max_iter=300, random_state=57)
@@ -51,7 +51,7 @@ kmeans.fit(data_scaled)
 analytic_dataset_cluster['cluster'] = kmeans.labels_
 
 # Relabel the cluster labels based on clinical characteristics
-analytic_dataset_cluster['cluster'] = analytic_dataset_cluster['cluster'].replace({0:'ySIRD', 1:'yMARD', 2:'ySIDD', 3:'yMOD'})
+analytic_dataset_cluster['cluster'] = analytic_dataset_cluster['cluster'].replace({0:'SIRD', 1:'MOD', 2:'MARD', 3:'SIDD'})
 
 # Concatenate the other variables back to the dataset
 analytic_dataset_cluster = pd.concat([analytic_dataset_cluster, other_vars], axis=1)
@@ -70,7 +70,7 @@ data_scaled_cluster = data_scaled.copy()
 data_scaled_cluster['cluster'] = kmeans.labels_
 
 # Relabel the cluster labels
-data_scaled_cluster['cluster'] = data_scaled_cluster['cluster'].replace({0:'ySIRD', 1:'yMARD', 2:'ySIDD', 3:'yMOD'})
+data_scaled_cluster['cluster'] = data_scaled_cluster['cluster'].replace({0:'SIRD', 1:'MOD', 2:'MARD', 3:'SIDD'})
 
 # Create a new DataFrame with the cluster assignments and variables
 data_clustered = pd.concat([data_scaled_cluster['cluster'], data_scaled_cluster[['bmi','dm_age','glycohemoglobin','HOMA2 %B','HOMA2 IR']]], axis=1)

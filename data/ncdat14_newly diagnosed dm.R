@@ -91,7 +91,10 @@ homa2_data <- load_homa2_data(path_nhanes_ckm_cleaned, years_sheets)
 newdm_data <- nhanes_with_vars %>% 
   left_join(homa2_data %>% 
               dplyr::select(respondentid, year, fasting_glucose, insulin_level, `HOMA2 %B`, `HOMA2 IR`), 
-            by = c("respondentid", "year", "fasting_glucose", "insulin_level"))
+            by = c("respondentid", "year", "fasting_glucose", "insulin_level")) %>% 
+  rename(egfr = eGFR,
+         homa2b = `HOMA2 %B`,
+         homa2ir = `HOMA2 IR`)
 
 saveRDS(newdm_data, file = paste0(path_nhanes_ckm_newdm,"/newdm_data.rds"))
 
