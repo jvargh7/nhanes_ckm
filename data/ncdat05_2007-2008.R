@@ -152,6 +152,13 @@ trigly20072008 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2007-2008/TRIGLY_E.XPT")
   rename_with(~ trigly_variables[!is.na(trigly_variables$`2007-2008`),]$variable[which(na.omit(trigly_variables$`2007-2008`) == .x)], 
               .cols = na.omit(trigly_variables$`2007-2008`))
 
+hiq20072008 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2007-2008/hiq_E.XPT")) %>%
+  # Select columns
+  select(all_of(na.omit(hiq_variables$`2007-2008`))) %>%
+  # Rename columns
+  rename_with(~ hiq_variables[!is.na(hiq_variables$`2007-2008`),]$variable[which(na.omit(hiq_variables$`2007-2008`) == .x)], 
+              .cols = na.omit(hiq_variables$`2007-2008`))
+
 # Perform the joins
 nhanes_20072008 <- alb20072008 %>%
   left_join(biopro20072008, by = "respondentid") %>%
@@ -173,6 +180,28 @@ nhanes_20072008 <- alb20072008 %>%
   left_join(smq20072008, by = "respondentid") %>%
   left_join(smqrtu20072008, by = "respondentid") %>%
   left_join(tchol20072008, by = "respondentid") %>%
-  left_join(trigly20072008, by = "respondentid")
+  left_join(trigly20072008, by = "respondentid") %>%
+  left_join(hiq20072008, by = "respondentid")
+
+# Calculating body fat percentage based on Relative Fat Mass (https://www.nature.com/articles/s41598-018-29362-1):
+nhanes_20072008 <- nhanes_20072008 %>%
+  dplyr::mutate(fat_percentage = ifelse(gender == 1,
+                                 64 - (20 * (height / waistcircumference)),  # RFM for men
+                                 76 - (20 * (height / waistcircumference)))) # RFM for women
+
+# Adding eGFR variable according to (https://www.kidney.org/ckd-epi-creatinine-equation-2021):
+nhanes_20072008 <- nhanes_20072008 %>%
+  dplyr::mutate(
+    # CKD-EPI equation for males
+    eGFR = case_when(
+      gender == 1 & serum_creatinine <= 0.9 ~ 141 * (serum_creatinine / 0.9)^(-0.411) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      gender == 1 & serum_creatinine > 0.9 ~ 141 * (serum_creatinine / 0.9)^(-1.209) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      
+      # CKD-EPI equation for females
+      gender == 2 & serum_creatinine <= 0.7 ~ 144 * (serum_creatinine / 0.7)^(-0.329) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      gender == 2 & serum_creatinine > 0.7 ~ 144 * (serum_creatinine / 0.7)^(-1.209) * (0.993^age) * ifelse(race == 4, 1.159, 1)
+    )
+  )
+
 
 saveRDS(nhanes_20072008, file = paste0(path_nhanes_ckm_cleaned,"/nhanes_20072008.rds"))

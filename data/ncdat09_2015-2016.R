@@ -172,6 +172,20 @@ trigly20152016 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2015-2016/TRIGLY_I.XPT")
   rename_with(~ trigly_variables[!is.na(trigly_variables$`2015-2016`),]$variable[which(na.omit(trigly_variables$`2015-2016`) == .x)], 
               .cols = na.omit(trigly_variables$`2015-2016`))
 
+dxx20152016 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2015-2016/DXX_I.XPT")) %>%
+  # Select columns
+  select(all_of(na.omit(dxx_variables$`2015-2016`))) %>%
+  # Rename columns
+  rename_with(~ dxx_variables[!is.na(dxx_variables$`2015-2016`),]$variable[which(na.omit(dxx_variables$`2015-2016`) == .x)], 
+              .cols = na.omit(dxx_variables$`2015-2016`))
+
+hiq20152016 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2015-2016/hiq_I.XPT")) %>%
+  # Select columns
+  select(all_of(na.omit(hiq_variables$`2015-2016`))) %>%
+  # Rename columns
+  rename_with(~ hiq_variables[!is.na(hiq_variables$`2015-2016`),]$variable[which(na.omit(hiq_variables$`2015-2016`) == .x)], 
+              .cols = na.omit(hiq_variables$`2015-2016`))
+
 # Perform the joins
 nhanes_20152016 <- alb20152016 %>%
   left_join(biopro20152016, by = "respondentid") %>%
@@ -196,7 +210,22 @@ nhanes_20152016 <- alb20152016 %>%
   left_join(smqrtu20152016, by = "respondentid") %>%
   left_join(ssagp20152016, by = "respondentid") %>%
   left_join(tchol20152016, by = "respondentid") %>%
-  left_join(trigly20152016, by = "respondentid")
+  left_join(trigly20152016, by = "respondentid") %>%
+  left_join(dxx20152016, by = "respondentid") %>%
+  left_join(hiq20152016, by = "respondentid")
 
+# Adding eGFR variable according to (https://www.kidney.org/ckd-epi-creatinine-equation-2021):
+nhanes_20152016 <- nhanes_20152016 %>%
+  dplyr::mutate(
+    # CKD-EPI equation for males
+    eGFR = case_when(
+      gender == 1 & serum_creatinine <= 0.9 ~ 141 * (serum_creatinine / 0.9)^(-0.411) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      gender == 1 & serum_creatinine > 0.9 ~ 141 * (serum_creatinine / 0.9)^(-1.209) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      
+      # CKD-EPI equation for females
+      gender == 2 & serum_creatinine <= 0.7 ~ 144 * (serum_creatinine / 0.7)^(-0.329) * (0.993^age) * ifelse(race == 4, 1.159, 1),
+      gender == 2 & serum_creatinine > 0.7 ~ 144 * (serum_creatinine / 0.7)^(-1.209) * (0.993^age) * ifelse(race == 4, 1.159, 1)
+    )
+  )
 
 saveRDS(nhanes_20152016, file = paste0(path_nhanes_ckm_cleaned,"/nhanes_20152016.rds"))
