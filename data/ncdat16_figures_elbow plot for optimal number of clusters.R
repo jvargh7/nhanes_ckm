@@ -5,7 +5,7 @@ rm(list=ls());gc();source(".Rprofile")
 library(ggplot2)
 
 imputed_data <- read.csv(paste0(path_nhanes_ckm_newdm, '/knn imputation.csv')) %>% 
-  dplyr::select(bmi, glycohemoglobin, dm_age, `HOMA2..B`, `HOMA2.IR`)
+  dplyr::select(bmi, glycohemoglobin, dm_age, homa2b, homa2ir)
 
 # Scaling the data can often yield better clustering results
 data_scaled <- scale(imputed_data)
