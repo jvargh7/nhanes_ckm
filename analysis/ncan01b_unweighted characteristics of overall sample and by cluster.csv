@@ -1,570 +1,570 @@
 cluster,variable,est,value,type,group
-MARD,age,mean,64.36411960132891,Continuous,NA
-MARD,age,sd,12.91982391671332,Continuous,NA
-MARD,age,median,65,Continuous,NA
-MARD,age,q25,56,Continuous,NA
-MARD,age,q75,75,Continuous,NA
-MARD,age,min,18,Continuous,NA
+MARD,age,mean,66.23809523809524,Continuous,NA
+MARD,age,sd,12.21421753331782,Continuous,NA
+MARD,age,median,67,Continuous,NA
+MARD,age,q25,59,Continuous,NA
+MARD,age,q75,77,Continuous,NA
+MARD,age,min,19,Continuous,NA
 MARD,age,max,85,Continuous,NA
-MARD,age,freq,1505,Continuous,NA
+MARD,age,freq,1260,Continuous,NA
 MARD,age,missing,0,Continuous,NA
-MARD,dm_age,mean,62.71079734219269,Continuous,NA
-MARD,dm_age,sd,9.123945656196499,Continuous,NA
-MARD,dm_age,median,62,Continuous,NA
-MARD,dm_age,q25,56.5,Continuous,NA
-MARD,dm_age,q75,68.5,Continuous,NA
-MARD,dm_age,min,32.5,Continuous,NA
+MARD,dm_age,mean,63.78809523809524,Continuous,NA
+MARD,dm_age,sd,8.164441121795905,Continuous,NA
+MARD,dm_age,median,62.75,Continuous,NA
+MARD,dm_age,q25,58.25,Continuous,NA
+MARD,dm_age,q75,68.75,Continuous,NA
+MARD,dm_age,min,43,Continuous,NA
 MARD,dm_age,max,85,Continuous,NA
-MARD,dm_age,freq,1505,Continuous,NA
+MARD,dm_age,freq,1260,Continuous,NA
 MARD,dm_age,missing,0,Continuous,NA
-MARD,bmi,mean,28.923960132890365,Continuous,NA
-MARD,bmi,sd,4.51643047996141,Continuous,NA
-MARD,bmi,median,28.8,Continuous,NA
-MARD,bmi,q25,25.8,Continuous,NA
-MARD,bmi,q75,31.71,Continuous,NA
+MARD,bmi,mean,28.117857142857144,Continuous,NA
+MARD,bmi,sd,4.302574530300351,Continuous,NA
+MARD,bmi,median,27.9,Continuous,NA
+MARD,bmi,q25,25.1,Continuous,NA
+MARD,bmi,q75,30.8,Continuous,NA
 MARD,bmi,min,15.86,Continuous,NA
-MARD,bmi,max,43.4,Continuous,NA
-MARD,bmi,freq,1505,Continuous,NA
+MARD,bmi,max,48.4,Continuous,NA
+MARD,bmi,freq,1260,Continuous,NA
 MARD,bmi,missing,0,Continuous,NA
-MARD,fat_percentage,mean,35.72658467511237,Continuous,NA
-MARD,fat_percentage,sd,7.7231304928853275,Continuous,NA
-MARD,fat_percentage,median,34.69233247446215,Continuous,NA
-MARD,fat_percentage,q25,29.58904403866812,Continuous,NA
-MARD,fat_percentage,q75,42.59556962025318,Continuous,NA
+MARD,fat_percentage,mean,35.22056379574716,Continuous,NA
+MARD,fat_percentage,sd,7.645317466541741,Continuous,NA
+MARD,fat_percentage,median,34.1647875108413,Continuous,NA
+MARD,fat_percentage,q25,29.2,Continuous,NA
+MARD,fat_percentage,q75,42.24,Continuous,NA
 MARD,fat_percentage,min,14.2140672782875,Continuous,NA
-MARD,fat_percentage,max,55.48,Continuous,NA
-MARD,fat_percentage,freq,1026,Continuous,NA
+MARD,fat_percentage,max,53.38,Continuous,NA
+MARD,fat_percentage,freq,781,Continuous,NA
 MARD,fat_percentage,missing,479,Continuous,NA
-MARD,glycohemoglobin,mean,6.559734219269103,Continuous,NA
-MARD,glycohemoglobin,sd,0.8098544875567234,Continuous,NA
+MARD,glycohemoglobin,mean,6.543412698412698,Continuous,NA
+MARD,glycohemoglobin,sd,0.841268438550037,Continuous,NA
 MARD,glycohemoglobin,median,6.5,Continuous,NA
 MARD,glycohemoglobin,q25,6,Continuous,NA
 MARD,glycohemoglobin,q75,6.9,Continuous,NA
 MARD,glycohemoglobin,min,4.5,Continuous,NA
 MARD,glycohemoglobin,max,9.7,Continuous,NA
-MARD,glycohemoglobin,freq,1505,Continuous,NA
+MARD,glycohemoglobin,freq,1260,Continuous,NA
 MARD,glycohemoglobin,missing,0,Continuous,NA
-MARD,alt,mean,25.38654485049834,Continuous,NA
-MARD,alt,sd,16.480007129716107,Continuous,NA
+MARD,alt,mean,24.26031746031746,Continuous,NA
+MARD,alt,sd,15.061549413955383,Continuous,NA
 MARD,alt,median,21,Continuous,NA
 MARD,alt,q25,16,Continuous,NA
-MARD,alt,q75,29,Continuous,NA
+MARD,alt,q75,27,Continuous,NA
 MARD,alt,min,7,Continuous,NA
 MARD,alt,max,285,Continuous,NA
-MARD,alt,freq,1505,Continuous,NA
+MARD,alt,freq,1260,Continuous,NA
 MARD,alt,missing,0,Continuous,NA
-MARD,ast,mean,25.377408637873753,Continuous,NA
-MARD,ast,sd,13.438353681286863,Continuous,NA
+MARD,ast,mean,24.882539682539683,Continuous,NA
+MARD,ast,sd,11.564621108211972,Continuous,NA
 MARD,ast,median,23,Continuous,NA
 MARD,ast,q25,19,Continuous,NA
-MARD,ast,q75,28,Continuous,NA
+MARD,ast,q75,27,Continuous,NA
 MARD,ast,min,10,Continuous,NA
-MARD,ast,max,174,Continuous,NA
-MARD,ast,freq,1505,Continuous,NA
+MARD,ast,max,157,Continuous,NA
+MARD,ast,freq,1260,Continuous,NA
 MARD,ast,missing,0,Continuous,NA
-MARD,sbp,mean,133.86589147286824,Continuous,NA
-MARD,sbp,sd,20.766849621639206,Continuous,NA
-MARD,sbp,median,131.333333333333,Continuous,NA
+MARD,sbp,mean,134.34229497354497,Continuous,NA
+MARD,sbp,sd,20.932567168714172,Continuous,NA
+MARD,sbp,median,132,Continuous,NA
 MARD,sbp,q25,119.333333333333,Continuous,NA
 MARD,sbp,q75,146,Continuous,NA
-MARD,sbp,min,77.3333333333333,Continuous,NA
+MARD,sbp,min,80,Continuous,NA
 MARD,sbp,max,216,Continuous,NA
-MARD,sbp,freq,1505,Continuous,NA
+MARD,sbp,freq,1260,Continuous,NA
 MARD,sbp,missing,0,Continuous,NA
-MARD,dbp,mean,69.92153931339978,Continuous,NA
-MARD,dbp,sd,14.61251526430968,Continuous,NA
-MARD,dbp,median,70.6666666666667,Continuous,NA
-MARD,dbp,q25,62.6666666666667,Continuous,NA
-MARD,dbp,q75,78.6666666666667,Continuous,NA
+MARD,dbp,mean,69.05343915343916,Continuous,NA
+MARD,dbp,sd,14.337361099467815,Continuous,NA
+MARD,dbp,median,70,Continuous,NA
+MARD,dbp,q25,62,Continuous,NA
+MARD,dbp,q75,77.3333333333333,Continuous,NA
 MARD,dbp,min,0,Continuous,NA
-MARD,dbp,max,125,Continuous,NA
-MARD,dbp,freq,1505,Continuous,NA
+MARD,dbp,max,115.333333333333,Continuous,NA
+MARD,dbp,freq,1260,Continuous,NA
 MARD,dbp,missing,0,Continuous,NA
-MARD,egfr,mean,80.53585623308757,Continuous,NA
-MARD,egfr,sd,22.699856861667833,Continuous,NA
-MARD,egfr,median,82.672676559335,Continuous,NA
-MARD,egfr,q25,65.2098496637837,Continuous,NA
-MARD,egfr,q75,96.9332803434483,Continuous,NA
-MARD,egfr,min,9.10562897325752,Continuous,NA
+MARD,egfr,mean,79.21288675543454,Continuous,NA
+MARD,egfr,sd,22.003094641380663,Continuous,NA
+MARD,egfr,median,81.66190439086165,Continuous,NA
+MARD,egfr,q25,63.951857162325524,Continuous,NA
+MARD,egfr,q75,95.1415827844094,Continuous,NA
+MARD,egfr,min,5.4684778117888,Continuous,NA
 MARD,egfr,max,153.063349279811,Continuous,NA
-MARD,egfr,freq,1505,Continuous,NA
+MARD,egfr,freq,1260,Continuous,NA
 MARD,egfr,missing,0,Continuous,NA
-MARD,waistcircumference,mean,101.89707641196013,Continuous,NA
-MARD,waistcircumference,sd,11.362081076711185,Continuous,NA
-MARD,waistcircumference,median,102,Continuous,NA
-MARD,waistcircumference,q25,94.3,Continuous,NA
-MARD,waistcircumference,q75,109.2,Continuous,NA
+MARD,waistcircumference,mean,100.47972222222222,Continuous,NA
+MARD,waistcircumference,sd,11.073835008939975,Continuous,NA
+MARD,waistcircumference,median,100,Continuous,NA
+MARD,waistcircumference,q25,93.2,Continuous,NA
+MARD,waistcircumference,q75,107.4,Continuous,NA
 MARD,waistcircumference,min,64.8,Continuous,NA
 MARD,waistcircumference,max,138.5,Continuous,NA
-MARD,waistcircumference,freq,1505,Continuous,NA
+MARD,waistcircumference,freq,1260,Continuous,NA
 MARD,waistcircumference,missing,0,Continuous,NA
-MARD,ldl,mean,114.38621262458472,Continuous,NA
-MARD,ldl,sd,32.609884321476514,Continuous,NA
+MARD,ldl,mean,113.85992063492064,Continuous,NA
+MARD,ldl,sd,32.06297047140841,Continuous,NA
 MARD,ldl,median,113,Continuous,NA
-MARD,ldl,q25,94.25,Continuous,NA
-MARD,ldl,q75,132,Continuous,NA
+MARD,ldl,q25,93.25,Continuous,NA
+MARD,ldl,q75,131.5625,Continuous,NA
 MARD,ldl,min,29,Continuous,NA
-MARD,ldl,max,359,Continuous,NA
-MARD,ldl,freq,1505,Continuous,NA
+MARD,ldl,max,286,Continuous,NA
+MARD,ldl,freq,1260,Continuous,NA
 MARD,ldl,missing,0,Continuous,NA
-MARD,hdl,mean,50.016611295681066,Continuous,NA
-MARD,hdl,sd,15.312382429370786,Continuous,NA
-MARD,hdl,median,48,Continuous,NA
-MARD,hdl,q25,40,Continuous,NA
-MARD,hdl,q75,58,Continuous,NA
+MARD,hdl,mean,51.74325396825397,Continuous,NA
+MARD,hdl,sd,15.869173679791038,Continuous,NA
+MARD,hdl,median,49,Continuous,NA
+MARD,hdl,q25,41,Continuous,NA
+MARD,hdl,q75,60,Continuous,NA
 MARD,hdl,min,20,Continuous,NA
 MARD,hdl,max,226,Continuous,NA
-MARD,hdl,freq,1505,Continuous,NA
+MARD,hdl,freq,1260,Continuous,NA
 MARD,hdl,missing,0,Continuous,NA
-MARD,triglyceride,mean,157.52425249169434,Continuous,NA
-MARD,triglyceride,sd,121.20738651199927,Continuous,NA
-MARD,triglyceride,median,132,Continuous,NA
-MARD,triglyceride,q25,99.75,Continuous,NA
-MARD,triglyceride,q75,183.25,Continuous,NA
+MARD,triglyceride,mean,151.3984126984127,Continuous,NA
+MARD,triglyceride,sd,108.69334408103464,Continuous,NA
+MARD,triglyceride,median,129,Continuous,NA
+MARD,triglyceride,q25,96,Continuous,NA
+MARD,triglyceride,q75,177,Continuous,NA
 MARD,triglyceride,min,22,Continuous,NA
-MARD,triglyceride,max,1652,Continuous,NA
-MARD,triglyceride,freq,1505,Continuous,NA
+MARD,triglyceride,max,1637,Continuous,NA
+MARD,triglyceride,freq,1260,Continuous,NA
 MARD,triglyceride,missing,0,Continuous,NA
-MARD,fasting_glucose,mean,136.26388888888889,Continuous,NA
-MARD,fasting_glucose,sd,26.088578020833914,Continuous,NA
+MARD,fasting_glucose,mean,136.36784841075794,Continuous,NA
+MARD,fasting_glucose,sd,27.14639861318807,Continuous,NA
 MARD,fasting_glucose,median,131,Continuous,NA
 MARD,fasting_glucose,q25,125,Continuous,NA
 MARD,fasting_glucose,q75,144,Continuous,NA
 MARD,fasting_glucose,min,70,Continuous,NA
 MARD,fasting_glucose,max,334,Continuous,NA
-MARD,fasting_glucose,freq,936,Continuous,NA
-MARD,fasting_glucose,missing,569,Continuous,NA
-MOD,age,mean,50.847258485639685,Continuous,NA
-MOD,age,sd,13.091988731467138,Continuous,NA
-MOD,age,median,51,Continuous,NA
-MOD,age,q25,41,Continuous,NA
-MOD,age,q75,61,Continuous,NA
+MARD,fasting_glucose,freq,818,Continuous,NA
+MARD,fasting_glucose,missing,442,Continuous,NA
+MOD,age,mean,53.738859180035654,Continuous,NA
+MOD,age,sd,13.562242470199136,Continuous,NA
+MOD,age,median,54,Continuous,NA
+MOD,age,q25,44,Continuous,NA
+MOD,age,q75,63,Continuous,NA
 MOD,age,min,18,Continuous,NA
-MOD,age,max,81,Continuous,NA
-MOD,age,freq,766,Continuous,NA
+MOD,age,max,83,Continuous,NA
+MOD,age,freq,1122,Continuous,NA
 MOD,age,missing,0,Continuous,NA
-MOD,dm_age,mean,50.01795039164491,Continuous,NA
-MOD,dm_age,sd,9.66777821074606,Continuous,NA
+MOD,dm_age,mean,50.21902852049911,Continuous,NA
+MOD,dm_age,sd,8.614079985029226,Continuous,NA
 MOD,dm_age,median,51,Continuous,NA
-MOD,dm_age,q25,44.5,Continuous,NA
-MOD,dm_age,q75,57.25,Continuous,NA
+MOD,dm_age,q25,45,Continuous,NA
+MOD,dm_age,q75,56,Continuous,NA
 MOD,dm_age,min,17,Continuous,NA
-MOD,dm_age,max,80,Continuous,NA
-MOD,dm_age,freq,766,Continuous,NA
+MOD,dm_age,max,72.75,Continuous,NA
+MOD,dm_age,freq,1122,Continuous,NA
 MOD,dm_age,missing,0,Continuous,NA
-MOD,bmi,mean,39.43972584856397,Continuous,NA
-MOD,bmi,sd,7.892679063572757,Continuous,NA
-MOD,bmi,median,37.83,Continuous,NA
-MOD,bmi,q25,34.292500000000004,Continuous,NA
-MOD,bmi,q75,43.185,Continuous,NA
-MOD,bmi,min,19.8,Continuous,NA
-MOD,bmi,max,77.3,Continuous,NA
-MOD,bmi,freq,766,Continuous,NA
+MOD,bmi,mean,35.67382352941176,Continuous,NA
+MOD,bmi,sd,6.364748849630671,Continuous,NA
+MOD,bmi,median,34.9,Continuous,NA
+MOD,bmi,q25,31.5,Continuous,NA
+MOD,bmi,q75,39.120000000000005,Continuous,NA
+MOD,bmi,min,18.7,Continuous,NA
+MOD,bmi,max,67,Continuous,NA
+MOD,bmi,freq,1122,Continuous,NA
 MOD,bmi,missing,0,Continuous,NA
-MOD,fat_percentage,mean,41.60560405198683,Continuous,NA
-MOD,fat_percentage,sd,7.615219515442734,Continuous,NA
-MOD,fat_percentage,median,42.21,Continuous,NA
-MOD,fat_percentage,q25,35.3754159174207,Continuous,NA
-MOD,fat_percentage,q75,48.1094796152516,Continuous,NA
-MOD,fat_percentage,min,20.7560975609756,Continuous,NA
+MOD,fat_percentage,mean,39.807327127189765,Continuous,NA
+MOD,fat_percentage,sd,7.8730310785240345,Continuous,NA
+MOD,fat_percentage,median,39.58713629402755,Continuous,NA
+MOD,fat_percentage,q25,33.31542024013723,Continuous,NA
+MOD,fat_percentage,q75,46.7,Continuous,NA
+MOD,fat_percentage,min,18.6,Continuous,NA
 MOD,fat_percentage,max,58.0337078651685,Continuous,NA
-MOD,fat_percentage,freq,608,Continuous,NA
-MOD,fat_percentage,missing,158,Continuous,NA
-MOD,glycohemoglobin,mean,6.742167101827676,Continuous,NA
-MOD,glycohemoglobin,sd,0.927240619694651,Continuous,NA
+MOD,fat_percentage,freq,810,Continuous,NA
+MOD,fat_percentage,missing,312,Continuous,NA
+MOD,glycohemoglobin,mean,6.681372549019608,Continuous,NA
+MOD,glycohemoglobin,sd,0.8278389298244173,Continuous,NA
 MOD,glycohemoglobin,median,6.6,Continuous,NA
-MOD,glycohemoglobin,q25,6.1,Continuous,NA
-MOD,glycohemoglobin,q75,7.1,Continuous,NA
-MOD,glycohemoglobin,min,4.6,Continuous,NA
-MOD,glycohemoglobin,max,10.9,Continuous,NA
-MOD,glycohemoglobin,freq,766,Continuous,NA
+MOD,glycohemoglobin,q25,6.2,Continuous,NA
+MOD,glycohemoglobin,q75,7,Continuous,NA
+MOD,glycohemoglobin,min,4.5,Continuous,NA
+MOD,glycohemoglobin,max,9.7,Continuous,NA
+MOD,glycohemoglobin,freq,1122,Continuous,NA
 MOD,glycohemoglobin,missing,0,Continuous,NA
-MOD,alt,mean,32.86912532637076,Continuous,NA
-MOD,alt,sd,28.65923449743632,Continuous,NA
+MOD,alt,mean,32.53787878787879,Continuous,NA
+MOD,alt,sd,26.523229936652474,Continuous,NA
 MOD,alt,median,25,Continuous,NA
-MOD,alt,q25,18,Continuous,NA
-MOD,alt,q75,36.8125,Continuous,NA
+MOD,alt,q25,18.3125,Continuous,NA
+MOD,alt,q75,36,Continuous,NA
 MOD,alt,min,6,Continuous,NA
 MOD,alt,max,386,Continuous,NA
-MOD,alt,freq,766,Continuous,NA
+MOD,alt,freq,1122,Continuous,NA
 MOD,alt,missing,0,Continuous,NA
-MOD,ast,mean,27.6644908616188,Continuous,NA
-MOD,ast,sd,17.075185494602387,Continuous,NA
+MOD,ast,mean,27.851604278074866,Continuous,NA
+MOD,ast,sd,17.310466354690142,Continuous,NA
 MOD,ast,median,23,Continuous,NA
 MOD,ast,q25,19,Continuous,NA
-MOD,ast,q75,29.5625,Continuous,NA
+MOD,ast,q75,30,Continuous,NA
 MOD,ast,min,9,Continuous,NA
-MOD,ast,max,171,Continuous,NA
-MOD,ast,freq,766,Continuous,NA
+MOD,ast,max,174,Continuous,NA
+MOD,ast,freq,1122,Continuous,NA
 MOD,ast,missing,0,Continuous,NA
-MOD,sbp,mean,129.796453437772,Continuous,NA
-MOD,sbp,sd,17.480012180267575,Continuous,NA
-MOD,sbp,median,126.666666666667,Continuous,NA
-MOD,sbp,q25,118,Continuous,NA
+MOD,sbp,mean,129.96182412358883,Continuous,NA
+MOD,sbp,sd,17.72370234066478,Continuous,NA
+MOD,sbp,median,128,Continuous,NA
+MOD,sbp,q25,118.666666666667,Continuous,NA
 MOD,sbp,q75,139.333333333333,Continuous,NA
-MOD,sbp,min,90,Continuous,NA
-MOD,sbp,max,202,Continuous,NA
-MOD,sbp,freq,766,Continuous,NA
+MOD,sbp,min,77.3333333333333,Continuous,NA
+MOD,sbp,max,207.333333333333,Continuous,NA
+MOD,sbp,freq,1122,Continuous,NA
 MOD,sbp,missing,0,Continuous,NA
-MOD,dbp,mean,75.67167101827677,Continuous,NA
-MOD,dbp,sd,13.441482428261473,Continuous,NA
-MOD,dbp,median,75.50000000000003,Continuous,NA
-MOD,dbp,q25,68.3333333333333,Continuous,NA
+MOD,dbp,mean,75.48217468805704,Continuous,NA
+MOD,dbp,sd,13.714235844106437,Continuous,NA
+MOD,dbp,median,76,Continuous,NA
+MOD,dbp,q25,67.41666666666664,Continuous,NA
 MOD,dbp,q75,84,Continuous,NA
 MOD,dbp,min,0,Continuous,NA
-MOD,dbp,max,124,Continuous,NA
-MOD,dbp,freq,766,Continuous,NA
+MOD,dbp,max,125,Continuous,NA
+MOD,dbp,freq,1122,Continuous,NA
 MOD,dbp,missing,0,Continuous,NA
-MOD,egfr,mean,97.64085775324494,Continuous,NA
-MOD,egfr,sd,20.580130243852285,Continuous,NA
-MOD,egfr,median,98.34828292541906,Continuous,NA
-MOD,egfr,q25,84.4979532840289,Continuous,NA
-MOD,egfr,q75,112.55549133463074,Continuous,NA
-MOD,egfr,min,27.712891929889,Continuous,NA
-MOD,egfr,max,149.184817892176,Continuous,NA
-MOD,egfr,freq,766,Continuous,NA
+MOD,egfr,mean,93.72848861028277,Continuous,NA
+MOD,egfr,sd,21.251641742104113,Continuous,NA
+MOD,egfr,median,95.7326127799184,Continuous,NA
+MOD,egfr,q25,79.93642823102455,Continuous,NA
+MOD,egfr,q75,108.59972273822851,Continuous,NA
+MOD,egfr,min,20.3266153598502,Continuous,NA
+MOD,egfr,max,148.866936229104,Continuous,NA
+MOD,egfr,freq,1122,Continuous,NA
 MOD,egfr,missing,0,Continuous,NA
-MOD,waistcircumference,mean,121.25336161879896,Continuous,NA
-MOD,waistcircumference,sd,15.026801251151555,Continuous,NA
-MOD,waistcircumference,median,120,Continuous,NA
-MOD,waistcircumference,q25,110.62499999999999,Continuous,NA
-MOD,waistcircumference,q75,131,Continuous,NA
-MOD,waistcircumference,min,81.7,Continuous,NA
+MOD,waistcircumference,mean,114.65051247771837,Continuous,NA
+MOD,waistcircumference,sd,13.688014743507848,Continuous,NA
+MOD,waistcircumference,median,114,Continuous,NA
+MOD,waistcircumference,q25,105.4,Continuous,NA
+MOD,waistcircumference,q75,123.4,Continuous,NA
+MOD,waistcircumference,min,73.4,Continuous,NA
 MOD,waistcircumference,max,178,Continuous,NA
-MOD,waistcircumference,freq,766,Continuous,NA
+MOD,waistcircumference,freq,1122,Continuous,NA
 MOD,waistcircumference,missing,0,Continuous,NA
-MOD,ldl,mean,115.72454308093995,Continuous,NA
-MOD,ldl,sd,26.715971663928205,Continuous,NA
-MOD,ldl,median,115,Continuous,NA
-MOD,ldl,q25,99.5625,Continuous,NA
-MOD,ldl,q75,130,Continuous,NA
+MOD,ldl,mean,116.97571301247771,Continuous,NA
+MOD,ldl,sd,28.37624587179599,Continuous,NA
+MOD,ldl,median,115.375,Continuous,NA
+MOD,ldl,q25,100,Continuous,NA
+MOD,ldl,q75,133,Continuous,NA
 MOD,ldl,min,34,Continuous,NA
-MOD,ldl,max,235.5,Continuous,NA
-MOD,ldl,freq,766,Continuous,NA
+MOD,ldl,max,359,Continuous,NA
+MOD,ldl,freq,1122,Continuous,NA
 MOD,ldl,missing,0,Continuous,NA
-MOD,hdl,mean,44.33518276762402,Continuous,NA
-MOD,hdl,sd,11.478041230516126,Continuous,NA
-MOD,hdl,median,42,Continuous,NA
+MOD,hdl,mean,44.88792335115865,Continuous,NA
+MOD,hdl,sd,11.219197850631039,Continuous,NA
+MOD,hdl,median,43,Continuous,NA
 MOD,hdl,q25,37,Continuous,NA
-MOD,hdl,q75,50,Continuous,NA
+MOD,hdl,q75,51,Continuous,NA
 MOD,hdl,min,6,Continuous,NA
 MOD,hdl,max,100,Continuous,NA
-MOD,hdl,freq,766,Continuous,NA
+MOD,hdl,freq,1122,Continuous,NA
 MOD,hdl,missing,0,Continuous,NA
-MOD,triglyceride,mean,165.79895561357702,Continuous,NA
-MOD,triglyceride,sd,95.07881776264956,Continuous,NA
-MOD,triglyceride,median,147,Continuous,NA
+MOD,triglyceride,mean,172.83377896613192,Continuous,NA
+MOD,triglyceride,sd,117.45441254995538,Continuous,NA
+MOD,triglyceride,median,148.75,Continuous,NA
 MOD,triglyceride,q25,113,Continuous,NA
-MOD,triglyceride,q75,189.9375,Continuous,NA
+MOD,triglyceride,q75,194.5,Continuous,NA
 MOD,triglyceride,min,31,Continuous,NA
-MOD,triglyceride,max,1297,Continuous,NA
-MOD,triglyceride,freq,766,Continuous,NA
+MOD,triglyceride,max,1652,Continuous,NA
+MOD,triglyceride,freq,1122,Continuous,NA
 MOD,triglyceride,missing,0,Continuous,NA
-MOD,fasting_glucose,mean,135.90161725067387,Continuous,NA
-MOD,fasting_glucose,sd,27.283531268120562,Continuous,NA
+MOD,fasting_glucose,mean,135.54661016949152,Continuous,NA
+MOD,fasting_glucose,sd,24.5824681208781,Continuous,NA
 MOD,fasting_glucose,median,131,Continuous,NA
-MOD,fasting_glucose,q25,121,Continuous,NA
-MOD,fasting_glucose,q75,145.65,Continuous,NA
+MOD,fasting_glucose,q25,123,Continuous,NA
+MOD,fasting_glucose,q75,145.25,Continuous,NA
 MOD,fasting_glucose,min,51,Continuous,NA
-MOD,fasting_glucose,max,253,Continuous,NA
-MOD,fasting_glucose,freq,371,Continuous,NA
-MOD,fasting_glucose,missing,395,Continuous,NA
-SIDD,age,mean,50.07719298245614,Continuous,NA
-SIDD,age,sd,13.307085605202062,Continuous,NA
+MOD,fasting_glucose,max,258,Continuous,NA
+MOD,fasting_glucose,freq,590,Continuous,NA
+MOD,fasting_glucose,missing,532,Continuous,NA
+SIDD,age,mean,50.27946127946128,Continuous,NA
+SIDD,age,sd,13.411849933089716,Continuous,NA
 SIDD,age,median,50,Continuous,NA
-SIDD,age,q25,40,Continuous,NA
-SIDD,age,q75,60,Continuous,NA
+SIDD,age,q25,41,Continuous,NA
+SIDD,age,q75,61,Continuous,NA
 SIDD,age,min,18,Continuous,NA
 SIDD,age,max,85,Continuous,NA
-SIDD,age,freq,285,Continuous,NA
+SIDD,age,freq,297,Continuous,NA
 SIDD,age,missing,0,Continuous,NA
-SIDD,dm_age,mean,52.123684210526314,Continuous,NA
-SIDD,dm_age,sd,10.043230084675383,Continuous,NA
-SIDD,dm_age,median,52.75,Continuous,NA
-SIDD,dm_age,q25,46.75,Continuous,NA
-SIDD,dm_age,q75,59,Continuous,NA
+SIDD,dm_age,mean,51.78703703703704,Continuous,NA
+SIDD,dm_age,sd,9.889715787289003,Continuous,NA
+SIDD,dm_age,median,52.5,Continuous,NA
+SIDD,dm_age,q25,45.75,Continuous,NA
+SIDD,dm_age,q75,58.5,Continuous,NA
 SIDD,dm_age,min,17,Continuous,NA
 SIDD,dm_age,max,77,Continuous,NA
-SIDD,dm_age,freq,285,Continuous,NA
+SIDD,dm_age,freq,297,Continuous,NA
 SIDD,dm_age,missing,0,Continuous,NA
-SIDD,bmi,mean,31.972280701754386,Continuous,NA
-SIDD,bmi,sd,7.122705614655273,Continuous,NA
-SIDD,bmi,median,30.98,Continuous,NA
-SIDD,bmi,q25,27.02,Continuous,NA
-SIDD,bmi,q75,35.72,Continuous,NA
+SIDD,bmi,mean,32.26744107744108,Continuous,NA
+SIDD,bmi,sd,7.392976363473274,Continuous,NA
+SIDD,bmi,median,31.04,Continuous,NA
+SIDD,bmi,q25,27.1,Continuous,NA
+SIDD,bmi,q75,36.12,Continuous,NA
 SIDD,bmi,min,18.3,Continuous,NA
 SIDD,bmi,max,65.1,Continuous,NA
-SIDD,bmi,freq,285,Continuous,NA
+SIDD,bmi,freq,297,Continuous,NA
 SIDD,bmi,missing,0,Continuous,NA
-SIDD,fat_percentage,mean,35.801422829537096,Continuous,NA
-SIDD,fat_percentage,sd,7.853166524817088,Continuous,NA
-SIDD,fat_percentage,median,34.739999999999995,Continuous,NA
+SIDD,fat_percentage,mean,35.914096570168546,Continuous,NA
+SIDD,fat_percentage,sd,7.980095356170626,Continuous,NA
+SIDD,fat_percentage,median,34.959999999999994,Continuous,NA
 SIDD,fat_percentage,q25,29.88858024691355,Continuous,NA
-SIDD,fat_percentage,q75,41.43,Continuous,NA
+SIDD,fat_percentage,q75,41.824999999999996,Continuous,NA
 SIDD,fat_percentage,min,14.6,Continuous,NA
 SIDD,fat_percentage,max,56.2075702075702,Continuous,NA
-SIDD,fat_percentage,freq,246,Continuous,NA
-SIDD,fat_percentage,missing,39,Continuous,NA
-SIDD,glycohemoglobin,mean,11.071228070175438,Continuous,NA
-SIDD,glycohemoglobin,sd,1.6195157402792069,Continuous,NA
-SIDD,glycohemoglobin,median,10.9,Continuous,NA
-SIDD,glycohemoglobin,q25,9.7,Continuous,NA
+SIDD,fat_percentage,freq,242,Continuous,NA
+SIDD,fat_percentage,missing,55,Continuous,NA
+SIDD,glycohemoglobin,mean,11.185858585858586,Continuous,NA
+SIDD,glycohemoglobin,sd,1.601098235904206,Continuous,NA
+SIDD,glycohemoglobin,median,11,Continuous,NA
+SIDD,glycohemoglobin,q25,10,Continuous,NA
 SIDD,glycohemoglobin,q75,12.1,Continuous,NA
-SIDD,glycohemoglobin,min,8.3,Continuous,NA
-SIDD,glycohemoglobin,max,16.2,Continuous,NA
-SIDD,glycohemoglobin,freq,285,Continuous,NA
+SIDD,glycohemoglobin,min,8.5,Continuous,NA
+SIDD,glycohemoglobin,max,17.1,Continuous,NA
+SIDD,glycohemoglobin,freq,297,Continuous,NA
 SIDD,glycohemoglobin,missing,0,Continuous,NA
-SIDD,alt,mean,38.56140350877193,Continuous,NA
-SIDD,alt,sd,41.198577655546906,Continuous,NA
+SIDD,alt,mean,38.293771043771045,Continuous,NA
+SIDD,alt,sd,40.64993230673326,Continuous,NA
 SIDD,alt,median,27,Continuous,NA
 SIDD,alt,q25,20,Continuous,NA
 SIDD,alt,q75,41,Continuous,NA
 SIDD,alt,min,9,Continuous,NA
 SIDD,alt,max,526,Continuous,NA
-SIDD,alt,freq,285,Continuous,NA
+SIDD,alt,freq,297,Continuous,NA
 SIDD,alt,missing,0,Continuous,NA
-SIDD,ast,mean,30.767543859649123,Continuous,NA
-SIDD,ast,sd,27.552896455746037,Continuous,NA
+SIDD,ast,mean,30.255050505050505,Continuous,NA
+SIDD,ast,sd,26.59405271760521,Continuous,NA
 SIDD,ast,median,23,Continuous,NA
 SIDD,ast,q25,18,Continuous,NA
 SIDD,ast,q75,34,Continuous,NA
 SIDD,ast,min,10,Continuous,NA
 SIDD,ast,max,324,Continuous,NA
-SIDD,ast,freq,285,Continuous,NA
+SIDD,ast,freq,297,Continuous,NA
 SIDD,ast,missing,0,Continuous,NA
-SIDD,sbp,mean,131.07251461988304,Continuous,NA
-SIDD,sbp,sd,20.70536885461342,Continuous,NA
-SIDD,sbp,median,126,Continuous,NA
-SIDD,sbp,q25,118,Continuous,NA
-SIDD,sbp,q75,140.666666666667,Continuous,NA
+SIDD,sbp,mean,130.63552188552188,Continuous,NA
+SIDD,sbp,sd,20.28768061832685,Continuous,NA
+SIDD,sbp,median,125.333333333333,Continuous,NA
+SIDD,sbp,q25,118.666666666667,Continuous,NA
+SIDD,sbp,q75,138,Continuous,NA
 SIDD,sbp,min,79,Continuous,NA
 SIDD,sbp,max,223.333333333333,Continuous,NA
-SIDD,sbp,freq,285,Continuous,NA
+SIDD,sbp,freq,297,Continuous,NA
 SIDD,sbp,missing,0,Continuous,NA
-SIDD,dbp,mean,74.29649122807018,Continuous,NA
-SIDD,dbp,sd,14.763837882023484,Continuous,NA
+SIDD,dbp,mean,74.97222222222223,Continuous,NA
+SIDD,dbp,sd,14.652666587967468,Continuous,NA
 SIDD,dbp,median,76,Continuous,NA
-SIDD,dbp,q25,65.3333333333333,Continuous,NA
-SIDD,dbp,q75,83.6666666666667,Continuous,NA
+SIDD,dbp,q25,67.3333333333333,Continuous,NA
+SIDD,dbp,q75,84,Continuous,NA
 SIDD,dbp,min,10.6666666666667,Continuous,NA
 SIDD,dbp,max,132,Continuous,NA
-SIDD,dbp,freq,285,Continuous,NA
+SIDD,dbp,freq,297,Continuous,NA
 SIDD,dbp,missing,0,Continuous,NA
-SIDD,egfr,mean,106.56766823542576,Continuous,NA
-SIDD,egfr,sd,20.435808222370877,Continuous,NA
-SIDD,egfr,median,106.984871107979,Continuous,NA
-SIDD,egfr,q25,94.4049362027011,Continuous,NA
-SIDD,egfr,q75,119.774510875084,Continuous,NA
-SIDD,egfr,min,39.9313994267342,Continuous,NA
+SIDD,egfr,mean,105.70939665517889,Continuous,NA
+SIDD,egfr,sd,20.933563358307136,Continuous,NA
+SIDD,egfr,median,106.380204873592,Continuous,NA
+SIDD,egfr,q25,93.94015980410856,Continuous,NA
+SIDD,egfr,q75,119.732111963267,Continuous,NA
+SIDD,egfr,min,33.2930774427814,Continuous,NA
 SIDD,egfr,max,170.122802736043,Continuous,NA
-SIDD,egfr,freq,285,Continuous,NA
+SIDD,egfr,freq,297,Continuous,NA
 SIDD,egfr,missing,0,Continuous,NA
-SIDD,waistcircumference,mean,107.34666666666666,Continuous,NA
-SIDD,waistcircumference,sd,15.734760605568614,Continuous,NA
-SIDD,waistcircumference,median,105.7,Continuous,NA
+SIDD,waistcircumference,mean,107.94941077441078,Continuous,NA
+SIDD,waistcircumference,sd,16.312745340589075,Continuous,NA
+SIDD,waistcircumference,median,106.2,Continuous,NA
 SIDD,waistcircumference,q25,97.2,Continuous,NA
-SIDD,waistcircumference,q75,118.4,Continuous,NA
+SIDD,waistcircumference,q75,119.2,Continuous,NA
 SIDD,waistcircumference,min,71.1,Continuous,NA
 SIDD,waistcircumference,max,163.8,Continuous,NA
-SIDD,waistcircumference,freq,285,Continuous,NA
+SIDD,waistcircumference,freq,297,Continuous,NA
 SIDD,waistcircumference,missing,0,Continuous,NA
-SIDD,ldl,mean,126.80175438596491,Continuous,NA
-SIDD,ldl,sd,33.94943288760749,Continuous,NA
-SIDD,ldl,median,123,Continuous,NA
-SIDD,ldl,q25,106,Continuous,NA
-SIDD,ldl,q75,141.75,Continuous,NA
+SIDD,ldl,mean,125.63383838383838,Continuous,NA
+SIDD,ldl,sd,33.42362170561021,Continuous,NA
+SIDD,ldl,median,121,Continuous,NA
+SIDD,ldl,q25,104.75,Continuous,NA
+SIDD,ldl,q75,140.75,Continuous,NA
 SIDD,ldl,min,37,Continuous,NA
 SIDD,ldl,max,235,Continuous,NA
-SIDD,ldl,freq,285,Continuous,NA
+SIDD,ldl,freq,297,Continuous,NA
 SIDD,ldl,missing,0,Continuous,NA
-SIDD,hdl,mean,42.050877192982455,Continuous,NA
-SIDD,hdl,sd,11.09756068246813,Continuous,NA
+SIDD,hdl,mean,42.2516835016835,Continuous,NA
+SIDD,hdl,sd,11.305288190717036,Continuous,NA
 SIDD,hdl,median,41,Continuous,NA
-SIDD,hdl,q25,35,Continuous,NA
+SIDD,hdl,q25,34,Continuous,NA
 SIDD,hdl,q75,48,Continuous,NA
 SIDD,hdl,min,15,Continuous,NA
 SIDD,hdl,max,85,Continuous,NA
-SIDD,hdl,freq,285,Continuous,NA
+SIDD,hdl,freq,297,Continuous,NA
 SIDD,hdl,missing,0,Continuous,NA
-SIDD,triglyceride,mean,245.69298245614036,Continuous,NA
-SIDD,triglyceride,sd,288.0471042756143,Continuous,NA
-SIDD,triglyceride,median,179,Continuous,NA
-SIDD,triglyceride,q25,133.5,Continuous,NA
-SIDD,triglyceride,q75,250.75,Continuous,NA
+SIDD,triglyceride,mean,241.82744107744108,Continuous,NA
+SIDD,triglyceride,sd,282.90030143774135,Continuous,NA
+SIDD,triglyceride,median,176.5,Continuous,NA
+SIDD,triglyceride,q25,133.25,Continuous,NA
+SIDD,triglyceride,q75,245,Continuous,NA
 SIDD,triglyceride,min,59,Continuous,NA
 SIDD,triglyceride,max,3780,Continuous,NA
-SIDD,triglyceride,freq,285,Continuous,NA
+SIDD,triglyceride,freq,297,Continuous,NA
 SIDD,triglyceride,missing,0,Continuous,NA
-SIDD,fasting_glucose,mean,272.88013245033113,Continuous,NA
-SIDD,fasting_glucose,sd,66.89313569155662,Continuous,NA
-SIDD,fasting_glucose,median,274,Continuous,NA
-SIDD,fasting_glucose,q25,233,Continuous,NA
-SIDD,fasting_glucose,q75,320,Continuous,NA
-SIDD,fasting_glucose,min,117,Continuous,NA
+SIDD,fasting_glucose,mean,275.091875,Continuous,NA
+SIDD,fasting_glucose,sd,65.59687825433339,Continuous,NA
+SIDD,fasting_glucose,median,275,Continuous,NA
+SIDD,fasting_glucose,q25,237.75,Continuous,NA
+SIDD,fasting_glucose,q75,321,Continuous,NA
+SIDD,fasting_glucose,min,98,Continuous,NA
 SIDD,fasting_glucose,max,433.3,Continuous,NA
-SIDD,fasting_glucose,freq,151,Continuous,NA
-SIDD,fasting_glucose,missing,134,Continuous,NA
-SIRD,age,mean,51.07142857142857,Continuous,NA
-SIRD,age,sd,16.968484360844602,Continuous,NA
-SIRD,age,median,51.5,Continuous,NA
+SIDD,fasting_glucose,freq,160,Continuous,NA
+SIDD,fasting_glucose,missing,137,Continuous,NA
+SIRD,age,mean,50.51447661469933,Continuous,NA
+SIRD,age,sd,16.022177424561153,Continuous,NA
+SIRD,age,median,50,Continuous,NA
 SIRD,age,q25,39,Continuous,NA
-SIRD,age,q75,64,Continuous,NA
+SIRD,age,q75,62,Continuous,NA
 SIRD,age,min,18,Continuous,NA
 SIRD,age,max,85,Continuous,NA
-SIRD,age,freq,322,Continuous,NA
+SIRD,age,freq,449,Continuous,NA
 SIRD,age,missing,0,Continuous,NA
-SIRD,dm_age,mean,54.45031055900621,Continuous,NA
-SIRD,dm_age,sd,10.229390795170762,Continuous,NA
-SIRD,dm_age,median,55.5,Continuous,NA
-SIRD,dm_age,q25,49,Continuous,NA
-SIRD,dm_age,q75,62,Continuous,NA
+SIRD,dm_age,mean,51.35300668151448,Continuous,NA
+SIRD,dm_age,sd,10.078671947060938,Continuous,NA
+SIRD,dm_age,median,51.25,Continuous,NA
+SIRD,dm_age,q25,45.5,Continuous,NA
+SIRD,dm_age,q75,58.25,Continuous,NA
 SIRD,dm_age,min,18,Continuous,NA
-SIRD,dm_age,max,74,Continuous,NA
-SIRD,dm_age,freq,322,Continuous,NA
+SIRD,dm_age,max,80,Continuous,NA
+SIRD,dm_age,freq,449,Continuous,NA
 SIRD,dm_age,missing,0,Continuous,NA
-SIRD,bmi,mean,35.354254658385095,Continuous,NA
-SIRD,bmi,sd,8.128334172567488,Continuous,NA
-SIRD,bmi,median,34.370000000000005,Continuous,NA
-SIRD,bmi,q25,29.315,Continuous,NA
-SIRD,bmi,q75,39.9975,Continuous,NA
+SIRD,bmi,mean,39.724944320712694,Continuous,NA
+SIRD,bmi,sd,10.29583012242526,Continuous,NA
+SIRD,bmi,median,38.15,Continuous,NA
+SIRD,bmi,q25,32.46,Continuous,NA
+SIRD,bmi,q75,45.2,Continuous,NA
 SIRD,bmi,min,17.66,Continuous,NA
-SIRD,bmi,max,63.5,Continuous,NA
-SIRD,bmi,freq,322,Continuous,NA
+SIRD,bmi,max,77.3,Continuous,NA
+SIRD,bmi,freq,449,Continuous,NA
 SIRD,bmi,missing,0,Continuous,NA
-SIRD,fat_percentage,mean,37.84041800079081,Continuous,NA
-SIRD,fat_percentage,sd,7.932948519611776,Continuous,NA
-SIRD,fat_percentage,median,36.3,Continuous,NA
-SIRD,fat_percentage,q25,32.8,Continuous,NA
-SIRD,fat_percentage,q75,43.9809523809524,Continuous,NA
+SIRD,fat_percentage,mean,39.734526602266925,Continuous,NA
+SIRD,fat_percentage,sd,8.200517836971914,Continuous,NA
+SIRD,fat_percentage,median,38.7572791023843,Continuous,NA
+SIRD,fat_percentage,q25,33.8757985581055,Continuous,NA
+SIRD,fat_percentage,q75,46.5138888888889,Continuous,NA
 SIRD,fat_percentage,min,14.1,Continuous,NA
-SIRD,fat_percentage,max,55.2975970425139,Continuous,NA
-SIRD,fat_percentage,freq,237,Continuous,NA
-SIRD,fat_percentage,missing,85,Continuous,NA
-SIRD,glycohemoglobin,mean,6.3133540372670804,Continuous,NA
-SIRD,glycohemoglobin,sd,0.9229044253426153,Continuous,NA
-SIRD,glycohemoglobin,median,6.3,Continuous,NA
-SIRD,glycohemoglobin,q25,5.7,Continuous,NA
-SIRD,glycohemoglobin,q75,6.7,Continuous,NA
+SIRD,fat_percentage,max,56.56,Continuous,NA
+SIRD,fat_percentage,freq,284,Continuous,NA
+SIRD,fat_percentage,missing,165,Continuous,NA
+SIRD,glycohemoglobin,mean,6.4405345211581295,Continuous,NA
+SIRD,glycohemoglobin,sd,0.9270034670566739,Continuous,NA
+SIRD,glycohemoglobin,median,6.5,Continuous,NA
+SIRD,glycohemoglobin,q25,5.9,Continuous,NA
+SIRD,glycohemoglobin,q75,6.8,Continuous,NA
 SIRD,glycohemoglobin,min,4.4,Continuous,NA
 SIRD,glycohemoglobin,max,12.6,Continuous,NA
-SIRD,glycohemoglobin,freq,322,Continuous,NA
+SIRD,glycohemoglobin,freq,449,Continuous,NA
 SIRD,glycohemoglobin,missing,0,Continuous,NA
-SIRD,alt,mean,38.649844720496894,Continuous,NA
-SIRD,alt,sd,32.85358022530684,Continuous,NA
-SIRD,alt,median,29,Continuous,NA
+SIRD,alt,mean,34.86581291759465,Continuous,NA
+SIRD,alt,sd,27.943006517423626,Continuous,NA
+SIRD,alt,median,28,Continuous,NA
 SIRD,alt,q25,21,Continuous,NA
-SIRD,alt,q75,43,Continuous,NA
+SIRD,alt,q75,39,Continuous,NA
 SIRD,alt,min,9,Continuous,NA
 SIRD,alt,max,280,Continuous,NA
-SIRD,alt,freq,322,Continuous,NA
+SIRD,alt,freq,449,Continuous,NA
 SIRD,alt,missing,0,Continuous,NA
-SIRD,ast,mean,34.95574534161491,Continuous,NA
-SIRD,ast,sd,51.17670830679468,Continuous,NA
-SIRD,ast,median,26,Continuous,NA
-SIRD,ast,q25,21,Continuous,NA
-SIRD,ast,q75,36,Continuous,NA
-SIRD,ast,min,11,Continuous,NA
+SIRD,ast,mean,31.85857461024499,Continuous,NA
+SIRD,ast,sd,43.810128183399236,Continuous,NA
+SIRD,ast,median,25,Continuous,NA
+SIRD,ast,q25,20.25,Continuous,NA
+SIRD,ast,q75,32,Continuous,NA
+SIRD,ast,min,10,Continuous,NA
 SIRD,ast,max,832,Continuous,NA
-SIRD,ast,freq,322,Continuous,NA
+SIRD,ast,freq,449,Continuous,NA
 SIRD,ast,missing,0,Continuous,NA
-SIRD,sbp,mean,129.80357142857142,Continuous,NA
-SIRD,sbp,sd,18.396478581717368,Continuous,NA
-SIRD,sbp,median,127.333333333333,Continuous,NA
-SIRD,sbp,q25,117.333333333333,Continuous,NA
-SIRD,sbp,q75,139.95833333333337,Continuous,NA
-SIRD,sbp,min,93.3333333333333,Continuous,NA
+SIRD,sbp,mean,128.35634743875278,Continuous,NA
+SIRD,sbp,sd,17.99417833055224,Continuous,NA
+SIRD,sbp,median,126,Continuous,NA
+SIRD,sbp,q25,116.666666666667,Continuous,NA
+SIRD,sbp,q75,138,Continuous,NA
+SIRD,sbp,min,92.3333333333333,Continuous,NA
 SIRD,sbp,max,220,Continuous,NA
-SIRD,sbp,freq,322,Continuous,NA
+SIRD,sbp,freq,449,Continuous,NA
 SIRD,sbp,missing,0,Continuous,NA
-SIRD,dbp,mean,73.91589026915113,Continuous,NA
-SIRD,dbp,sd,15.143249135383442,Continuous,NA
-SIRD,dbp,median,74.6666666666667,Continuous,NA
-SIRD,dbp,q25,67.49999999999997,Continuous,NA
-SIRD,dbp,q75,82.50000000000003,Continuous,NA
+SIRD,dbp,mean,75.06180400890868,Continuous,NA
+SIRD,dbp,sd,13.850480640591162,Continuous,NA
+SIRD,dbp,median,75.3333333333333,Continuous,NA
+SIRD,dbp,q25,68,Continuous,NA
+SIRD,dbp,q75,82.6666666666667,Continuous,NA
 SIRD,dbp,min,0,Continuous,NA
-SIRD,dbp,max,112.666666666667,Continuous,NA
-SIRD,dbp,freq,322,Continuous,NA
+SIRD,dbp,max,124,Continuous,NA
+SIRD,dbp,freq,449,Continuous,NA
 SIRD,dbp,missing,0,Continuous,NA
-SIRD,egfr,mean,95.78251656499565,Continuous,NA
-SIRD,egfr,sd,25.3517312567644,Continuous,NA
-SIRD,egfr,median,96.7553553164264,Continuous,NA
-SIRD,egfr,q25,81.36544758511788,Continuous,NA
-SIRD,egfr,q75,112.53143134241175,Continuous,NA
-SIRD,egfr,min,5.4684778117888,Continuous,NA
+SIRD,egfr,mean,95.45911829356811,Continuous,NA
+SIRD,egfr,sd,23.629553218171086,Continuous,NA
+SIRD,egfr,median,96.1147853596441,Continuous,NA
+SIRD,egfr,q25,81.1934789088707,Continuous,NA
+SIRD,egfr,q75,111.57272000228076,Continuous,NA
+SIRD,egfr,min,18.1027615834728,Continuous,NA
 SIRD,egfr,max,159.678850839985,Continuous,NA
-SIRD,egfr,freq,322,Continuous,NA
+SIRD,egfr,freq,449,Continuous,NA
 SIRD,egfr,missing,0,Continuous,NA
-SIRD,waistcircumference,mean,114.76552795031056,Continuous,NA
-SIRD,waistcircumference,sd,17.020872046825886,Continuous,NA
-SIRD,waistcircumference,median,113.5,Continuous,NA
-SIRD,waistcircumference,q25,103.4,Continuous,NA
-SIRD,waistcircumference,q75,125.07499999999999,Continuous,NA
+SIRD,waistcircumference,mean,122.37433184855234,Continuous,NA
+SIRD,waistcircumference,sd,18.853193768939636,Continuous,NA
+SIRD,waistcircumference,median,121.6,Continuous,NA
+SIRD,waistcircumference,q25,108.8,Continuous,NA
+SIRD,waistcircumference,q75,136.4,Continuous,NA
 SIRD,waistcircumference,min,67.5,Continuous,NA
 SIRD,waistcircumference,max,172,Continuous,NA
-SIRD,waistcircumference,freq,322,Continuous,NA
+SIRD,waistcircumference,freq,449,Continuous,NA
 SIRD,waistcircumference,missing,0,Continuous,NA
-SIRD,ldl,mean,110.91614906832298,Continuous,NA
-SIRD,ldl,sd,30.762600236100337,Continuous,NA
-SIRD,ldl,median,112,Continuous,NA
-SIRD,ldl,q25,91,Continuous,NA
-SIRD,ldl,q75,130,Continuous,NA
+SIRD,ldl,mean,110.4988864142539,Continuous,NA
+SIRD,ldl,sd,27.38117589512941,Continuous,NA
+SIRD,ldl,median,111.25,Continuous,NA
+SIRD,ldl,q25,93.5,Continuous,NA
+SIRD,ldl,q75,125,Continuous,NA
 SIRD,ldl,min,30,Continuous,NA
 SIRD,ldl,max,196,Continuous,NA
-SIRD,ldl,freq,322,Continuous,NA
+SIRD,ldl,freq,449,Continuous,NA
 SIRD,ldl,missing,0,Continuous,NA
-SIRD,hdl,mean,43.75,Continuous,NA
-SIRD,hdl,sd,12.759212663333189,Continuous,NA
+SIRD,hdl,mean,42.65367483296214,Continuous,NA
+SIRD,hdl,sd,11.522786183072917,Continuous,NA
 SIRD,hdl,median,41,Continuous,NA
-SIRD,hdl,q25,36,Continuous,NA
-SIRD,hdl,q75,49,Continuous,NA
+SIRD,hdl,q25,35,Continuous,NA
+SIRD,hdl,q75,48,Continuous,NA
 SIRD,hdl,min,13,Continuous,NA
-SIRD,hdl,max,95,Continuous,NA
-SIRD,hdl,freq,322,Continuous,NA
+SIRD,hdl,max,93,Continuous,NA
+SIRD,hdl,freq,449,Continuous,NA
 SIRD,hdl,missing,0,Continuous,NA
-SIRD,triglyceride,mean,184.91770186335404,Continuous,NA
-SIRD,triglyceride,sd,130.62703672307285,Continuous,NA
-SIRD,triglyceride,median,161,Continuous,NA
-SIRD,triglyceride,q25,110.25,Continuous,NA
-SIRD,triglyceride,q75,212,Continuous,NA
+SIRD,triglyceride,mean,176.12694877505567,Continuous,NA
+SIRD,triglyceride,sd,116.2187795434586,Continuous,NA
+SIRD,triglyceride,median,151,Continuous,NA
+SIRD,triglyceride,q25,112,Continuous,NA
+SIRD,triglyceride,q75,200,Continuous,NA
 SIRD,triglyceride,min,31,Continuous,NA
 SIRD,triglyceride,max,1377,Continuous,NA
-SIRD,triglyceride,freq,322,Continuous,NA
+SIRD,triglyceride,freq,449,Continuous,NA
 SIRD,triglyceride,missing,0,Continuous,NA
-SIRD,fasting_glucose,mean,138.8508,Continuous,NA
-SIRD,fasting_glucose,sd,37.6484480679843,Continuous,NA
-SIRD,fasting_glucose,median,132.9,Continuous,NA
-SIRD,fasting_glucose,q25,126,Continuous,NA
-SIRD,fasting_glucose,q75,147,Continuous,NA
+SIRD,fasting_glucose,mean,138.2884012539185,Continuous,NA
+SIRD,fasting_glucose,sd,35.441354122369084,Continuous,NA
+SIRD,fasting_glucose,median,132.8,Continuous,NA
+SIRD,fasting_glucose,q25,125,Continuous,NA
+SIRD,fasting_glucose,q75,145,Continuous,NA
 SIRD,fasting_glucose,min,64.5,Continuous,NA
 SIRD,fasting_glucose,max,527,Continuous,NA
-SIRD,fasting_glucose,freq,250,Continuous,NA
-SIRD,fasting_glucose,missing,72,Continuous,NA
-Total,age,mean,57.864489228630994,Continuous,NA
-Total,age,sd,15.12693540559656,Continuous,NA
+SIRD,fasting_glucose,freq,319,Continuous,NA
+SIRD,fasting_glucose,missing,130,Continuous,NA
+Total,age,mean,57.982416879795394,Continuous,NA
+Total,age,sd,15.079069215535288,Continuous,NA
 Total,age,median,60,Continuous,NA
 Total,age,q25,47,Continuous,NA
 Total,age,q75,69,Continuous,NA
 Total,age,min,18,Continuous,NA
 Total,age,max,85,Continuous,NA
-Total,age,freq,2878,Continuous,NA
+Total,age,freq,3128,Continuous,NA
 Total,age,missing,0,Continuous,NA
-Total,dm_age,mean,57.359885337039614,Continuous,NA
-Total,dm_age,sd,11.090390556290323,Continuous,NA
-Total,dm_age,median,58,Continuous,NA
-Total,dm_age,q25,51,Continuous,NA
-Total,dm_age,q75,64.25,Continuous,NA
+Total,dm_age,mean,55.99648337595908,Continuous,NA
+Total,dm_age,sd,10.884317519534658,Continuous,NA
+Total,dm_age,median,56,Continuous,NA
+Total,dm_age,q25,49,Continuous,NA
+Total,dm_age,q75,62.75,Continuous,NA
 Total,dm_age,min,17,Continuous,NA
 Total,dm_age,max,85,Continuous,NA
-Total,dm_age,freq,2878,Continuous,NA
+Total,dm_age,freq,3128,Continuous,NA
 Total,dm_age,missing,0,Continuous,NA
-Total,bmi,mean,32.74411396803335,Continuous,NA
-Total,bmi,sd,7.745924859294204,Continuous,NA
-Total,bmi,median,31.5,Continuous,NA
-Total,bmi,q25,27.5,Continuous,NA
-Total,bmi,q75,36.5,Continuous,NA
+Total,bmi,mean,32.88825447570333,Continuous,NA
+Total,bmi,sd,7.8127046064809305,Continuous,NA
+Total,bmi,median,31.6,Continuous,NA
+Total,bmi,q25,27.6,Continuous,NA
+Total,bmi,q75,36.602500000000006,Continuous,NA
 Total,bmi,min,15.86,Continuous,NA
 Total,bmi,max,77.3,Continuous,NA
-Total,bmi,freq,2878,Continuous,NA
+Total,bmi,freq,3128,Continuous,NA
 Total,bmi,missing,0,Continuous,NA
 Total,fat_percentage,mean,37.66037421942694,Continuous,NA
 Total,fat_percentage,sd,8.147341798742895,Continuous,NA
@@ -574,299 +574,293 @@ Total,fat_percentage,q75,44.6,Continuous,NA
 Total,fat_percentage,min,14.1,Continuous,NA
 Total,fat_percentage,max,58.0337078651685,Continuous,NA
 Total,fat_percentage,freq,2117,Continuous,NA
-Total,fat_percentage,missing,761,Continuous,NA
-Total,glycohemoglobin,mean,7.027484364141765,Continuous,NA
-Total,glycohemoglobin,sd,1.6548320864066657,Continuous,NA
+Total,fat_percentage,missing,1011,Continuous,NA
+Total,glycohemoglobin,mean,7.018925831202046,Continuous,NA
+Total,glycohemoglobin,sd,1.6509360652439373,Continuous,NA
 Total,glycohemoglobin,median,6.6,Continuous,NA
 Total,glycohemoglobin,q25,6.1,Continuous,NA
 Total,glycohemoglobin,q75,7.2,Continuous,NA
 Total,glycohemoglobin,min,4.4,Continuous,NA
-Total,glycohemoglobin,max,16.2,Continuous,NA
-Total,glycohemoglobin,freq,2878,Continuous,NA
+Total,glycohemoglobin,max,17.1,Continuous,NA
+Total,glycohemoglobin,freq,3128,Continuous,NA
 Total,glycohemoglobin,missing,0,Continuous,NA
-Total,alt,mean,30.166695621959693,Continuous,NA
-Total,alt,sd,26.024771729613825,Continuous,NA
-Total,alt,median,23,Continuous,NA
-Total,alt,q25,17,Continuous,NA
-Total,alt,q75,33.1875,Continuous,NA
+Total,alt,mean,30.08423913043478,Continuous,NA
+Total,alt,sd,25.245203345777615,Continuous,NA
+Total,alt,median,24,Continuous,NA
+Total,alt,q25,18,Continuous,NA
+Total,alt,q75,33.0625,Continuous,NA
 Total,alt,min,6,Continuous,NA
 Total,alt,max,526,Continuous,NA
-Total,alt,freq,2878,Continuous,NA
+Total,alt,freq,3128,Continuous,NA
 Total,alt,missing,0,Continuous,NA
-Total,ast,mean,27.59155663655316,Continuous,NA
-Total,ast,sd,23.424937803483477,Continuous,NA
+Total,ast,mean,27.45899936061381,Continuous,NA
+Total,ast,sd,22.570941739119473,Continuous,NA
 Total,ast,median,23,Continuous,NA
 Total,ast,q25,19,Continuous,NA
 Total,ast,q75,29,Continuous,NA
 Total,ast,min,9,Continuous,NA
 Total,ast,max,832,Continuous,NA
-Total,ast,freq,2878,Continuous,NA
+Total,ast,freq,3128,Continuous,NA
 Total,ast,missing,0,Continuous,NA
-Total,sbp,mean,132.05165624276117,Continuous,NA
-Total,sbp,sd,19.761393857015758,Continuous,NA
-Total,sbp,median,129.333333333333,Continuous,NA
+Total,sbp,mean,131.5598492114237,Continuous,NA
+Total,sbp,sd,19.492840750325026,Continuous,NA
+Total,sbp,median,128.666666666667,Continuous,NA
 Total,sbp,q25,118.666666666667,Continuous,NA
-Total,sbp,q75,142.91666666666674,Continuous,NA
+Total,sbp,q75,142,Continuous,NA
 Total,sbp,min,77.3333333333333,Continuous,NA
 Total,sbp,max,223.333333333333,Continuous,NA
-Total,sbp,freq,2878,Continuous,NA
+Total,sbp,freq,3128,Continuous,NA
 Total,sbp,missing,0,Continuous,NA
-Total,dbp,mean,72.33211721102617,Continuous,NA
-Total,dbp,sd,14.609601975531334,Continuous,NA
-Total,dbp,median,72.6666666666667,Continuous,NA
+Total,dbp,mean,72.78383418584825,Continuous,NA
+Total,dbp,sd,14.401916445789963,Continuous,NA
+Total,dbp,median,73.3333333333333,Continuous,NA
 Total,dbp,q25,65.3333333333333,Continuous,NA
-Total,dbp,q75,80.6666666666667,Continuous,NA
+Total,dbp,q75,81.3333333333333,Continuous,NA
 Total,dbp,min,0,Continuous,NA
 Total,dbp,max,132,Continuous,NA
-Total,dbp,freq,2878,Continuous,NA
+Total,dbp,freq,3128,Continuous,NA
 Total,dbp,missing,0,Continuous,NA
-Total,egfr,mean,89.37217388839727,Continuous,NA
-Total,egfr,sd,24.2459878377811,Continuous,NA
-Total,egfr,median,92.1166121747011,Continuous,NA
-Total,egfr,q25,73.1574594689366,Continuous,NA
-Total,egfr,q75,105.72651896490225,Continuous,NA
+Total,egfr,mean,89.26740295811541,Continuous,NA
+Total,egfr,sd,23.608528949906763,Continuous,NA
+Total,egfr,median,91.7865061759922,Continuous,NA
+Total,egfr,q25,73.82972189924438,Continuous,NA
+Total,egfr,q75,104.91904459169325,Continuous,NA
 Total,egfr,min,5.4684778117888,Continuous,NA
 Total,egfr,max,170.122802736043,Continuous,NA
-Total,egfr,freq,2878,Continuous,NA
+Total,egfr,freq,3128,Continuous,NA
 Total,egfr,missing,0,Continuous,NA
-Total,waistcircumference,mean,109.02830958999306,Continuous,NA
-Total,waistcircumference,sd,15.95781867949692,Continuous,NA
-Total,waistcircumference,median,107.3,Continuous,NA
-Total,waistcircumference,q25,98.1,Continuous,NA
-Total,waistcircumference,q75,118.6,Continuous,NA
+Total,waistcircumference,mean,109.4147618286445,Continuous,NA
+Total,waistcircumference,sd,16.092812748585526,Continuous,NA
+Total,waistcircumference,median,107.7,Continuous,NA
+Total,waistcircumference,q25,98.3,Continuous,NA
+Total,waistcircumference,q75,119,Continuous,NA
 Total,waistcircumference,min,64.8,Continuous,NA
 Total,waistcircumference,max,178,Continuous,NA
-Total,waistcircumference,freq,2878,Continuous,NA
+Total,waistcircumference,freq,3128,Continuous,NA
 Total,waistcircumference,missing,0,Continuous,NA
-Total,ldl,mean,115.58365184155663,Continuous,NA
-Total,ldl,sd,31.316445097005822,Continuous,NA
+Total,ldl,mean,115.6130115089514,Continuous,NA
+Total,ldl,sd,30.511109818094376,Continuous,NA
 Total,ldl,median,114,Continuous,NA
-Total,ldl,q25,96,Continuous,NA
-Total,ldl,q75,132.5,Continuous,NA
+Total,ldl,q25,97,Continuous,NA
+Total,ldl,q75,132,Continuous,NA
 Total,ldl,min,29,Continuous,NA
 Total,ldl,max,359,Continuous,NA
-Total,ldl,freq,2878,Continuous,NA
+Total,ldl,freq,3128,Continuous,NA
 Total,ldl,missing,0,Continuous,NA
-Total,hdl,mean,47.01450660180681,Continuous,NA
-Total,hdl,sd,14.077806617337545,Continuous,NA
-Total,hdl,median,44,Continuous,NA
+Total,hdl,mean,47.07832480818414,Continuous,NA
+Total,hdl,sd,13.897867565651934,Continuous,NA
+Total,hdl,median,45,Continuous,NA
 Total,hdl,q25,38,Continuous,NA
 Total,hdl,q75,54,Continuous,NA
 Total,hdl,min,6,Continuous,NA
 Total,hdl,max,226,Continuous,NA
-Total,hdl,freq,2878,Continuous,NA
+Total,hdl,freq,3128,Continuous,NA
 Total,hdl,missing,0,Continuous,NA
-Total,triglyceride,mean,171.5225851285615,Continuous,NA
-Total,triglyceride,sd,144.4103867604351,Continuous,NA
-Total,triglyceride,median,144.75,Continuous,NA
-Total,triglyceride,q25,107,Continuous,NA
-Total,triglyceride,q75,194,Continuous,NA
+Total,triglyceride,mean,171.2229060102302,Continuous,NA
+Total,triglyceride,sd,140.88789639151844,Continuous,NA
+Total,triglyceride,median,145,Continuous,NA
+Total,triglyceride,q25,108,Continuous,NA
+Total,triglyceride,q75,193.25,Continuous,NA
 Total,triglyceride,min,22,Continuous,NA
 Total,triglyceride,max,3780,Continuous,NA
-Total,triglyceride,freq,2878,Continuous,NA
+Total,triglyceride,freq,3128,Continuous,NA
 Total,triglyceride,missing,0,Continuous,NA
-Total,fasting_glucose,mean,148.64174473067916,Continuous,NA
-Total,fasting_glucose,sd,51.31108777950258,Continuous,NA
+Total,fasting_glucose,mean,148.19825119236884,Continuous,NA
+Total,fasting_glucose,sd,50.75347536919415,Continuous,NA
 Total,fasting_glucose,median,133,Continuous,NA
 Total,fasting_glucose,q25,126,Continuous,NA
-Total,fasting_glucose,q75,152,Continuous,NA
+Total,fasting_glucose,q75,151,Continuous,NA
 Total,fasting_glucose,min,51,Continuous,NA
 Total,fasting_glucose,max,527,Continuous,NA
-Total,fasting_glucose,freq,1708,Continuous,NA
-Total,fasting_glucose,missing,1170,Continuous,NA
-NA,cluster,proportion,100,Grouped,MARD
-NA,cluster,freq,1505,Grouped,MARD
-NA,cluster,proportion,100,Grouped,MOD
-NA,cluster,freq,766,Grouped,MOD
-NA,cluster,proportion,100,Grouped,SIDD
-NA,cluster,freq,285,Grouped,SIDD
-NA,cluster,proportion,100,Grouped,SIRD
-NA,cluster,freq,322,Grouped,SIRD
-NA,cluster,proportion,100,Grouped,Total
-NA,cluster,freq,2878,Grouped,Total
-MARD,gender,proportion,46.179401993355484,Grouped,Female
-MARD,gender,freq,695,Grouped,Female
-MARD,gender,proportion,53.820598006644516,Grouped,Male
-MARD,gender,freq,810,Grouped,Male
-MOD,gender,proportion,56.78851174934726,Grouped,Female
-MOD,gender,freq,435,Grouped,Female
-MOD,gender,proportion,43.21148825065274,Grouped,Male
-MOD,gender,freq,331,Grouped,Male
-SIDD,gender,proportion,38.59649122807018,Grouped,Female
-SIDD,gender,freq,110,Grouped,Female
-SIDD,gender,proportion,61.40350877192982,Grouped,Male
-SIDD,gender,freq,175,Grouped,Male
-SIRD,gender,proportion,39.440993788819874,Grouped,Female
-SIRD,gender,freq,127,Grouped,Female
-SIRD,gender,proportion,60.559006211180126,Grouped,Male
-SIRD,gender,freq,195,Grouped,Male
-Total,gender,proportion,47.49826268241834,Grouped,Female
-Total,gender,freq,1367,Grouped,Female
-Total,gender,proportion,52.50173731758166,Grouped,Male
-Total,gender,freq,1511,Grouped,Male
-MARD,race_eth,proportion,27.308970099667775,Grouped,Hispanic
-MARD,race_eth,freq,411,Grouped,Hispanic
-MARD,race_eth,proportion,22.45847176079734,Grouped,NH Black
-MARD,race_eth,freq,338,Grouped,NH Black
-MARD,race_eth,proportion,37.142857142857146,Grouped,NH White
-MARD,race_eth,freq,559,Grouped,NH White
-MARD,race_eth,proportion,13.08970099667774,Grouped,Other race
-MARD,race_eth,freq,197,Grouped,Other race
-MOD,race_eth,proportion,32.637075718015666,Grouped,Hispanic
-MOD,race_eth,freq,250,Grouped,Hispanic
-MOD,race_eth,proportion,31.33159268929504,Grouped,NH Black
-MOD,race_eth,freq,240,Grouped,NH Black
-MOD,race_eth,proportion,29.373368146214098,Grouped,NH White
-MOD,race_eth,freq,225,Grouped,NH White
-MOD,race_eth,proportion,6.657963446475196,Grouped,Other race
-MOD,race_eth,freq,51,Grouped,Other race
-SIDD,race_eth,proportion,43.50877192982456,Grouped,Hispanic
-SIDD,race_eth,freq,124,Grouped,Hispanic
-SIDD,race_eth,proportion,22.45614035087719,Grouped,NH Black
-SIDD,race_eth,freq,64,Grouped,NH Black
-SIDD,race_eth,proportion,20.70175438596491,Grouped,NH White
-SIDD,race_eth,freq,59,Grouped,NH White
-SIDD,race_eth,proportion,13.333333333333334,Grouped,Other race
-SIDD,race_eth,freq,38,Grouped,Other race
-SIRD,race_eth,proportion,31.987577639751553,Grouped,Hispanic
-SIRD,race_eth,freq,103,Grouped,Hispanic
-SIRD,race_eth,proportion,26.70807453416149,Grouped,NH Black
-SIRD,race_eth,freq,86,Grouped,NH Black
-SIRD,race_eth,proportion,31.366459627329192,Grouped,NH White
-SIRD,race_eth,freq,101,Grouped,NH White
-SIRD,race_eth,proportion,9.937888198757763,Grouped,Other race
-SIRD,race_eth,freq,32,Grouped,Other race
-Total,race_eth,proportion,30.854760250173733,Grouped,Hispanic
-Total,race_eth,freq,888,Grouped,Hispanic
-Total,race_eth,proportion,25.295343988881168,Grouped,NH Black
-Total,race_eth,freq,728,Grouped,NH Black
-Total,race_eth,proportion,32.80055594162613,Grouped,NH White
-Total,race_eth,freq,944,Grouped,NH White
-Total,race_eth,proportion,11.049339819318972,Grouped,Other race
-Total,race_eth,freq,318,Grouped,Other race
-MARD,hhincome,proportion,26.777408637873755,Grouped,
-MARD,hhincome,freq,403,Grouped,
-MARD,hhincome,proportion,26.976744186046513,Grouped,Household Income 20k to 45k
-MARD,hhincome,freq,406,Grouped,Household Income 20k to 45k
-MARD,hhincome,proportion,13.554817275747508,Grouped,Household Income 45k to 75k
-MARD,hhincome,freq,204,Grouped,Household Income 45k to 75k
-MARD,hhincome,proportion,4.983388704318937,Grouped,Household Income 75k to 100k
-MARD,hhincome,freq,75,Grouped,Household Income 75k to 100k
-MARD,hhincome,proportion,6.312292358803987,Grouped,Household Income Over 100k
-MARD,hhincome,freq,95,Grouped,Household Income Over 100k
-MARD,hhincome,proportion,21.3953488372093,Grouped,Household Income Under 20k
-MARD,hhincome,freq,322,Grouped,Household Income Under 20k
-MOD,hhincome,proportion,27.154046997389035,Grouped,
-MOD,hhincome,freq,208,Grouped,
-MOD,hhincome,proportion,27.41514360313316,Grouped,Household Income 20k to 45k
-MOD,hhincome,freq,210,Grouped,Household Income 20k to 45k
-MOD,hhincome,proportion,14.360313315926893,Grouped,Household Income 45k to 75k
-MOD,hhincome,freq,110,Grouped,Household Income 45k to 75k
-MOD,hhincome,proportion,4.177545691906006,Grouped,Household Income 75k to 100k
-MOD,hhincome,freq,32,Grouped,Household Income 75k to 100k
-MOD,hhincome,proportion,6.919060052219321,Grouped,Household Income Over 100k
-MOD,hhincome,freq,53,Grouped,Household Income Over 100k
-MOD,hhincome,proportion,19.973890339425587,Grouped,Household Income Under 20k
-MOD,hhincome,freq,153,Grouped,Household Income Under 20k
-SIDD,hhincome,proportion,29.82456140350877,Grouped,
-SIDD,hhincome,freq,85,Grouped,
-SIDD,hhincome,proportion,31.228070175438596,Grouped,Household Income 20k to 45k
+Total,fasting_glucose,freq,1887,Continuous,NA
+Total,fasting_glucose,missing,1241,Continuous,NA
+MARD,gender,proportion,45.714285714285715,Grouped,Female
+MARD,gender,freq,576,Grouped,Female
+MARD,gender,proportion,54.285714285714285,Grouped,Male
+MARD,gender,freq,684,Grouped,Male
+MOD,gender,proportion,52.406417112299465,Grouped,Female
+MOD,gender,freq,588,Grouped,Female
+MOD,gender,proportion,47.593582887700535,Grouped,Male
+MOD,gender,freq,534,Grouped,Male
+SIDD,gender,proportion,38.38383838383838,Grouped,Female
+SIDD,gender,freq,114,Grouped,Female
+SIDD,gender,proportion,61.61616161616162,Grouped,Male
+SIDD,gender,freq,183,Grouped,Male
+SIRD,gender,proportion,46.770601336302896,Grouped,Female
+SIRD,gender,freq,210,Grouped,Female
+SIRD,gender,proportion,53.229398663697104,Grouped,Male
+SIRD,gender,freq,239,Grouped,Male
+Total,gender,proportion,47.570332480818415,Grouped,Female
+Total,gender,freq,1488,Grouped,Female
+Total,gender,proportion,52.429667519181585,Grouped,Male
+Total,gender,freq,1640,Grouped,Male
+MARD,race_eth,proportion,24.761904761904763,Grouped,Hispanic
+MARD,race_eth,freq,312,Grouped,Hispanic
+MARD,race_eth,proportion,21.428571428571427,Grouped,NH Black
+MARD,race_eth,freq,270,Grouped,NH Black
+MARD,race_eth,proportion,40.07936507936508,Grouped,NH White
+MARD,race_eth,freq,505,Grouped,NH White
+MARD,race_eth,proportion,13.73015873015873,Grouped,Other race
+MARD,race_eth,freq,173,Grouped,Other race
+MOD,race_eth,proportion,32.174688057040996,Grouped,Hispanic
+MOD,race_eth,freq,361,Grouped,Hispanic
+MOD,race_eth,proportion,27.540106951871657,Grouped,NH Black
+MOD,race_eth,freq,309,Grouped,NH Black
+MOD,race_eth,proportion,31.550802139037433,Grouped,NH White
+MOD,race_eth,freq,354,Grouped,NH White
+MOD,race_eth,proportion,8.73440285204991,Grouped,Other race
+MOD,race_eth,freq,98,Grouped,Other race
+SIDD,race_eth,proportion,42.42424242424242,Grouped,Hispanic
+SIDD,race_eth,freq,126,Grouped,Hispanic
+SIDD,race_eth,proportion,22.895622895622896,Grouped,NH Black
+SIDD,race_eth,freq,68,Grouped,NH Black
+SIDD,race_eth,proportion,21.54882154882155,Grouped,NH White
+SIDD,race_eth,freq,64,Grouped,NH White
+SIDD,race_eth,proportion,13.131313131313131,Grouped,Other race
+SIDD,race_eth,freq,39,Grouped,Other race
+SIRD,race_eth,proportion,29.844097995545656,Grouped,Hispanic
+SIRD,race_eth,freq,134,Grouped,Hispanic
+SIRD,race_eth,proportion,27.839643652561247,Grouped,NH Black
+SIRD,race_eth,freq,125,Grouped,NH Black
+SIRD,race_eth,proportion,34.29844097995546,Grouped,NH White
+SIRD,race_eth,freq,154,Grouped,NH White
+SIRD,race_eth,proportion,8.017817371937639,Grouped,Other race
+SIRD,race_eth,freq,36,Grouped,Other race
+Total,race_eth,proportion,29.827365728900254,Grouped,Hispanic
+Total,race_eth,freq,933,Grouped,Hispanic
+Total,race_eth,proportion,24.680306905370845,Grouped,NH Black
+Total,race_eth,freq,772,Grouped,NH Black
+Total,race_eth,proportion,34.430946291560105,Grouped,NH White
+Total,race_eth,freq,1077,Grouped,NH White
+Total,race_eth,proportion,11.061381074168798,Grouped,Other race
+Total,race_eth,freq,346,Grouped,Other race
+MARD,hhincome,proportion,31.11111111111111,Grouped,
+MARD,hhincome,freq,392,Grouped,
+MARD,hhincome,proportion,24.761904761904763,Grouped,Household Income 20k to 45k
+MARD,hhincome,freq,312,Grouped,Household Income 20k to 45k
+MARD,hhincome,proportion,13.174603174603174,Grouped,Household Income 45k to 75k
+MARD,hhincome,freq,166,Grouped,Household Income 45k to 75k
+MARD,hhincome,proportion,3.9682539682539684,Grouped,Household Income 75k to 100k
+MARD,hhincome,freq,50,Grouped,Household Income 75k to 100k
+MARD,hhincome,proportion,6.111111111111111,Grouped,Household Income Over 100k
+MARD,hhincome,freq,77,Grouped,Household Income Over 100k
+MARD,hhincome,proportion,20.873015873015873,Grouped,Household Income Under 20k
+MARD,hhincome,freq,263,Grouped,Household Income Under 20k
+MOD,hhincome,proportion,32.97682709447415,Grouped,
+MOD,hhincome,freq,370,Grouped,
+MOD,hhincome,proportion,25.311942959001783,Grouped,Household Income 20k to 45k
+MOD,hhincome,freq,284,Grouped,Household Income 20k to 45k
+MOD,hhincome,proportion,12.477718360071302,Grouped,Household Income 45k to 75k
+MOD,hhincome,freq,140,Grouped,Household Income 45k to 75k
+MOD,hhincome,proportion,5.16934046345811,Grouped,Household Income 75k to 100k
+MOD,hhincome,freq,58,Grouped,Household Income 75k to 100k
+MOD,hhincome,proportion,6.238859180035651,Grouped,Household Income Over 100k
+MOD,hhincome,freq,70,Grouped,Household Income Over 100k
+MOD,hhincome,proportion,17.825311942959,Grouped,Household Income Under 20k
+MOD,hhincome,freq,200,Grouped,Household Income Under 20k
+SIDD,hhincome,proportion,34.68013468013468,Grouped,
+SIDD,hhincome,freq,103,Grouped,
+SIDD,hhincome,proportion,29.966329966329965,Grouped,Household Income 20k to 45k
 SIDD,hhincome,freq,89,Grouped,Household Income 20k to 45k
-SIDD,hhincome,proportion,10.175438596491228,Grouped,Household Income 45k to 75k
-SIDD,hhincome,freq,29,Grouped,Household Income 45k to 75k
-SIDD,hhincome,proportion,2.807017543859649,Grouped,Household Income 75k to 100k
-SIDD,hhincome,freq,8,Grouped,Household Income 75k to 100k
-SIDD,hhincome,proportion,4.912280701754386,Grouped,Household Income Over 100k
+SIDD,hhincome,proportion,8.754208754208754,Grouped,Household Income 45k to 75k
+SIDD,hhincome,freq,26,Grouped,Household Income 45k to 75k
+SIDD,hhincome,proportion,2.0202020202020203,Grouped,Household Income 75k to 100k
+SIDD,hhincome,freq,6,Grouped,Household Income 75k to 100k
+SIDD,hhincome,proportion,4.713804713804714,Grouped,Household Income Over 100k
 SIDD,hhincome,freq,14,Grouped,Household Income Over 100k
-SIDD,hhincome,proportion,21.05263157894737,Grouped,Household Income Under 20k
-SIDD,hhincome,freq,60,Grouped,Household Income Under 20k
-SIRD,hhincome,proportion,29.19254658385093,Grouped,
-SIRD,hhincome,freq,94,Grouped,
-SIRD,hhincome,proportion,23.60248447204969,Grouped,Household Income 20k to 45k
-SIRD,hhincome,freq,76,Grouped,Household Income 20k to 45k
-SIRD,hhincome,proportion,15.527950310559007,Grouped,Household Income 45k to 75k
-SIRD,hhincome,freq,50,Grouped,Household Income 45k to 75k
-SIRD,hhincome,proportion,5.279503105590062,Grouped,Household Income 75k to 100k
-SIRD,hhincome,freq,17,Grouped,Household Income 75k to 100k
-SIRD,hhincome,proportion,7.453416149068323,Grouped,Household Income Over 100k
-SIRD,hhincome,freq,24,Grouped,Household Income Over 100k
-SIRD,hhincome,proportion,18.944099378881987,Grouped,Household Income Under 20k
-SIRD,hhincome,freq,61,Grouped,Household Income Under 20k
-Total,hhincome,proportion,27.449617790132034,Grouped,
-Total,hhincome,freq,790,Grouped,
-Total,hhincome,proportion,27.13690062543433,Grouped,Household Income 20k to 45k
+SIDD,hhincome,proportion,19.865319865319865,Grouped,Household Income Under 20k
+SIDD,hhincome,freq,59,Grouped,Household Income Under 20k
+SIRD,hhincome,proportion,38.97550111358574,Grouped,
+SIRD,hhincome,freq,175,Grouped,
+SIRD,hhincome,proportion,21.380846325167038,Grouped,Household Income 20k to 45k
+SIRD,hhincome,freq,96,Grouped,Household Income 20k to 45k
+SIRD,hhincome,proportion,13.585746102449889,Grouped,Household Income 45k to 75k
+SIRD,hhincome,freq,61,Grouped,Household Income 45k to 75k
+SIRD,hhincome,proportion,4.008908685968819,Grouped,Household Income 75k to 100k
+SIRD,hhincome,freq,18,Grouped,Household Income 75k to 100k
+SIRD,hhincome,proportion,5.567928730512249,Grouped,Household Income Over 100k
+SIRD,hhincome,freq,25,Grouped,Household Income Over 100k
+SIRD,hhincome,proportion,16.481069042316257,Grouped,Household Income Under 20k
+SIRD,hhincome,freq,74,Grouped,Household Income Under 20k
+Total,hhincome,proportion,33.248081841432224,Grouped,
+Total,hhincome,freq,1040,Grouped,
+Total,hhincome,proportion,24.968030690537084,Grouped,Household Income 20k to 45k
 Total,hhincome,freq,781,Grouped,Household Income 20k to 45k
-Total,hhincome,proportion,13.65531619179986,Grouped,Household Income 45k to 75k
+Total,hhincome,proportion,12.563938618925832,Grouped,Household Income 45k to 75k
 Total,hhincome,freq,393,Grouped,Household Income 45k to 75k
-Total,hhincome,proportion,4.586518415566365,Grouped,Household Income 75k to 100k
+Total,hhincome,proportion,4.219948849104859,Grouped,Household Income 75k to 100k
 Total,hhincome,freq,132,Grouped,Household Income 75k to 100k
-Total,hhincome,proportion,6.462821403752606,Grouped,Household Income Over 100k
+Total,hhincome,proportion,5.946291560102302,Grouped,Household Income Over 100k
 Total,hhincome,freq,186,Grouped,Household Income Over 100k
-Total,hhincome,proportion,20.7088255733148,Grouped,Household Income Under 20k
+Total,hhincome,proportion,19.053708439897697,Grouped,Household Income Under 20k
 Total,hhincome,freq,596,Grouped,Household Income Under 20k
-MARD,insurance,proportion,0.26578073089701,Grouped,
-MARD,insurance,freq,4,Grouped,
-MARD,insurance,proportion,85.11627906976744,Grouped,Covered by health insurance
-MARD,insurance,freq,1281,Grouped,Covered by health insurance
-MARD,insurance,proportion,14.617940199335548,Grouped,No health insurance
-MARD,insurance,freq,220,Grouped,No health insurance
-MOD,insurance,proportion,0.391644908616188,Grouped,
-MOD,insurance,freq,3,Grouped,
-MOD,insurance,proportion,77.54569190600522,Grouped,Covered by health insurance
-MOD,insurance,freq,594,Grouped,Covered by health insurance
-MOD,insurance,proportion,22.06266318537859,Grouped,No health insurance
-MOD,insurance,freq,169,Grouped,No health insurance
-SIDD,insurance,proportion,59.64912280701754,Grouped,Covered by health insurance
-SIDD,insurance,freq,170,Grouped,Covered by health insurance
-SIDD,insurance,proportion,40.35087719298246,Grouped,No health insurance
-SIDD,insurance,freq,115,Grouped,No health insurance
-SIRD,insurance,proportion,81.98757763975155,Grouped,Covered by health insurance
-SIRD,insurance,freq,264,Grouped,Covered by health insurance
-SIRD,insurance,proportion,18.012422360248447,Grouped,No health insurance
-SIRD,insurance,freq,58,Grouped,No health insurance
-Total,insurance,proportion,0.2432244614315497,Grouped,
-Total,insurance,freq,7,Grouped,
-Total,insurance,proportion,80.22932592077832,Grouped,Covered by health insurance
+MARD,insurance,proportion,6.666666666666667,Grouped,
+MARD,insurance,freq,84,Grouped,
+MARD,insurance,proportion,81.58730158730158,Grouped,Covered by health insurance
+MARD,insurance,freq,1028,Grouped,Covered by health insurance
+MARD,insurance,proportion,11.746031746031745,Grouped,No health insurance
+MARD,insurance,freq,148,Grouped,No health insurance
+MOD,insurance,proportion,8.556149732620321,Grouped,
+MOD,insurance,freq,96,Grouped,
+MOD,insurance,proportion,70.58823529411765,Grouped,Covered by health insurance
+MOD,insurance,freq,792,Grouped,Covered by health insurance
+MOD,insurance,proportion,20.855614973262032,Grouped,No health insurance
+MOD,insurance,freq,234,Grouped,No health insurance
+SIDD,insurance,proportion,6.734006734006734,Grouped,
+SIDD,insurance,freq,20,Grouped,
+SIDD,insurance,proportion,56.22895622895623,Grouped,Covered by health insurance
+SIDD,insurance,freq,167,Grouped,Covered by health insurance
+SIDD,insurance,proportion,37.03703703703704,Grouped,No health insurance
+SIDD,insurance,freq,110,Grouped,No health insurance
+SIRD,insurance,proportion,12.694877505567929,Grouped,
+SIRD,insurance,freq,57,Grouped,
+SIRD,insurance,proportion,71.71492204899778,Grouped,Covered by health insurance
+SIRD,insurance,freq,322,Grouped,Covered by health insurance
+SIRD,insurance,proportion,15.590200445434299,Grouped,No health insurance
+SIRD,insurance,freq,70,Grouped,No health insurance
+Total,insurance,proportion,8.21611253196931,Grouped,
+Total,insurance,freq,257,Grouped,
+Total,insurance,proportion,73.81713554987212,Grouped,Covered by health insurance
 Total,insurance,freq,2309,Grouped,Covered by health insurance
-Total,insurance,proportion,19.527449617790133,Grouped,No health insurance
+Total,insurance,proportion,17.966751918158568,Grouped,No health insurance
 Total,insurance,freq,562,Grouped,No health insurance
-MARD,insurance_type,proportion,77.40863787375416,Grouped,
-MARD,insurance_type,freq,1165,Grouped,
-MARD,insurance_type,proportion,0.5980066445182725,Grouped,Insured by Medicaid
-MARD,insurance_type,freq,9,Grouped,Insured by Medicaid
-MARD,insurance_type,proportion,6.511627906976744,Grouped,Insured by Medicare
-MARD,insurance_type,freq,98,Grouped,Insured by Medicare
-MARD,insurance_type,proportion,15.481727574750831,Grouped,Privately Insured
-MARD,insurance_type,freq,233,Grouped,Privately Insured
-MOD,insurance_type,proportion,78.85117493472585,Grouped,
-MOD,insurance_type,freq,604,Grouped,
-MOD,insurance_type,proportion,0.783289817232376,Grouped,Insured by Medicaid
-MOD,insurance_type,freq,6,Grouped,Insured by Medicaid
-MOD,insurance_type,proportion,1.95822454308094,Grouped,Insured by Medicare
-MOD,insurance_type,freq,15,Grouped,Insured by Medicare
-MOD,insurance_type,proportion,18.407310704960835,Grouped,Privately Insured
-MOD,insurance_type,freq,141,Grouped,Privately Insured
-SIDD,insurance_type,proportion,80,Grouped,
-SIDD,insurance_type,freq,228,Grouped,
-SIDD,insurance_type,proportion,2.1052631578947367,Grouped,Insured by Medicaid
+MARD,insurance_type,proportion,77.53968253968254,Grouped,
+MARD,insurance_type,freq,977,Grouped,
+MARD,insurance_type,proportion,0.6349206349206349,Grouped,Insured by Medicaid
+MARD,insurance_type,freq,8,Grouped,Insured by Medicaid
+MARD,insurance_type,proportion,6.587301587301587,Grouped,Insured by Medicare
+MARD,insurance_type,freq,83,Grouped,Insured by Medicare
+MARD,insurance_type,proportion,15.238095238095237,Grouped,Privately Insured
+MARD,insurance_type,freq,192,Grouped,Privately Insured
+MOD,insurance_type,proportion,82.0855614973262,Grouped,
+MOD,insurance_type,freq,921,Grouped,
+MOD,insurance_type,proportion,0.6238859180035651,Grouped,Insured by Medicaid
+MOD,insurance_type,freq,7,Grouped,Insured by Medicaid
+MOD,insurance_type,proportion,2.3172905525846703,Grouped,Insured by Medicare
+MOD,insurance_type,freq,26,Grouped,Insured by Medicare
+MOD,insurance_type,proportion,14.973262032085561,Grouped,Privately Insured
+MOD,insurance_type,freq,168,Grouped,Privately Insured
+SIDD,insurance_type,proportion,80.47138047138047,Grouped,
+SIDD,insurance_type,freq,239,Grouped,
+SIDD,insurance_type,proportion,2.0202020202020203,Grouped,Insured by Medicaid
 SIDD,insurance_type,freq,6,Grouped,Insured by Medicaid
-SIDD,insurance_type,proportion,3.8596491228070176,Grouped,Insured by Medicare
+SIDD,insurance_type,proportion,3.7037037037037037,Grouped,Insured by Medicare
 SIDD,insurance_type,freq,11,Grouped,Insured by Medicare
-SIDD,insurance_type,proportion,14.035087719298245,Grouped,Privately Insured
-SIDD,insurance_type,freq,40,Grouped,Privately Insured
-SIRD,insurance_type,proportion,78.26086956521739,Grouped,
-SIRD,insurance_type,freq,252,Grouped,
-SIRD,insurance_type,proportion,1.5527950310559007,Grouped,Insured by Medicaid
+SIDD,insurance_type,proportion,13.804713804713804,Grouped,Privately Insured
+SIDD,insurance_type,freq,41,Grouped,Privately Insured
+SIRD,insurance_type,proportion,80.62360801781738,Grouped,
+SIRD,insurance_type,freq,362,Grouped,
+SIRD,insurance_type,proportion,1.1135857461024499,Grouped,Insured by Medicaid
 SIRD,insurance_type,freq,5,Grouped,Insured by Medicaid
-SIRD,insurance_type,proportion,2.7950310559006213,Grouped,Insured by Medicare
-SIRD,insurance_type,freq,9,Grouped,Insured by Medicare
-SIRD,insurance_type,proportion,17.391304347826086,Grouped,Privately Insured
-SIRD,insurance_type,freq,56,Grouped,Privately Insured
-Total,insurance_type,proportion,78.1445448227936,Grouped,
-Total,insurance_type,freq,2249,Grouped,
-Total,insurance_type,proportion,0.9034051424600417,Grouped,Insured by Medicaid
+SIRD,insurance_type,proportion,2.89532293986637,Grouped,Insured by Medicare
+SIRD,insurance_type,freq,13,Grouped,Insured by Medicare
+SIRD,insurance_type,proportion,15.367483296213809,Grouped,Privately Insured
+SIRD,insurance_type,freq,69,Grouped,Privately Insured
+Total,insurance_type,proportion,79.8913043478261,Grouped,
+Total,insurance_type,freq,2499,Grouped,
+Total,insurance_type,proportion,0.8312020460358056,Grouped,Insured by Medicaid
 Total,insurance_type,freq,26,Grouped,Insured by Medicaid
-Total,insurance_type,proportion,4.6212647671994445,Grouped,Insured by Medicare
+Total,insurance_type,proportion,4.251918158567775,Grouped,Insured by Medicare
 Total,insurance_type,freq,133,Grouped,Insured by Medicare
-Total,insurance_type,proportion,16.330785267546908,Grouped,Privately Insured
+Total,insurance_type,proportion,15.025575447570333,Grouped,Privately Insured
 Total,insurance_type,freq,470,Grouped,Privately Insured

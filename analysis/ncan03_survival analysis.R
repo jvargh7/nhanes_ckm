@@ -6,9 +6,6 @@ rm(list=ls());gc();source(".Rprofile")
 library(survival)
 library(ggsurvfit)
 
-source("analysis/ncan_analytic sample for survival.R")
-  
-
 
 ######################## R script for Kaplan-Meier curve ################################
 
