@@ -73,7 +73,7 @@ data_scaled_cluster['cluster'] = kmeans.labels_
 data_scaled_cluster['cluster'] = data_scaled_cluster['cluster'].replace({0:'SIRD', 1:'MOD', 2:'MARD', 3:'SIDD'})
 
 # Create a new DataFrame with the cluster assignments and variables
-data_clustered = pd.concat([data_scaled_cluster['cluster'], data_scaled_cluster[['bmi','dm_age','glycohemoglobin','HOMA2 %B','HOMA2 IR']]], axis=1)
+data_clustered = pd.concat([data_scaled_cluster['cluster'], data_scaled_cluster[['bmi','dm_age','glycohemoglobin','homa2b','homa2ir']]], axis=1)
 
 # Melt the DataFrame to convert it into long format
 data_melted = data_clustered.melt(id_vars='cluster', var_name='Variable', value_name='Value')
