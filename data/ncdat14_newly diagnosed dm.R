@@ -44,7 +44,7 @@ saveRDS(combined_nhanes_over18, file = paste0(path_nhanes_ckm_newdm,"/combined_n
 new_or_undiagnosed_dm <- combined_nhanes_over18 %>%
   group_by(respondentid) %>% 
   dplyr::filter(
-    (age - dm_age >= 0 & age - dm_age <= 1 & !is.na(dm_age) & !is.na(age)) | 
+    (dm_doc_told == 1 & age >= dm_age & age - dm_age <= 1 & !is.na(dm_age) & !is.na(age)) | 
       (dm_doc_told == 2 & (glycohemoglobin >= 6.5 | fasting_glucose >= 126))
     ) %>% 
   ungroup() 
@@ -54,17 +54,18 @@ saveRDS(new_or_undiagnosed_dm, file = paste0(path_nhanes_ckm_newdm,"/new_or_undi
 #--------------------------------------------------------------------------------------------------------------------------------------
 # exclude missing BMI and HbA1c for new or undiagnosed
 nhanes_with_vars <- new_or_undiagnosed_dm %>%
-  dplyr::filter(
-    !is.na(bmi) & !is.na(glycohemoglobin)
-  )
+  dplyr::filter(!is.na(bmi) & !is.na(glycohemoglobin))
 
 saveRDS(nhanes_with_vars, file = paste0(path_nhanes_ckm_newdm,"/nhanes_with_vars.rds"))
   
 # keep those with missing BMI and HbA1c for new or undiagnosed
+# nhanes_without_vars <- new_or_undiagnosed_dm %>%
+#   dplyr::filter(
+#     is.na(bmi) | is.na(glycohemoglobin)
+#   )
+
 nhanes_without_vars <- new_or_undiagnosed_dm %>%
-  dplyr::filter(
-    is.na(bmi) | is.na(glycohemoglobin)
-  )
+  dplyr::filter(!respondentid %in% nhanes_with_vars$respondentid)
 
 saveRDS(nhanes_without_vars, file = paste0(path_nhanes_ckm_newdm,"/nhanes_without_vars.rds"))
 
@@ -90,8 +91,8 @@ homa2_data <- load_homa2_data(path_nhanes_ckm_cleaned, years_sheets)
 
 newdm_data <- nhanes_with_vars %>% 
   left_join(homa2_data %>% 
-              dplyr::select(respondentid, year, fasting_glucose, insulin_level, `HOMA2 %B`, `HOMA2 IR`), 
-            by = c("respondentid", "year", "fasting_glucose", "insulin_level")) %>% 
+              dplyr::select(respondentid, year, `HOMA2 %B`, `HOMA2 IR`), 
+            by = c("respondentid", "year")) %>% 
   rename(egfr = eGFR,
          homa2b = `HOMA2 %B`,
          homa2ir = `HOMA2 IR`)

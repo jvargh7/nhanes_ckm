@@ -21,14 +21,15 @@ analytic_sample <- read.csv(paste0(path_nhanes_ckm_newdm,"/knn clusters.csv"), h
                               hhincome == 15 ~ "Household Income Over 100k",
                               TRUE ~ ""))
 
+#-----------------------------------------------------------------------------------------------------------
+### Table 1 by clusters
+
 source("functions/table1_summary.R")
 
 
 c_vars = c("age","dm_age","bmi","fat_percentage","glycohemoglobin","alt","ast","sbp","dbp","egfr","waistcircumference","ldl","hdl","triglyceride","fasting_glucose")
-g_vars = c("cluster","gender","race_eth","hhincome","insurance","insurance_type")
+g_vars = c("gender","race_eth","hhincome","insurance","insurance_type")
 
-#-----------------------------------------------------------------------------------------------------------
-### Table 1 by clusters
 
 table_df = analytic_sample %>% 
   bind_rows(.,
@@ -37,18 +38,3 @@ table_df = analytic_sample %>%
   table1_summary(.,c_vars = c_vars,g_vars = g_vars,id_vars = "cluster")
 
 write_csv(table_df,"analysis/ncan01b_unweighted characteristics of overall sample and by cluster.csv")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
