@@ -43,3 +43,13 @@ if(Sys.info()["user"] == "JGUO258"){
   path_nhanes_ckm_variable_list <- paste0(path_nhanes_ckm_repo,"/data/CKM Variable List.xlsx")
   
 }
+
+
+cluster_colors_cosmos_all <- c("MOD"="#F8BDA4","SIRD"="#A1C3AC","SIDD"="#ACD9EA","MARD"="#D0ACC9")  
+
+diseases <- c("mortstat",paste0("mortality_",c("heart", "malignant_neoplasms", "chronic_lower_respiratory", "accidents", 
+                                               "cerebrovascular", "alzheimer", "diabetes_mellitus", "influenza_pneumonia", 
+                                               "nephrosis", "other")))
+disease_labels = c("All Cause","Heart","Malignant Neoplasms","Chronic Lower Respiratory",
+                   "Accidents","Cerebrovascular","Alzheimer's","Diabetes","Influenza/Pneumonia",
+                   "Nephrosis","Other")
