@@ -20,7 +20,7 @@ combine_nhanes <- function(path, years) {
 
 years_to_load <- c("19992000", "20012002", "20032004", "20052006", 
                    "20072008", "20092010", "20112012", "20132014", 
-                   "20152016", "20172018", "2017Mar2020")
+                   "20152016", "20172018", "2017Mar2020","20212023")
 
 combined_nhanes <- combine_nhanes(path_nhanes_ckm_folder, years_to_load)
 
@@ -85,7 +85,7 @@ load_homa2_data <- function(path, sheets) {
 }
 
 years_sheets <- c("19992000", "20012002", "20032004", "20052006", "20072008", 
-                  "20092010", "20112012", "20132014", "20152016", "20172018", "2017Mar2020")
+                  "20092010", "20112012", "20132014", "20152016", "20172018", "2017Mar2020","20212023")
 
 homa2_data <- load_homa2_data(path_nhanes_ckm_cleaned, years_sheets)
 
@@ -97,7 +97,9 @@ newdm_data <- nhanes_with_vars %>%
          homa2b = `HOMA2 %B`,
          homa2ir = `HOMA2 IR`)
 
-saveRDS(newdm_data, file = paste0(path_nhanes_ckm_newdm,"/newdm_data.rds"))
+newdm_data %>% 
+saveRDS(., file = paste0(path_nhanes_ckm_newdm,"/newdm_data.rds"))
 
-write.csv(newdm_data, file = paste0(path_nhanes_ckm_newdm, "/newdm_data.csv"), row.names = FALSE)
+newdm_data %>% 
+write.csv(., file = paste0(path_nhanes_ckm_newdm, "/newdm_data.csv"), row.names = FALSE)
 
