@@ -62,6 +62,7 @@ analytic_sample <- left_join(clustered_set,
         mortality_other = case_when(ucod_leading == 10 ~ 1,
                            TRUE ~ 0),
         censoring_time = case_when(!is.na(permth_int) ~ permth_int,
+                                   permth_int >= 300 ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4,
                                     TRUE ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4))
   
 
@@ -107,7 +108,7 @@ unadjusted_curves_mortality <- function(outcome_var,df,outcome_label){
           legend.text = element_text(size = 14), # feel free to adjust the figure size, font size, etc. to your preference
           legend.position = c(0.2, 0.8),
           axis.title = element_text(size = 16)) +
-    scale_x_continuous(breaks = seq(0, 360, by = 60), limits = c(0, 380)) +
+    scale_x_continuous(breaks = seq(0, 240, by = 60), limits = c(0, 280)) +
     scale_y_continuous(breaks = seq(0, upper_limit, by = seq_limit), limits = c(0, upper_limit)) +
     add_risktable()
   
@@ -144,7 +145,7 @@ adjusted_curves_mortality <- function(outcome_var,df,outcome_label){
           legend.text = element_text(size = 14), # feel free to adjust the figure size, font size, etc. to your preference
           legend.position = c(0.2, 0.8),
           axis.title = element_text(size = 16)) +
-    scale_x_continuous(breaks = seq(0, 360, by = 60), limits = c(0, 380)) +
+    scale_x_continuous(breaks = seq(0, 240, by = 60), limits = c(0, 280)) +
     scale_y_continuous(breaks = seq(0, upper_limit, by = seq_limit), limits = c(0, upper_limit)) +
     add_risktable()
   
