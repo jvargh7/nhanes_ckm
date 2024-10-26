@@ -20,7 +20,7 @@ combine_nhanes <- function(path, years) {
 
 years_to_load <- c("19992000", "20012002", "20032004", "20052006", 
                    "20072008", "20092010", "20112012", "20132014", 
-                   "20152016", "20172018", "2017Mar2020","20212023")
+                   "20152016", "20172018", "2019Mar2020","20212023")
 
 combined_nhanes <- combine_nhanes(path_nhanes_ckm_folder, years_to_load)
 
@@ -85,7 +85,8 @@ load_homa2_data <- function(path, sheets) {
 }
 
 years_sheets <- c("19992000", "20012002", "20032004", "20052006", "20072008", 
-                  "20092010", "20112012", "20132014", "20152016", "20172018", "2017Mar2020","20212023")
+                  "20092010", "20112012", "20132014", "20152016", "20172018", 
+                  "2019Mar2020","20212023")
 
 homa2_data <- load_homa2_data(path_nhanes_ckm_cleaned, years_sheets)
 

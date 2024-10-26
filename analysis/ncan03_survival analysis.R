@@ -29,6 +29,7 @@ clustered_set <- read_csv(paste0(path_nhanes_ckm_newdm, "/knn clusters.csv"))  %
 # Cause-specific death -- UCOD_LEADING: Underlying Leading Cause of Death: Recode 
 
 # PERMTH_INT: follow-up time calculated using person months from the date of interview to the date of death or the end of the mortality period 
+# PERMTH_EXM: Number of Person Months of Follow-up from NHANES Mobile Examination Center (MEC) date 
 
 mortality_data <- read_rds(paste0(path_nhanes_ckm_folder,"/working/cleaned/ncdat12_ndi linked mortality data.RDS")) %>%
   rename(respondentid = seqn) %>% 
