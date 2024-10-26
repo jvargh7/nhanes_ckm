@@ -32,5 +32,6 @@ mortality_data = map_dfr(mortality_files,
 
 saveRDS(mortality_data,paste0(path_nhanes_ckm_folder,"/working/cleaned/ncdat12_ndi linked mortality data.RDS"))
 
+mortality_data <- readRDS(paste0(path_nhanes_ckm_folder,"/working/cleaned/ncdat12_ndi linked mortality data.RDS"))
 
 
