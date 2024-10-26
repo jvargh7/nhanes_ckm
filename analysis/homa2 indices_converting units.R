@@ -6,13 +6,14 @@ library(purrr)
 library(readr)
 library(writexl)
 
-dataset_years <- c("19992000", "20012002", "20032004", "20052006", "20072008", "20092010", "20112012", "20132014", "20152016", "20172018", "2017Mar2020")
+dataset_years <- c("19992000", "20012002", "20032004", "20052006", "20072008", "20092010", "20112012", "20132014", "20152016", "20172018", "2017Mar2020","20212023")
 
 
 process_nhanes_data <- function(year) {
   file_path <- paste0(path_nhanes_ckm_cleaned, "/nhanes_", year, ".rds")
   data <- readRDS(file_path) %>%
     dplyr::select(respondentid, fasting_glucose, insulin_level) %>%
+    dplyr::filter(!is.na(fasting_glucose), !is.na(insulin_level)) %>% 
     group_by(respondentid) %>%
     mutate(
       glucosef_mmol_l = fasting_glucose / 18,
