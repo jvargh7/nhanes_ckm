@@ -1,10 +1,15 @@
 new_or_undiagnosed_dm <- readRDS(file = paste0(path_nhanes_ckm_newdm,"/new_or_undiagnosed_dm.rds")) %>% 
   dplyr::filter(!year %in% c("2017Mar2020","2019Mar2020","20212023")) %>% 
-  dplyr::select(respondentid,year,interview_period) %>% 
+  dplyr::select(respondentid,year,interview_period, mec4yweight, mec2yweight) %>% 
   mutate(median_date = case_when(interview_period == 1 ~ paste0(str_sub(year,5,8),"-01-30"),
                                  interview_period == 2 ~ paste0(str_sub(year,5,8),"-07-31"),
                                  TRUE ~ paste0(str_sub(year,5,8),"-04-30"))) %>% 
-  mutate(median_date = ymd(median_date))
+  mutate(median_date = ymd(median_date)) %>%
+  mutate(
+    pooled_weight = case_when(
+      year %in% c("1999-2000", "2001-2002") ~ mec4yweight / 10,
+      TRUE ~ mec2yweight / 10
+    ))
 
 # Load in the imputed and clustered data set:
 clustered_set <- read_csv(paste0(path_nhanes_ckm_newdm, "/knn clusters.csv"))  %>% 
