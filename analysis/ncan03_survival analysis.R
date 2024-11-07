@@ -9,6 +9,9 @@ library(ggsurvfit)
 
 ######################## R script for Kaplan-Meier curve ################################
 
+source("analysis/ncan_analytic sample for survival.R")
+
+
 
 unadjusted_curves_mortality <- function(outcome_var,df,outcome_label){
   
@@ -107,6 +110,10 @@ regression_mortality = function(outcome_var,df){
 }
 
 
+analytic_sample %>% 
+  summarize(across(diseases,~mean(.,na.rm=TRUE)))  %>% 
+  write_csv(.,"analysis/ncan03_overall rates for all follow-up.csv")
+
 # Loop through each disease to create and print plots
 unadjusted_plots <- list()
 adjusted_plots <- list()
@@ -140,6 +147,9 @@ combined_adjusted_plot <- do.call(ggarrange,c(adjusted_plots, list(ncol = 3, nro
 regression_results %>% 
   bind_rows() %>% 
   write_csv(.,"analysis/ncan03_survival analysis results.csv")
+
+
+regression_results <- read_csv("analysis/ncan03_survival analysis results.csv")
 
 
 regression_results %>% 
