@@ -1,7 +1,3 @@
-### The purpose of this R file is to create a template for the R codes for KM curve and PH Cox regression analysis
-rm(list=ls());gc();source(".Rprofile")
-
-
 #### Load the required libraries
 library(survival)
 library(ggsurvfit)
