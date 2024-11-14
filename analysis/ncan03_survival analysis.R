@@ -34,10 +34,10 @@ unadjusted_curves_mortality <- function(outcome_var,df,outcome_label){
     
     scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
     scale_fill_manual(name = "", values = cluster_colors_cosmos_all) + # you should replace "cluster_colors_cosmos_all" with your own color scheme for the subphenotypes
-    theme(axis.text = element_text(size = 14),
-          legend.text = element_text(size = 14), # feel free to adjust the figure size, font size, etc. to your preference
+    theme(axis.text = element_text(size = 8),
+          legend.text = element_text(size = 8), # feel free to adjust the figure size, font size, etc. to your preference
           legend.position = c(0.2, 0.8),
-          axis.title = element_text(size = 16)) +
+          axis.title = element_text(size = 8)) +
     scale_x_continuous(breaks = seq(0, 240, by = 60), limits = c(0, 280)) +
     scale_y_continuous(breaks = seq(0, upper_limit, by = seq_limit), limits = c(0, upper_limit)) +
     add_risktable()
@@ -66,15 +66,15 @@ adjusted_curves_mortality <- function(outcome_var,df,outcome_label){
   fig_out = ggsurvfit(survfit2(cox_reg), type = "risk") +
     xlab(paste0("Time to ",outcome_label," Mortality")) +
     ylab("Event (proportion)") +
-    add_confidence_interval() +
+    # add_confidence_interval() +
     theme_bw() +
     
     scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
-    scale_fill_manual(name = "", values = cluster_colors_cosmos_all) + # you should replace "cluster_colors_cosmos_all" with your own color scheme for the subphenotypes
-    theme(axis.text = element_text(size = 14),
-          legend.text = element_text(size = 14), # feel free to adjust the figure size, font size, etc. to your preference
+    # scale_fill_manual(name = "", values = cluster_colors_cosmos_all) + 
+    theme(axis.text = element_text(size = 8),
+          legend.text = element_text(size = 8), # feel free to adjust the figure size, font size, etc. to your preference
           legend.position = c(0.2, 0.8),
-          axis.title = element_text(size = 16)) +
+          axis.title = element_text(size = 8)) +
     scale_x_continuous(breaks = seq(0, 240, by = 60), limits = c(0, 280)) +
     scale_y_continuous(breaks = seq(0, upper_limit, by = seq_limit), limits = c(0, upper_limit)) +
     add_risktable()
@@ -134,11 +134,11 @@ for (i in seq_along(diseases)) {
 
 library(ggpubr)
 
-combined_unadjusted_plot <- do.call(ggarrange,c(unadjusted_plots, list(ncol = 3, nrow = 4, common.legend = TRUE,legend = "bottom")))  %>% 
-  ggsave(.,filename=paste0(path_nhanes_ckm_folder,"/figures/KM curve by cause of death.jpg"),width=20,height =20)
+combined_unadjusted_plot <- do.call(ggarrange,c(unadjusted_plots, list(ncol = 4, nrow = 1, common.legend = TRUE,legend = "bottom")))  %>% 
+  ggsave(.,filename=paste0(path_nhanes_ckm_folder,"/figures/KM curve by cause of death.jpg"),width=12,height =6)
 
-combined_adjusted_plot <- do.call(ggarrange,c(adjusted_plots, list(ncol = 3, nrow = 4, common.legend = TRUE,legend = "bottom")))  %>% 
-  ggsave(.,filename=paste0(path_nhanes_ckm_folder,"/figures/Adjusted Cumulative Incidence curve by cause of death.jpg"),width=20,height =20)
+combined_adjusted_plot <- do.call(ggarrange,c(adjusted_plots, list(ncol = 4, nrow = 1, common.legend = TRUE,legend = "bottom")))  %>% 
+  ggsave(.,filename=paste0(path_nhanes_ckm_folder,"/figures/Adjusted Cumulative Incidence curve by cause of death.jpg"),width=12,height=4)
 
 
 regression_results %>% 

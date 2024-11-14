@@ -77,7 +77,7 @@ ready_tenyear_results <- prepare_forest_plot_data(formatted_tenyear_results)
 
 # Forest plot for overall follow-up
 plot_overall <- ggplot(ready_overall_results, aes(y = outcome, x = HR, color = subtype)) +
-  geom_point(position = position_dodge(width = 0.5), size = 3) +  # Plot HR points
+  geom_point(position = position_dodge(width = 0.5)) +  # Plot HR points
   geom_errorbarh(aes(xmin = lci, xmax = uci), position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
   geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
   labs(
@@ -90,7 +90,7 @@ plot_overall <- ggplot(ready_overall_results, aes(y = outcome, x = HR, color = s
 
 # Forest plot for 5-year follow-up
 plot_5y <- ggplot(ready_fiveyear_results, aes(y = outcome, x = HR, color = subtype)) +
-  geom_point(position = position_dodge(width = 0.5), size = 3) +  # Plot HR points
+  geom_point(position = position_dodge(width = 0.5)) +  # Plot HR points
   geom_errorbarh(aes(xmin = lci, xmax = uci), position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
   geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
   labs(
@@ -103,7 +103,7 @@ plot_5y <- ggplot(ready_fiveyear_results, aes(y = outcome, x = HR, color = subty
 
 # Forest plot for 10-year follow-up
 plot_10y <- ggplot(ready_tenyear_results, aes(y = outcome, x = HR, color = subtype)) +
-  geom_point(position = position_dodge(width = 0.5), size = 3) +  # Plot HR points
+  geom_point(position = position_dodge(width = 0.5)) +  # Plot HR points
   geom_errorbarh(aes(xmin = lci, xmax = uci), position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
   geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
   labs(
@@ -117,7 +117,7 @@ plot_10y <- ggplot(ready_tenyear_results, aes(y = outcome, x = HR, color = subty
 # Combine the three plots into a single panel layout
 combined_plot <- ggarrange(
   plot_overall, plot_5y, plot_10y, 
-  nrow = 2, ncol = 2,                 
+  nrow = 1, ncol = 3,                 
   common.legend = TRUE,                # Use a common legend for all plots
   legend = "bottom",                   # Place the legend at the bottom
   labels = c("Overall", "5-Year", "10-Year")  # Label each plot
@@ -125,4 +125,4 @@ combined_plot <- ggarrange(
 
 # Save the plot
 ggsave(filename = paste0(path_nhanes_ckm_folder, "/figures/hazard ratios for intervals and selected causes.png"), 
-       plot = combined_plot, width = 20, height = 12)
+       plot = combined_plot, width = 12, height = 6)
