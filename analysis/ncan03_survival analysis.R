@@ -1,3 +1,4 @@
+
 #### Load the required libraries
 library(survival)
 library(ggsurvfit)
@@ -16,11 +17,11 @@ unadjusted_curves_mortality <- function(outcome_var,df,outcome_label){
   
   upper_limit = case_when(outcome_var == "mortstat" ~ 0.5,
                           outcome_var %in% c("mortality_heart","mortality_malignant_neoplasms",
-                                             "mortality_other") ~ 0.3,
-                        TRUE ~ 0.1)
+                                             "mortality_any_other") ~ 0.3,
+                          TRUE ~ 0.1)
   seq_limit = case_when(outcome_var == "mortstat" ~ 0.1,
                         outcome_var %in% c("mortality_heart","mortality_malignant_neoplasms",
-                                           "mortality_other") ~ 0.05,
+                                           "mortality_any_other") ~ 0.05,
                         TRUE ~ 0.02)
   
   
@@ -50,11 +51,11 @@ adjusted_curves_mortality <- function(outcome_var,df,outcome_label){
   
   upper_limit = case_when(outcome_var == "mortstat" ~ 0.5,
                           outcome_var %in% c("mortality_heart","mortality_malignant_neoplasms",
-                                             "mortality_other") ~ 0.3,
+                                             "mortality_any_other") ~ 0.3,
                           TRUE ~ 0.1)
   seq_limit = case_when(outcome_var == "mortstat" ~ 0.1,
                         outcome_var %in% c("mortality_heart","mortality_malignant_neoplasms",
-                                           "mortality_other") ~ 0.05,
+                                           "mortality_any_other") ~ 0.05,
                         TRUE ~ 0.02)
   
   
@@ -92,12 +93,12 @@ regression_mortality = function(outcome_var,df){
   m2 <- coxph(as.formula(paste0("Surv(censoring_time, ",outcome_var,") ~ cluster + gender + dm_age")),data=df) # replace "t" with the time variable and "event" with the event variable in your dataset
   
   m0 <- coxph(as.formula(paste0("Surv(censoring_time, ",outcome_var,") ~ cluster")), # replace "t" with the time variable and "event" with the event variable in your dataset
-                   data = df)
+              data = df)
   
   bind_rows(broom::tidy(m0) %>% mutate(model = "m0"),
             broom::tidy(m1) %>% mutate(model = "m1"),
             broom::tidy(m2) %>% mutate(model = "m2")
-            ) %>% 
+  ) %>% 
     mutate(outcome = outcome_var) %>% 
     return(.)
   
@@ -117,12 +118,12 @@ regression_results <- list()
 for (i in seq_along(diseases)) {
   print(i)
   unadjusted_plots[[diseases[i]]] <- unadjusted_curves_mortality(outcome_var = diseases[i],
-                                               df = analytic_sample,
-                                               outcome_label = disease_labels[i])
+                                                                 df = analytic_sample,
+                                                                 outcome_label = disease_labels[i])
   
   adjusted_plots[[diseases[i]]] <- adjusted_curves_mortality(outcome_var = diseases[i],
-                                                               df = analytic_sample,
-                                                               outcome_label = disease_labels[i])
+                                                             df = analytic_sample,
+                                                             outcome_label = disease_labels[i])
   regression_results[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
                                                             df = analytic_sample)
   
