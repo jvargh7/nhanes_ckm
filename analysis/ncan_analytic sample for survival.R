@@ -61,4 +61,9 @@ analytic_sample <- left_join(clustered_set,
          censoring_time = case_when(!is.na(permth_int) ~ permth_int,
                                     permth_int >= 300 ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4,
                                     TRUE ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4)) %>% 
-  dplyr::filter(!is.na(censoring_time))
+  dplyr::filter(!is.na(censoring_time)) %>%
+  mutate(mortality_any_other = if_else(
+    mortstat == 1 & mortality_heart == 0 & mortality_malignant_neoplasms == 0, 
+    1, 
+    0
+  ))
