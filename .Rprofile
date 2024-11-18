@@ -50,6 +50,6 @@ cluster_colors_cosmos_all <- c("MOD"="#F8BDA4","SIRD"="#A1C3AC","SIDD"="#ACD9EA"
 diseases <- c("mortstat",paste0("mortality_",c("heart", "malignant_neoplasms", "chronic_lower_respiratory", "accidents", 
                                                "cerebrovascular", "alzheimer", "diabetes_mellitus", "influenza_pneumonia", 
                                                "nephrosis", "other")))
-disease_labels = c("All Cause","Heart","Malignant Neoplasms","Chronic Lower Respiratory",
+disease_labels = c("All Cause","Heart Disease","Cancer","Chronic Lower Respiratory",
                    "Accidents","Cerebrovascular","Alzheimer's","Diabetes","Influenza/Pneumonia",
                    "Nephrosis","Other")

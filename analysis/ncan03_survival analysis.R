@@ -27,7 +27,7 @@ unadjusted_curves_mortality <- function(outcome_var,df,outcome_label){
   
   # plot the survival curves (adjusted for other covariates) for the subphenotypes
   fig_out = ggsurvfit(survfit2(cox_reg), type = "risk") +
-    xlab(paste0("Unadjusted time to ",outcome_label," Mortality")) +
+    xlab(paste0("Unadjusted time to ",outcome_label)) +
     ylab("Event (proportion)") +
     add_confidence_interval() +
     theme_bw() +
@@ -115,7 +115,7 @@ analytic_sample %>%
 unadjusted_plots <- list()
 adjusted_plots <- list()
 regression_results <- list()
-for (i in seq_along(diseases)) {
+for (i in c(1:3,11)) {
   print(i)
   unadjusted_plots[[diseases[i]]] <- unadjusted_curves_mortality(outcome_var = diseases[i],
                                                                  df = analytic_sample,
