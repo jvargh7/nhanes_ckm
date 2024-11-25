@@ -19,7 +19,8 @@ analytic_sample_5y <- analytic_sample %>%
     mortstat = case_when(mortstat == 1 & censoring_time <= 60 ~ 1, TRUE ~ 0),
     mortality_heart = case_when(ucod_leading == 1 & censoring_time <= 60 ~ 1, TRUE ~ 0),
     mortality_malignant_neoplasms = case_when(ucod_leading == 2 & censoring_time <= 60 ~ 1, TRUE ~ 0),
-    mortality_other = case_when(ucod_leading == 10 & censoring_time <= 60 ~ 1, TRUE ~ 0),
+    mortality_any_other = case_when(ucod_leading == c(3, 4, 5, 6, 7, 8, 9, 10) & censoring_time <= 60 ~ 1,
+                                    TRUE ~ 0),
     censoring_time_5y = case_when(censoring_time > 60 ~ 60, TRUE ~ censoring_time)
   )
 
