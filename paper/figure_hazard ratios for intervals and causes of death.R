@@ -59,15 +59,14 @@ formatted_tenyear_results <- format_regression_results(tenyear_results, diseases
 # Creating a formula to prepare the data for forest plot creation:
 prepare_forest_plot_data <- function(data) {
   data %>%
-    # Pivot MOD, SIDD, and SIRD columns to long format
     pivot_longer(cols = c(MOD, SIDD, SIRD), names_to = "subtype", values_to = "coef_ci") %>%
-    # Extract the hazard ratio (HR), lower confidence interval (lci), and upper confidence interval (uci)
     mutate(
       HR = as.numeric(str_extract(coef_ci, "^[0-9.]+")),                  # Extract HR
       lci = as.numeric(str_extract(coef_ci, "(?<=\\()[0-9.]+")),         # Extract lower CI
-      uci = as.numeric(str_extract(coef_ci, "(?<=, )[0-9.]+(?=\\))"))    # Extract upper CI
+      uci = as.numeric(str_extract(coef_ci, "(?<=, )[0-9.]+(?=\\))")),   # Extract upper CI
+      label = sprintf("%.2f", HR)                                       # Add HR labels
     ) %>%
-    select(outcome, subtype, HR, lci, uci)  # Keep only relevant columns
+    select(outcome, subtype, HR, lci, uci, label)  # Keep only relevant columns
 }
 
 # Applying the new formula:
@@ -75,54 +74,44 @@ ready_overall_results <- prepare_forest_plot_data(formatted_overall_results)
 ready_fiveyear_results <- prepare_forest_plot_data(formatted_fiveyear_results)
 ready_tenyear_results <- prepare_forest_plot_data(formatted_tenyear_results)
 
-# Forest plot for overall follow-up
-plot_overall <- ggplot(ready_overall_results, aes(y = outcome, x = HR, color = subtype)) +
-  geom_point(position = position_dodge(width = 0.5)) +  # Plot HR points
-  geom_errorbarh(aes(xmin = lci, xmax = uci), position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
-  geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
-  labs(
-    x = "Hazard Ratio (95% CI)"
-  ) +
-  theme_bw() +
-  scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
-  theme(legend.position = "bottom") +
-  ylab(NULL)  # Remove y-axis label
+# Updated plot function with HR labels
+plot_with_labels <- function(data) {
+  ggplot(data, aes(y = outcome, x = HR, color = subtype)) +
+    geom_point(position = position_dodge(width = 0.5)) +  # Plot HR points
+    geom_errorbarh(aes(xmin = lci, xmax = uci), 
+                   position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
+    geom_text(aes(label = label), 
+              position = position_dodge(width = 0.5), vjust = -1, size = 3) +  # Place labels above dots
+    geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
+    labs(
+      x = "Hazard Ratio (95% CI)"  # Only x-axis label
+    ) +
+    theme_bw() +
+    scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
+    theme(
+      legend.position = "bottom",
+      plot.title = element_blank()  # Remove plot title
+    )
+}
 
-# Forest plot for 5-year follow-up
-plot_5y <- ggplot(ready_fiveyear_results, aes(y = outcome, x = HR, color = subtype)) +
-  geom_point(position = position_dodge(width = 0.5)) +  # Plot HR points
-  geom_errorbarh(aes(xmin = lci, xmax = uci), position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
-  geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
-  labs(
-    x = "Hazard Ratio (95% CI)"
-  ) +
-  theme_bw() +
-  scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
-  theme(legend.position = "bottom") +
-  ylab(NULL)  # Remove y-axis label
+# Create labeled plots with custom x-axis ranges
+plot_overall <- plot_with_labels(ready_overall_results)
+plot_5y <- plot_with_labels(ready_fiveyear_results)
+plot_10y <- plot_with_labels(ready_tenyear_results)
 
-# Forest plot for 10-year follow-up
-plot_10y <- ggplot(ready_tenyear_results, aes(y = outcome, x = HR, color = subtype)) +
-  geom_point(position = position_dodge(width = 0.5)) +  # Plot HR points
-  geom_errorbarh(aes(xmin = lci, xmax = uci), position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
-  geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
-  labs(
-    x = "Hazard Ratio (95% CI)"
-  ) +
-  theme_bw() +
-  scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
-  theme(legend.position = "bottom") +
-  ylab(NULL)  # Remove y-axis label
 
-# Combine the three plots into a single panel layout
+
+# Combine the three plots into a single panel layout with wider plots
 combined_plot <- ggarrange(
-  plot_overall, plot_5y, plot_10y, 
-  nrow = 1, ncol = 3,                 
+  plot_overall, plot_5y, plot_10y,
+  nrow = 1, ncol = 3,
   common.legend = TRUE,                # Use a common legend for all plots
   legend = "bottom",                   # Place the legend at the bottom
-  labels = c("Overall", "5-Year", "10-Year")  # Label each plot
+  labels = c("Overall", "5-Year", "10-Year"),  # Label each plot
+  widths = c(1, 1, 1)                  # Ensure equal widths for each plot
 )
 
-# Save the plot
-ggsave(filename = paste0(path_nhanes_ckm_folder, "/figures/hazard ratios for intervals and selected causes.png"), 
-       plot = combined_plot, width = 12, height = 6)
+# Save the updated plot with increased width
+ggsave(filename = paste0(path_nhanes_ckm_folder, "/figures/hazard_ratios.png"), 
+       plot = combined_plot, width = 12, height = 6) 
+
