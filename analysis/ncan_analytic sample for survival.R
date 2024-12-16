@@ -32,6 +32,16 @@ mortality_data <- read_rds(paste0(path_nhanes_ckm_folder,"/working/cleaned/ncdat
   dplyr::filter(eligstat == 1) %>% 
   distinct(respondentid, .keep_all = TRUE)
 
+# Convert the year column in both data frames to character to match types
+new_or_undiagnosed_dm <- new_or_undiagnosed_dm %>%
+  mutate(year = as.character(year))
+
+mortality_data <- mortality_data %>%
+  mutate(year = as.character(year))
+
+clustered_set <- clustered_set %>%
+  mutate(year = as.character(year))
+
 analytic_sample <- left_join(clustered_set,
                              mortality_data %>% dplyr::select(-year),
                              by = c("respondentid")) %>% 

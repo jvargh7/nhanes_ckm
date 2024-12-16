@@ -53,7 +53,7 @@ adjusted_curves_mortality <- function(outcome_var, analytic_sample, outcome_labe
                         TRUE ~ 0.02)
   
   cox_reg <- coxph(
-    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster) + gender + dm_age")),
+    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster) + gender + dm_age + smoke_currently")),
     data = analytic_sample,
     weights = pooled_weight  # Add weights here
   )
@@ -83,7 +83,7 @@ regression_mortality <- function(outcome_var, analytic_sample) {
   )
   
   m2 <- coxph(
-    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster + gender + dm_age")),
+    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_currently")),
     data = analytic_sample,
     weights = pooled_weight  # Add weights here
   )
@@ -164,9 +164,9 @@ regression_results %>%
          uci = exp(estimate + 1.96 * std.error),
          model = case_when(model == "m0" ~ "Unadjusted",
                            model == "m1" ~ "Age-adjusted",
-                           model == "m2" ~ "Age- and sex-adjusted",
+                           model == "m2" ~ "Age-, sex-, and smoking-adjusted",
                            TRUE ~ NA_character_)) %>%
-  dplyr::filter(model == "Age- and sex-adjusted",
+  dplyr::filter(model == "Age-, sex-, and smoking-adjusted",
                 str_detect(term, "cluster")) %>%
   mutate(cluster = str_replace(term, "cluster", "")) %>%
   mutate(coef_ci = paste0(round(HR, 2), " (",

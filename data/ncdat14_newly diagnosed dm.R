@@ -70,7 +70,7 @@ nhanes_without_vars <- new_or_undiagnosed_dm %>%
 saveRDS(nhanes_without_vars, file = paste0(path_nhanes_ckm_newdm,"/nhanes_without_vars.rds"))
 
 #--------------------------------------------------------------------------------------------------------------------------------------
-# add HOMA2 indices
+# add HOMA2 indices and removing implausible values:
 load_homa2_data <- function(path, sheets) {
   datasets <- list()
   
@@ -98,9 +98,90 @@ newdm_data <- nhanes_with_vars %>%
          homa2b = `HOMA2 %B`,
          homa2ir = `HOMA2 IR`)
 
+# Filtering data frame to only include plausible variable values according to: https://doi.org/10.1038/s44161-023-00391-y
+plausible_ranges <- list(
+  bmi = c(10, 80),                 # kg/m^2
+  waistcircumference = c(30, 200), # cm
+  fat_percentage = c(2, 60),       # %
+  sbp = c(70, 270),                # mmHg
+  dbp = c(30, 150),                # mmHg
+  triglyceride = c(10, 2000),      # mg/dL
+  ldl = c(20, 400),                # mg/dL
+  hdl = c(10, 150),                # mg/dL
+  glycohemoglobin = c(3, 18),      # %
+  fasting_glucose = c(30, 600),    # mg/dL
+  serum_creatinine = c(0.1, 15),   # umol/L
+  egfr = c(5, 250),                # mL/min/1.73m^2
+  alt = c(0, 1000),                # mg/dL
+  ast = c(0, 1000)                 # mg/dL
+)
+
+# Function to check plausible ranges
+check_ranges <- function(data, ranges) {
+  # Create an empty list to store results
+  out_of_range <- list()
+  
+  # Iterate over each range in the list
+  for (var in names(ranges)) {
+    # Check if the variable exists in the data frame
+    if (!var %in% colnames(data)) {
+      warning(paste("Variable", var, "not found in the data frame."))
+      next
+    }
+    
+    # Extract the range for the current variable
+    range <- ranges[[var]]
+    lower <- range[1]
+    upper <- range[2]
+    
+    # Identify rows with out-of-range values
+    out_of_bounds <- which(data[[var]] < lower | data[[var]] > upper)
+    
+    # If there are out-of-range values, store them
+    if (length(out_of_bounds) > 0) {
+      out_of_range[[var]] <- data[out_of_bounds, var, drop = FALSE]
+    }
+  }
+  
+  # Return the out-of-range results
+  if (length(out_of_range) == 0) {
+    message("All values are within the plausible ranges.")
+    return(NULL)
+  } else {
+    return(out_of_range)
+  }
+}
+
+# Usage:
+out_of_range_values <- check_ranges(newdm_data, plausible_ranges)
+
+# Print results:
+if (!is.null(out_of_range_values)) {
+  print(out_of_range_values)
+}
+
+# Filter the data frame to exclude 
+newdm_data <- newdm_data %>%
+  # Apply plausible ranges
+  mutate(across(
+    names(plausible_ranges),
+    ~ ifelse(. < plausible_ranges[[cur_column()]][1] | . > plausible_ranges[[cur_column()]][2], NA, .),
+    .names = "{.col}"
+  )) %>%
+  # Ensure SBP > DBP or set both to NA
+  mutate(
+    sbp = ifelse(sbp <= dbp, NA, sbp),
+    dbp = ifelse(sbp <= dbp, NA, dbp)
+  ) %>%
+  # Ensure triglycerides >  or set both to NA
+  mutate(
+    triglyceride = ifelse(triglyceride <= hdl, NA, triglyceride),
+    hdl = ifelse(triglyceride <= hdl, NA, hdl)
+  )
+
+# Save data frames:
 newdm_data %>% 
-saveRDS(., file = paste0(path_nhanes_ckm_newdm,"/newdm_data.rds"))
+  saveRDS(., file = paste0(path_nhanes_ckm_newdm,"/newdm_data.rds"))
 
 newdm_data %>% 
-write.csv(., file = paste0(path_nhanes_ckm_newdm, "/newdm_data.csv"), row.names = FALSE)
-
+  write.csv(., file = paste0(path_nhanes_ckm_newdm, "/newdm_data.csv"), row.names = FALSE)

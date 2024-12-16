@@ -35,11 +35,11 @@ format_regression_results <- function(regression_results, diseases, disease_labe
       model = case_when(
         model == "m0" ~ "Unadjusted",
         model == "m1" ~ "Age-adjusted",
-        model == "m2" ~ "Age- and sex-adjusted",
+        model == "m2" ~ "Age-, sex-, and smoking-adjusted",
         TRUE ~ NA_character_
       )
     ) %>% 
-    dplyr::filter(model == "Age- and sex-adjusted", str_detect(term, "cluster")) %>% 
+    dplyr::filter(model == "Age-, sex-, and smoking-adjusted", str_detect(term, "cluster")) %>% 
     mutate(
       cluster = str_replace(term, "cluster", ""),
       coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")"),
@@ -81,10 +81,11 @@ plot_with_labels <- function(data) {
     geom_errorbarh(aes(xmin = lci, xmax = uci), 
                    position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
     geom_text(aes(label = label), 
-              position = position_dodge(width = 0.5), vjust = -1, size = 3) +  # Place labels above dots
+              position = position_dodge(width = 0.5), vjust = -1, size = 2) +  # Place labels above dots
     geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
     labs(
-      x = "Hazard Ratio (95% CI)"  # Only x-axis label
+      x = "Hazard Ratio (95% CI)",  # Only x-axis label
+      y = NULL
     ) +
     theme_bw() +
     scale_color_manual(name = "", values = cluster_colors_cosmos_all) +

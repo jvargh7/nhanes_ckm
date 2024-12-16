@@ -37,7 +37,7 @@ regression_mortality <- function(outcome_var, df) {
               data = df, 
               weights = pooled_weight)
   
-  m2 <- coxph(as.formula(paste0("Surv(censoring_time_5y, ", outcome_var, ") ~ cluster + gender + dm_age")),
+  m2 <- coxph(as.formula(paste0("Surv(censoring_time_5y, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_currently")),
               data = df, 
               weights = pooled_weight)
   
@@ -74,9 +74,9 @@ regression_results_5y %>%
          uci = exp(estimate + 1.96 * std.error),
          model = case_when(model == "m0" ~ "Unadjusted",
                            model == "m1" ~ "Age-adjusted",
-                           model == "m2" ~ "Age- and sex-adjusted",
+                           model == "m2" ~ "Age-, sex-, and smoking-adjusted",
                            TRUE ~ NA_character_)) %>% 
-  dplyr::filter(model == "Age- and sex-adjusted",
+  dplyr::filter(model == "Age-, sex-, and smoking-adjusted",
                 str_detect(term, "cluster")) %>% 
   mutate(cluster = str_replace(term, "cluster", "")) %>% 
   mutate(coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")"),
@@ -95,7 +95,7 @@ regression_results_5y %>%
          uci = exp(estimate + 1.96 * std.error),
          model = case_when(model == "m0" ~ "Unadjusted",
                            model == "m1" ~ "Age-adjusted",
-                           model == "m2" ~ "Age- and sex-adjusted",
+                           model == "m2" ~ "Age-, sex-, and smoking-adjustedd",
                            TRUE ~ NA_character_)) %>% 
   dplyr::filter(model == "Unadjusted",
                 str_detect(term, "cluster")) %>% 
