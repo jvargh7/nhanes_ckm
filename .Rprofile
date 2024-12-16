@@ -46,8 +46,8 @@ if(Sys.info()["user"] == "JGUO258"){
 if(Sys.info()["user"] == "carolinechizak"){
   # Install the necessary Python packages
   
-  reticulate::use_virtualenv("~/.virtualenvs/r-reticulate", required = TRUE)
-  reticulate::py_install(c("numpy", "pandas", "scikit-learn", "matplotlib", "seaborn", "kneed"), pip = TRUE)
+  # reticulate::use_virtualenv("~/.virtualenvs/r-reticulate", required = TRUE)
+  # reticulate::py_install(c("numpy", "pandas", "scikit-learn", "matplotlib", "seaborn", "kneed"), pip = TRUE)
   
   
   path_nhanes_ckm_folder <- "/Users/carolinechizak/Library/CloudStorage/OneDrive-SharedLibraries-Emory/Varghese, Jithin Sam - NHANES Subtypes Mortality"
