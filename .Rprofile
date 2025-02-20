@@ -23,7 +23,6 @@ if(Sys.info()["user"] == "krishnasanaka"){
   reticulate::use_virtualenv("~/.virtualenvs/r-reticulate", required = TRUE)
   reticulate::py_install(c("numpy", "pandas", "scikit-learn", "matplotlib", "seaborn", "kneed"), pip = TRUE)
   
-  
   path_nhanes_ckm_folder <- "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES CKM Cascade"
   path_nhanes_ckm_repo <- "/Users/krishnasanaka/nhanes_ckm"
   
