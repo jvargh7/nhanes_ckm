@@ -54,7 +54,7 @@ kmeans.fit(data_scaled)
 analytic_dataset_cluster['cluster'] = kmeans.labels_
 
 # Relabel the cluster labels based on clinical characteristics
-analytic_dataset_cluster['cluster'] = analytic_dataset_cluster['cluster'].replace({0: 'SIDD', 1: 'MOD', 2: 'SIRD', 3: 'MARD'})
+analytic_dataset_cluster['cluster'] = analytic_dataset_cluster['cluster'].replace({0: 'MOD', 1: 'SIDD', 2: 'MARD', 3: 'SIRD'})
 
 # Concatenate the other variables back to the filtered dataset
 analytic_dataset_cluster = pd.concat([analytic_dataset_cluster, other_vars], axis=1)
@@ -71,7 +71,7 @@ data_scaled_cluster = data_scaled.copy()
 data_scaled_cluster['cluster'] = kmeans.labels_
 
 # Relabel the cluster labels
-data_scaled_cluster['cluster'] = data_scaled_cluster['cluster'].replace({0: 'SIDD', 1: 'MOD', 2: 'SIRD', 3: 'MARD'})
+data_scaled_cluster['cluster'] = data_scaled_cluster['cluster'].replace({0: 'MOD', 1: 'SIDD', 2: 'MARD', 3: 'SIRD'})
 
 # Create a new DataFrame with the cluster assignments and variables
 data_clustered = pd.concat([data_scaled_cluster['cluster'], 
