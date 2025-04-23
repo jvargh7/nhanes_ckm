@@ -57,5 +57,6 @@ dxx_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="DXX")
 # Added 15th October
 hiq_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="HIQ")
 
-
+# Added 04/23/2025
+dxxag_variables <- readxl::read_excel(path_nhanes_ckm_variable_list, sheet="DXXAG")
 

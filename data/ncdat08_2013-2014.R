@@ -166,6 +166,13 @@ dxx20132014 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2013-2014/DXX_H.XPT")) %>%
   rename_with(~ dxx_variables[!is.na(dxx_variables$`2013-2014`),]$variable[which(na.omit(dxx_variables$`2013-2014`) == .x)], 
               .cols = na.omit(dxx_variables$`2013-2014`))
 
+dxxag20132014 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2013-2014/DXXAG_H.XPT")) %>%
+  # Select columns
+  select(all_of(na.omit(dxxag_variables$`2013-2014`))) %>%
+  # Rename columns
+  rename_with(~ dxxag_variables[!is.na(dxxag_variables$`2013-2014`),]$variable[which(na.omit(dxxag_variables$`2013-2014`) == .x)], 
+              .cols = na.omit(dxxag_variables$`2013-2014`))
+
 hiq20132014 <- read_xpt(paste0(path_nhanes_ckm_raw,"/2013-2014/hiq_H.XPT")) %>%
   # Select columns
   select(all_of(na.omit(hiq_variables$`2013-2014`))) %>%
@@ -197,7 +204,8 @@ nhanes_20132014 <- alb20132014 %>%
   left_join(tchol20132014, by = "respondentid") %>%
   left_join(trigly20132014, by = "respondentid") %>%
   left_join(dxx20132014, by = "respondentid") %>%
-  left_join(hiq20132014, by = "respondentid")
+  left_join(hiq20132014, by = "respondentid") %>% 
+  left_join(dxxag20132014, by = "respondentid")
 
 # Adding eGFR variable according to (https://www.kidney.org/ckd-epi-creatinine-equation-2021):
 nhanes_20132014 <- nhanes_20132014 %>%
