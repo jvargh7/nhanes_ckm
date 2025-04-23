@@ -32,6 +32,16 @@ mortality_data <- read_rds(paste0(path_nhanes_ckm_folder,"/working/cleaned/ncdat
   dplyr::filter(eligstat == 1) %>% 
   distinct(respondentid, .keep_all = TRUE)
 
+# Convert the year column in both data frames to character to match types
+new_or_undiagnosed_dm <- new_or_undiagnosed_dm %>%
+  mutate(year = as.character(year))
+
+mortality_data <- mortality_data %>%
+  mutate(year = as.character(year))
+
+clustered_set <- clustered_set %>%
+  mutate(year = as.character(year))
+
 analytic_sample <- left_join(clustered_set,
                              mortality_data %>% dplyr::select(-year),
                              by = c("respondentid")) %>% 
@@ -42,28 +52,9 @@ analytic_sample <- left_join(clustered_set,
                                      TRUE ~ 0),
          mortality_malignant_neoplasms = case_when(ucod_leading == 2 ~ 1,
                                                    TRUE ~ 0),
-         mortality_chronic_lower_respiratory  = case_when(ucod_leading == 3 ~ 1,
-                                                          TRUE ~ 0),
-         mortality_accidents = case_when(ucod_leading == 4 ~ 1,
-                                         TRUE ~ 0),
-         mortality_cerebrovascular = case_when(ucod_leading == 5 ~ 1,
-                                               TRUE ~ 0),
-         mortality_alzheimer = case_when(ucod_leading == 6 ~ 1,
-                                         TRUE ~ 0),
-         mortality_diabetes_mellitus = case_when(ucod_leading == 7 ~ 1,
-                                                 TRUE ~ 0),
-         mortality_influenza_pneumonia  = case_when(ucod_leading == 8 ~ 1,
-                                                    TRUE ~ 0),
-         mortality_nephrosis = case_when(ucod_leading == 9 ~ 1,
-                                         TRUE ~ 0),
-         mortality_other = case_when(ucod_leading == 10 ~ 1,
-                                     TRUE ~ 0),
+         mortality_any_other = case_when(ucod_leading == c(3, 4, 5, 6, 7, 8, 9, 10) ~ 1,
+                                                  TRUE ~ 0),
          censoring_time = case_when(!is.na(permth_int) ~ permth_int,
                                     permth_int >= 300 ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4,
                                     TRUE ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4)) %>% 
-  dplyr::filter(!is.na(censoring_time)) %>%
-  mutate(mortality_any_other = if_else(
-    mortstat == 1 & mortality_heart == 0 & mortality_malignant_neoplasms == 0, 
-    1, 
-    0
-  ))
+  dplyr::filter(!is.na(censoring_time))

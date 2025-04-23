@@ -19,7 +19,8 @@ analytic_sample_5y <- analytic_sample %>%
     mortstat = case_when(mortstat == 1 & censoring_time <= 60 ~ 1, TRUE ~ 0),
     mortality_heart = case_when(ucod_leading == 1 & censoring_time <= 60 ~ 1, TRUE ~ 0),
     mortality_malignant_neoplasms = case_when(ucod_leading == 2 & censoring_time <= 60 ~ 1, TRUE ~ 0),
-    mortality_other = case_when(ucod_leading == 10 & censoring_time <= 60 ~ 1, TRUE ~ 0),
+    mortality_any_other = case_when(ucod_leading == c(3, 4, 5, 6, 7, 8, 9, 10) & censoring_time <= 60 ~ 1,
+                                    TRUE ~ 0),
     censoring_time_5y = case_when(censoring_time > 60 ~ 60, TRUE ~ censoring_time)
   )
 
@@ -36,7 +37,7 @@ regression_mortality <- function(outcome_var, df) {
               data = df, 
               weights = pooled_weight)
   
-  m2 <- coxph(as.formula(paste0("Surv(censoring_time_5y, ", outcome_var, ") ~ cluster + gender + dm_age")),
+  m2 <- coxph(as.formula(paste0("Surv(censoring_time_5y, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_currently")),
               data = df, 
               weights = pooled_weight)
   
@@ -73,9 +74,9 @@ regression_results_5y %>%
          uci = exp(estimate + 1.96 * std.error),
          model = case_when(model == "m0" ~ "Unadjusted",
                            model == "m1" ~ "Age-adjusted",
-                           model == "m2" ~ "Age- and sex-adjusted",
+                           model == "m2" ~ "Age-, sex-, and smoking-adjusted",
                            TRUE ~ NA_character_)) %>% 
-  dplyr::filter(model == "Age- and sex-adjusted",
+  dplyr::filter(model == "Age-, sex-, and smoking-adjusted",
                 str_detect(term, "cluster")) %>% 
   mutate(cluster = str_replace(term, "cluster", "")) %>% 
   mutate(coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")"),
@@ -94,7 +95,7 @@ regression_results_5y %>%
          uci = exp(estimate + 1.96 * std.error),
          model = case_when(model == "m0" ~ "Unadjusted",
                            model == "m1" ~ "Age-adjusted",
-                           model == "m2" ~ "Age- and sex-adjusted",
+                           model == "m2" ~ "Age-, sex-, and smoking-adjustedd",
                            TRUE ~ NA_character_)) %>% 
   dplyr::filter(model == "Unadjusted",
                 str_detect(term, "cluster")) %>% 

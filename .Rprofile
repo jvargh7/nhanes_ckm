@@ -23,7 +23,6 @@ if(Sys.info()["user"] == "krishnasanaka"){
   reticulate::use_virtualenv("~/.virtualenvs/r-reticulate", required = TRUE)
   reticulate::py_install(c("numpy", "pandas", "scikit-learn", "matplotlib", "seaborn", "kneed"), pip = TRUE)
   
-  
   path_nhanes_ckm_folder <- "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES CKM Cascade"
   path_nhanes_ckm_repo <- "/Users/krishnasanaka/nhanes_ckm"
   
@@ -47,9 +46,5 @@ if(Sys.info()["user"] == "JGUO258"){
 
 cluster_colors_cosmos_all <- c("MOD"="#F8BDA4","SIRD"="#A1C3AC","SIDD"="#ACD9EA","MARD"="#D0ACC9")  
 
-diseases <- c("mortstat",paste0("mortality_",c("heart", "malignant_neoplasms", "chronic_lower_respiratory", "accidents", 
-                                               "cerebrovascular", "alzheimer", "diabetes_mellitus", "influenza_pneumonia", 
-                                               "nephrosis", "other")))
-disease_labels = c("All Cause","Heart Disease","Cancer","Chronic Lower Respiratory",
-                   "Accidents","Cerebrovascular","Alzheimer's","Diabetes","Influenza/Pneumonia",
-                   "Nephrosis","Other")
+diseases <- c("mortstat",paste0("mortality_",c("heart", "malignant_neoplasms", "any_other")))
+disease_labels = c("All Cause","Heart Disease","Cancer","Other")

@@ -62,8 +62,8 @@ ggarrange(fig_A,
           fig_C,
           fig_D,
           fig_E,
-          nrow=2,
-          ncol=3,
+          nrow=1,
+          ncol=5,
           common.legend = TRUE,legend = "none") %>% 
   ggsave(.,filename=paste0(path_nhanes_ckm_folder,"/figures/distribution of clinicalcharacteristics by cluster.jpg"),width=12,height =5.5)
 
