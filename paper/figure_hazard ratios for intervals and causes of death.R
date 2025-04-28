@@ -81,7 +81,7 @@ plot_with_labels <- function(data) {
     geom_errorbarh(aes(xmin = lci, xmax = uci), 
                    position = position_dodge(width = 0.5), height = 0.2) +  # 95% CI
     geom_text(aes(label = label), 
-              position = position_dodge(width = 0.5), vjust = -1, size = 2) +  # Place labels above dots
+              position = position_dodge(width = 0.5), vjust = -1, size = 4) +  # Place labels above dots
     geom_vline(xintercept = 1, linetype = "dashed") +  # Reference line at HR = 1
     labs(
       x = "Hazard Ratio (95% CI)",  # Only x-axis label
