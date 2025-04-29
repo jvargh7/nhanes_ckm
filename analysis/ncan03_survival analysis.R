@@ -1,3 +1,5 @@
+rm(list=ls());gc();source(".Rprofile")
+
 #### Load the required libraries
 library(survival)
 library(ggsurvfit)
@@ -53,10 +55,15 @@ adjusted_curves_mortality <- function(outcome_var, analytic_sample, outcome_labe
                         TRUE ~ 0.02)
   
   cox_reg <- coxph(
-    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster) + gender + dm_age + smoke_currently")),
+    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster) + gender + dm_age")),
     data = analytic_sample,
     weights = pooled_weight  # Add weights here
   )
+  # cox_reg <- coxph(
+  #   as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster) + gender + dm_age + smoke_currently")),
+  #   data = analytic_sample,
+  #   weights = pooled_weight  # Add weights here
+  # )
   
   fig_out = ggsurvfit(survfit2(cox_reg), type = "risk") +
     xlab(paste0("Time to ", outcome_label, " Mortality")) +
@@ -166,7 +173,7 @@ regression_results %>%
                            model == "m1" ~ "Age-adjusted",
                            model == "m2" ~ "Age-, sex-, and smoking-adjusted",
                            TRUE ~ NA_character_)) %>%
-  dplyr::filter(model == "Age-, sex-, and smoking-adjusted",
+  dplyr::filter(model == "Age-adjusted",
                 str_detect(term, "cluster")) %>%
   mutate(cluster = str_replace(term, "cluster", "")) %>%
   mutate(coef_ci = paste0(round(HR, 2), " (",

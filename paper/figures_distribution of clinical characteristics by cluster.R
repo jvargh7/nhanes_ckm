@@ -3,7 +3,8 @@ rm(list=ls());gc();source(".Rprofile")
 library(ggplot2)
 
 boxplot_df <- read.csv(paste0(path_nhanes_ckm_newdm,"/knn clusters.csv"), header = TRUE, sep = ",") %>%
-  dplyr::select("respondentid","cluster", 'bmi','dm_age','glycohemoglobin','homa2b', 'homa2ir')
+  dplyr::select("respondentid","cluster", 'bmi','dm_age','glycohemoglobin','homa2b', 'homa2ir') %>% 
+  mutate(cluster = factor(cluster,levels=c("SIDD","SIRD","MOD","MARD")))
 
 cluster_colors = c("MOD"="#F8BDA4","SIRD"="#A1C3AC","SIDD"="#ACD9EA","MARD"="#D0ACC9")
 
