@@ -37,7 +37,7 @@ regression_mortality <- function(outcome_var, df) {
               data = df, 
               weights = pooled_weight)
   
-  m2 <- coxph(as.formula(paste0("Surv(censoring_time_5y, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_currently")),
+  m2 <- coxph(as.formula(paste0("Surv(censoring_time_5y, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_current")),
               data = df, 
               weights = pooled_weight)
   

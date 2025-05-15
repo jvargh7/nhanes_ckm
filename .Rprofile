@@ -26,10 +26,18 @@ if(Sys.info()["user"] == "krishnasanaka"){
   path_nhanes_ckm_folder <- "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES CKM Cascade"
   path_nhanes_ckm_repo <- "/Users/krishnasanaka/nhanes_ckm"
   
+  path_nhanes_nsb_folder <- "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES Subtypes Body Composition"
+  path_nhanes_nsb_repo <- "/Users/krishnasanaka/nhanes_subtypes_bodycomp"
+  
   path_nhanes_ckm_raw <- paste0(path_nhanes_ckm_folder,"/working/raw")
   path_nhanes_ckm_cleaned <- paste0(path_nhanes_ckm_folder,"/working/cleaned")
   path_nhanes_ckm_newdm <- paste0(path_nhanes_ckm_folder,"/working/new diabetes")
   path_nhanes_ckm_variable_list <- paste0(path_nhanes_ckm_repo,"/data/CKM Variable List.xlsx")
+  path_nhanes_body_composition <- paste0(path_nhanes_ckm_repo, "/data/nsbdat")
+  path_nhanes_nsb_variable_list <- paste0(path_nhanes_ckm_repo, "/data/nsbdat/NSB Variable List.xlsx")
+  
+  path_nhanes_nsb_raw <- paste0(path_nhanes_nsb_folder,"/working/raw")
+  path_nhanes_nsb_cleaned <- paste0(path_nhanes_nsb_folder,"/working/cleaned")
   
 }
 if(Sys.info()["user"] == "JGUO258"){

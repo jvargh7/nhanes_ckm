@@ -58,3 +58,16 @@ analytic_sample <- left_join(clustered_set,
                                     permth_int >= 300 ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4,
                                     TRUE ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4)) %>% 
   dplyr::filter(!is.na(censoring_time))
+
+analytic_sample <- analytic_sample %>%
+  mutate(
+    # New smoking status based on combination of variables
+    smoke_current = case_when(
+      smoke_currently %in% c(1, 2) ~ 1,  # currently smokes every day or some days
+      smoke_currently == 3 ~ 0,         # does not currently smoke
+      smoke_history == 2 ~ 0,           # never smoked (even if smoke_currently is NA)
+      smoke_history == 1 & is.na(smoke_currently) ~ 1,  # missing but has history → likely a smoker
+      TRUE ~ NA_real_
+    )
+  )
+

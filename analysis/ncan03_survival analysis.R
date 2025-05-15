@@ -60,7 +60,7 @@ adjusted_curves_mortality <- function(outcome_var, analytic_sample, outcome_labe
     weights = pooled_weight  # Add weights here
   )
   # cox_reg <- coxph(
-  #   as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster) + gender + dm_age + smoke_currently")),
+  #   as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster) + gender + dm_age + smoke_current")),
   #   data = analytic_sample,
   #   weights = pooled_weight  # Add weights here
   # )
@@ -90,7 +90,7 @@ regression_mortality <- function(outcome_var, analytic_sample) {
   )
   
   m2 <- coxph(
-    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_currently")),
+    as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_current")),
     data = analytic_sample,
     weights = pooled_weight  # Add weights here
   )
