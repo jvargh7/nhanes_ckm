@@ -69,7 +69,8 @@ analytic_sample <- left_join(clustered_set,
       smoke_history == 1 ~ 1,
       is.na(smoke_currently) ~ 0,  # missing but has history → likely a smoker
       TRUE ~ 0
-    )
+    ),
+    gender = gender - 1
   )  %>% 
   mutate(cluster_MOD = case_when(cluster == "MOD" ~ 1,TRUE ~ 0),
          cluster_SIDD = case_when(cluster == "SIDD" ~ 1,TRUE ~ 0),
