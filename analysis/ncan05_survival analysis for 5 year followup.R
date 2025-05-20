@@ -29,6 +29,11 @@ analytic_sample_5y %>%
   summarize(across(diseases, ~mean(.))) %>% 
   write_csv("analysis/ncan05_overall rates for 5 year follow-up.csv")
 
+analytic_sample_5y %>% 
+  dplyr::select(one_of(diseases)) %>% 
+  summarize_all(~sum(.,na.rm=TRUE))
+
+
 # Define the regression function with survey weights
 regression_mortality <- function(outcome_var, df) {
   

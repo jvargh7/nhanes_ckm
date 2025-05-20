@@ -38,6 +38,7 @@ overall_summary <- data.frame(
   NH_Black = prop_ci_category_survey("race", 4, analytic_sample_svy),
   Hispanic = prop_ci_category_survey("race", c(1, 2), analytic_sample_svy),
   Other_Race = prop_ci_category_survey("race", 5, analytic_sample_svy),
+  Smoking = prop_ci_category_survey("smoke_current", 1, analytic_sample_svy),
   Insured = prop_ci_category_survey("insured", 1, analytic_sample_svy),
   Uninsured = prop_ci_category_survey("insured", 2, analytic_sample_svy),
   Privately_Insured = prop_ci_category_survey("insured_private", 1, analytic_sample_svy),
@@ -85,6 +86,7 @@ for (cluster_id in clusters) {
     NH_Black = prop_ci_category_survey("race", 4, cluster_design),
     Hispanic = prop_ci_category_survey("race", c(1, 2), cluster_design),
     Other_Race = prop_ci_category_survey("race", 5, cluster_design),
+    Smoking = prop_ci_category_survey("smoke_current", 1, cluster_design),
     Insured = prop_ci_category_survey("insured", 1, cluster_design),
     Uninsured = prop_ci_category_survey("insured", 2, cluster_design),
     Privately_Insured = prop_ci_category_survey("insured_private", 1, cluster_design),
@@ -128,5 +130,5 @@ cluster_summary <- as.data.frame(cluster_summary)
 combined_summary <- cbind(overall_summary, cluster_summary)
 
 # Save the resulting table
-write.csv(combined_summary, file=paste0(path_nhanes_ckm_newdm, "/survey weighted characteristics of overall sample and by cluster.csv"), row.names = TRUE)
+write.csv(combined_summary, file=paste0("paper/survey weighted characteristics of overall sample and by cluster.csv"), row.names = TRUE)
 

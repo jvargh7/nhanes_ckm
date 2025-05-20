@@ -1,31 +1,12 @@
 rm(list=ls()); gc(); source(".Rprofile")
 
-# Load the required libraries
-library(survival)
-library(ggsurvfit)
-library(ggpubr)
-library(dplyr)
-library(broom)
-library(tidyr)
-library(ggplot2)
-library(patchwork)
-
-# Run the necessary analysis:
-source("analysis/ncan03_survival analysis.R")
-source("analysis/ncan04_survival analysis for 10 year followup.R")
-source("analysis/ncan05_survival analysis for 5 year followup.R")
-
-# Define diseases and their corresponding labels
-diseases <- c("mortstat", "mortality_heart", "mortality_malignant_neoplasms", "mortality_any_other")
-disease_labels <- c("All-Cause Mortality", "Heart Disease Mortality", "Cancer Mortality", "Other Causes")
-
 # Loading in the regression results files:
-overall_results <- read_csv(paste0(path_nhanes_ckm_repo, "/analysis/ncan03_survival_analysis_results.csv"))
+overall_results <- read_csv(paste0(path_nhanes_ckm_repo, "/analysis/ncan03_survival analysis results.csv"))
 fiveyear_results <- read_csv(paste0(path_nhanes_ckm_repo,"/analysis/ncan04_survival analysis for 10 year follow-up.csv"))
 tenyear_results <- read_csv(paste0(path_nhanes_ckm_repo,"/analysis/ncan05_survival analysis for 5 year follow-up.csv"))
 
 # Creating a formula to format the estimates:
-format_regression_results <- function(regression_results, diseases, disease_labels) {
+format_regression_results <- function(regression_results, diseases, disease_labels,model_name) {
   regression_results %>% 
     bind_rows() %>% 
     mutate(
@@ -39,7 +20,7 @@ format_regression_results <- function(regression_results, diseases, disease_labe
         TRUE ~ NA_character_
       )
     ) %>% 
-    dplyr::filter(model == "Age-, sex-, and smoking-adjusted", str_detect(term, "cluster")) %>% 
+    dplyr::filter(model == model_name, str_detect(term, "cluster")) %>% 
     mutate(
       cluster = str_replace(term, "cluster", ""),
       coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")"),
@@ -52,9 +33,25 @@ format_regression_results <- function(regression_results, diseases, disease_labe
 }
 
 # Applying the formula:
-formatted_overall_results <- format_regression_results(overall_results, diseases, disease_labels)
-formatted_fiveyear_results <- format_regression_results(fiveyear_results, diseases, disease_labels)
-formatted_tenyear_results <- format_regression_results(tenyear_results, diseases, disease_labels)
+formatted_overall_results <- format_regression_results(overall_results, diseases, disease_labels, model_name = "Age-, sex-, and smoking-adjusted")
+formatted_fiveyear_results <- format_regression_results(fiveyear_results, diseases, disease_labels, model_name = "Age-, sex-, and smoking-adjusted")
+formatted_tenyear_results <- format_regression_results(tenyear_results, diseases, disease_labels, model_name = "Age-, sex-, and smoking-adjusted")
+
+
+bind_rows(formatted_overall_results,
+          formatted_fiveyear_results,
+          formatted_tenyear_results) %>% 
+  write_csv(.,"paper/table_adjusted hazard ratios for all cause and cause specific.csv")
+
+
+bind_rows(format_regression_results(overall_results, diseases, disease_labels, model_name = "Age-adjusted"),
+          format_regression_results(fiveyear_results, diseases, disease_labels, model_name = "Age-adjusted"),
+          format_regression_results(tenyear_results, diseases, disease_labels, model_name = "Age-adjusted")) %>% 
+  write_csv(.,"paper/table_age-adjusted adjusted hazard ratios for all cause and cause specific.csv")
+
+
+
+
 
 # Creating a formula to prepare the data for forest plot creation:
 prepare_forest_plot_data <- function(data) {
@@ -88,6 +85,8 @@ plot_with_labels <- function(data) {
       y = NULL
     ) +
     theme_bw() +
+    scale_x_continuous(limits=c(0,3.5),breaks=seq(0,4,by=0.5)) + 
+    scale_y_discrete(limits=rev) +
     scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
     theme(
       legend.position = "bottom",
@@ -104,11 +103,11 @@ plot_10y <- plot_with_labels(ready_tenyear_results)
 
 # Combine the three plots into a single panel layout with wider plots
 combined_plot <- ggarrange(
-  plot_overall, plot_5y, plot_10y,
+  plot_5y, plot_10y,plot_overall, 
   nrow = 1, ncol = 3,
   common.legend = TRUE,                # Use a common legend for all plots
   legend = "bottom",                   # Place the legend at the bottom
-  labels = c("Overall", "5-Year", "10-Year"),  # Label each plot
+  labels = c("5-Year", "10-Year","Overall"),  # Label each plot
   widths = c(1, 1, 1)                  # Ensure equal widths for each plot
 )
 

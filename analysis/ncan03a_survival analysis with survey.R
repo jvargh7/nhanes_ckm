@@ -3,29 +3,34 @@ rm(list=ls());gc();source(".Rprofile")
 #### Load the required libraries
 library(survival)
 library(ggsurvfit)
-
+library(survey)
 ######################## R script for Kaplan-Meier curve ################################
 
 source("analysis/ncan_analytic sample for survival.R")
 
-regression_mortality <- function(outcome_var, analytic_sample) {
+analytic_survey <- analytic_sample %>% 
+  as_survey_design(.data=.,
+                   ids = psu,
+                   strata = pseudostratum,
+                   weights = pooled_weight,
+                   nest = TRUE,variance = "YG"
+                    )
+
+regression_mortality_svy <- function(outcome_var, analytic_svy) {
   
-  m1 <- coxph(
+  m1 <- svycoxph(
     as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster + dm_age")),
-    data = analytic_sample,
-    weights = pooled_weight  # Add weights here
+    design = analytic_svy
   )
   
-  m2 <- coxph(
+  m2 <- svycoxph(
     as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_current")),
-    data = analytic_sample,
-    weights = pooled_weight  # Add weights here
+    design = analytic_svy
   )
   
-  m0 <- coxph(
+  m0 <- svycoxph(
     as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster")),
-    data = analytic_sample,
-    weights = pooled_weight  # Add weights here
+    design = analytic_svy
   )
   
   bind_rows(broom::tidy(m0) %>% mutate(model = "m0"),
@@ -35,33 +40,28 @@ regression_mortality <- function(outcome_var, analytic_sample) {
     return(.)
 }
 
-analytic_sample %>%
-  summarize(across(diseases, ~mean(., na.rm = TRUE))) %>%
-  write_csv(., "analysis/ncan03_overall rates for all follow-up.csv")
-
-analytic_sample %>% 
-  dplyr::select(one_of(diseases)) %>% 
-  summarize_all(~sum(.,na.rm=TRUE))
-
-analytic_sample %>% 
-  group_by(cluster) %>% 
-  summarize(q = quantile(censoring_time,probs=c(0.25,0.5,0.75)))
-
 
 regression_results <- list()
 
 for (i in c(1:4)) {
-  print(i)
-  regression_results[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
-                                                            analytic_sample = analytic_sample %>% dplyr::filter())
+  # print(i)
+  # unadjusted_plots[[diseases[i]]] <- unadjusted_curves_mortality(outcome_var = diseases[i],
+  #                                                                analytic_sample = analytic_sample,
+  #                                                                outcome_label = disease_labels[i])
+  # 
+  # adjusted_plots[[diseases[i]]] <- adjusted_curves_mortality(outcome_var = diseases[i],
+  #                                                            analytic_sample = analytic_sample,
+  #                                                            outcome_label = disease_labels[i])
+  regression_results[[diseases[i]]] <- regression_mortality_svy(outcome_var = diseases[i],
+                                                                analytic_svy = analytic_survey)
 }
 
 
 regression_results %>%
   bind_rows() %>%
-  write_csv(., "analysis/ncan03_survival analysis results.csv")
+  write_csv(., "analysis/ncan03_survival_analysis_results.csv")
 
-regression_results <- read_csv("analysis/ncan03_survival analysis results.csv")
+regression_results <- read_csv("analysis/ncan03a_survival_analysis_results with survey.csv")
 
 regression_results %>%
   bind_rows() %>%
