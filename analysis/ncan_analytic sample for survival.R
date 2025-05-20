@@ -48,11 +48,13 @@ analytic_sample <- left_join(clustered_set,
   left_join(new_or_undiagnosed_dm,
             by=c("respondentid","year")) %>% 
   # event status
-  mutate(mortality_heart = case_when(ucod_leading == 1 ~ 1,
+  mutate(mortstat = case_when(is.na(mortstat) ~ 0,
+                              TRUE ~ mortstat),
+         mortality_heart = case_when(ucod_leading == 1 ~ 1,
                                      TRUE ~ 0),
          mortality_malignant_neoplasms = case_when(ucod_leading == 2 ~ 1,
                                                    TRUE ~ 0),
-         mortality_any_other = case_when(ucod_leading == c(3, 4, 5, 6, 7, 8, 9, 10) ~ 1,
+         mortality_any_other = case_when(ucod_leading %in% c(3, 4, 5, 6, 7, 8, 9, 10) ~ 1,
                                                   TRUE ~ 0),
          censoring_time = case_when(!is.na(permth_int) ~ permth_int,
                                     permth_int >= 300 ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4,
@@ -66,8 +68,9 @@ analytic_sample <- analytic_sample %>%
       smoke_currently %in% c(1, 2) ~ 1,  # currently smokes every day or some days
       smoke_currently == 3 ~ 0,         # does not currently smoke
       smoke_history == 2 ~ 0,           # never smoked (even if smoke_currently is NA)
-      smoke_history == 1 & is.na(smoke_currently) ~ 1,  # missing but has history → likely a smoker
-      TRUE ~ NA_real_
+      smoke_history == 1 ~ 1,
+      is.na(smoke_currently) ~ 0,  # missing but has history → likely a smoker
+      TRUE ~ 0
     )
   )
 
