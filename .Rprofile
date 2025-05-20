@@ -17,6 +17,9 @@ if(Sys.info()["user"] == "JVARGH7"){
   path_nhanes_ckm_newdm <- paste0(path_nhanes_ckm_folder,"/working/new diabetes")
   path_nhanes_ckm_variable_list <- paste0(path_nhanes_ckm_repo,"/data/CKM Variable List.xlsx")
   
+  
+  path_nhanes_nsb_folder <- "C:/Cloud/OneDrive - Emory University/Papers/_Dropped/NHANES Subtypes Body Composition"
+  
 }
 if(Sys.info()["user"] == "krishnasanaka"){
   # Install the necessary Python packages
@@ -72,3 +75,6 @@ cluster_colors_cosmos_all <- c("MOD"="#F8BDA4","SIRD"="#A1C3AC","SIDD"="#ACD9EA"
 
 diseases <- c("mortstat",paste0("mortality_",c("heart", "malignant_neoplasms", "any_other")))
 disease_labels = c("All Cause","Heart Disease","Cancer","Other")
+
+names(disease_labels) <- diseases
+

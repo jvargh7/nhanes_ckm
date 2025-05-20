@@ -13,7 +13,7 @@ na_count <- function(data, variables) {
 variables_to_check <- c(
   "gender", "race", "insured",
   "hhincome", "age", "dm_age", "bmi", "fat_percentage", "waistcircumference",
-  "glycohemoglobin", "fasting_glucose", "ldl", "hdl", "sbp", "dbp",
+  "glycohemoglobin", "fasting_glucose","insulin_level", "ldl", "hdl", "sbp", "dbp",
   "triglyceride", "homa2b", "homa2ir", "egfr", "alt", "ast"
 )
 
@@ -38,5 +38,5 @@ na_table <- cbind(Overall = overall_na_counts, cluster_na_counts_df)
 
 # Save to CSV
 write.csv(na_table,
-          file = paste0(path_nhanes_ckm_newdm, "/NA counts of overall sample and by cluster.csv"),
+          file = paste0("paper/table_missing counts of overall sample and by cluster.csv"),
           row.names = TRUE)

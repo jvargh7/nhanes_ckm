@@ -59,9 +59,7 @@ analytic_sample <- left_join(clustered_set,
          censoring_time = case_when(!is.na(permth_int) ~ permth_int,
                                     permth_int >= 300 ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4,
                                     TRUE ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4)) %>% 
-  dplyr::filter(!is.na(censoring_time))
-
-analytic_sample <- analytic_sample %>%
+  dplyr::filter(!is.na(censoring_time)) %>%
   mutate(
     # New smoking status based on combination of variables
     smoke_current = case_when(
@@ -72,5 +70,8 @@ analytic_sample <- analytic_sample %>%
       is.na(smoke_currently) ~ 0,  # missing but has history → likely a smoker
       TRUE ~ 0
     )
-  )
+  )  %>% 
+  mutate(cluster_MOD = case_when(cluster == "MOD" ~ 1,TRUE ~ 0),
+         cluster_SIDD = case_when(cluster == "SIDD" ~ 1,TRUE ~ 0),
+         cluster_SIRD = case_when(cluster == "SIRD" ~ 1,TRUE ~ 0))
 

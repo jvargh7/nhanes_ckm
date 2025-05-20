@@ -25,3 +25,5 @@ years_to_load <- c("19992000", "20012002", "20032004", "20052006",
 combined_nhanes <- combine_nhanes(path_nhanes_nsb_folder, years_to_load)
 
 saveRDS(combined_nhanes, file = paste0(path_nhanes_nsb_cleaned,"/combined_nhanes.rds"))
+
+# combined_nhanes <- readRDS(paste0(path_nhanes_nsb_folder,"/working/cleaned/combined_nhanes.rds"))

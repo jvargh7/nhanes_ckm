@@ -17,12 +17,14 @@ format_regression_results <- function(regression_results, diseases, disease_labe
         model == "m0" ~ "Unadjusted",
         model == "m1" ~ "Age-adjusted",
         model == "m2" ~ "Age-, sex-, and smoking-adjusted",
+        model == "s0" ~ "Survey Unadjusted",
+        model == "s2" ~ "Survey Age-, sex-, and smoking-adjusted",
         TRUE ~ NA_character_
       )
     ) %>% 
     dplyr::filter(model == model_name, str_detect(term, "cluster")) %>% 
     mutate(
-      cluster = str_replace(term, "cluster", ""),
+      cluster = str_replace(term, "cluster_", ""),
       coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")"),
       outcome = factor(outcome, levels = diseases, labels = disease_labels)
     ) %>% 
@@ -38,17 +40,21 @@ formatted_fiveyear_results <- format_regression_results(fiveyear_results, diseas
 formatted_tenyear_results <- format_regression_results(tenyear_results, diseases, disease_labels, model_name = "Age-, sex-, and smoking-adjusted")
 
 
-bind_rows(formatted_overall_results,
-          formatted_fiveyear_results,
-          formatted_tenyear_results) %>% 
+bind_rows(formatted_overall_results%>% mutate(type = "overall"),
+          formatted_fiveyear_results%>% mutate(type = "5y"),
+          formatted_tenyear_results%>% mutate(type = "10y")) %>% 
   write_csv(.,"paper/table_adjusted hazard ratios for all cause and cause specific.csv")
 
 
-bind_rows(format_regression_results(overall_results, diseases, disease_labels, model_name = "Age-adjusted"),
-          format_regression_results(fiveyear_results, diseases, disease_labels, model_name = "Age-adjusted"),
-          format_regression_results(tenyear_results, diseases, disease_labels, model_name = "Age-adjusted")) %>% 
+bind_rows(format_regression_results(overall_results, diseases, disease_labels, model_name = "Age-adjusted") %>% mutate(type = "overall"),
+          format_regression_results(fiveyear_results, diseases, disease_labels, model_name = "Age-adjusted") %>% mutate(type = "5y"),
+          format_regression_results(tenyear_results, diseases, disease_labels, model_name = "Age-adjusted") %>% mutate(type = "10y")) %>% 
   write_csv(.,"paper/table_age-adjusted adjusted hazard ratios for all cause and cause specific.csv")
 
+bind_rows(format_regression_results(overall_results, diseases, disease_labels, model_name = "Survey Age-, sex-, and smoking-adjusted") %>% mutate(type = "overall"),
+          format_regression_results(fiveyear_results, diseases, disease_labels, model_name = "Survey Age-, sex-, and smoking-adjusted") %>% mutate(type = "5y"),
+          format_regression_results(tenyear_results, diseases, disease_labels, model_name = "Survey Age-, sex-, and smoking-adjusted") %>% mutate(type = "10y")) %>% 
+  write_csv(.,"paper/table_survey adjusted hazard ratios for all cause and cause specific.csv")
 
 
 
@@ -100,6 +106,7 @@ plot_5y <- plot_with_labels(ready_fiveyear_results)
 plot_10y <- plot_with_labels(ready_tenyear_results)
 
 
+library(ggpubr)
 
 # Combine the three plots into a single panel layout with wider plots
 combined_plot <- ggarrange(

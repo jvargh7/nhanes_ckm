@@ -19,7 +19,7 @@ analytic_sample_10y <- analytic_sample %>%
     mortstat = case_when(mortstat == 1 & censoring_time <= 120 ~ 1, TRUE ~ 0),
     mortality_heart = case_when(ucod_leading == 1 & censoring_time <= 120 ~ 1, TRUE ~ 0),
     mortality_malignant_neoplasms = case_when(ucod_leading == 2 & censoring_time <= 120 ~ 1, TRUE ~ 0),
-    mortality_any_other = case_when(ucod_leading == c(3, 4, 5, 6, 7, 8, 9, 10) & censoring_time <= 120 ~ 1,
+    mortality_any_other = case_when(ucod_leading %in% c(3, 4, 5, 6, 7, 8, 9, 10) & censoring_time <= 120 ~ 1,
                                     TRUE ~ 0),
     censoring_time_10y = case_when(censoring_time > 120 ~ 120, TRUE ~ censoring_time)
   )
@@ -37,35 +37,65 @@ analytic_sample_10y %>%
 # Define the regression function with survey weights
 regression_mortality <- function(outcome_var, df) {
   
+  des = svydesign(id = ~psu, strata = ~pseudostratum, weights = ~pooled_weight, data = df, nest = TRUE)
+  
   # Cox models with survey weights
-  m1 <- coxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster + dm_age")),
-              data = df, 
-              weights = pooled_weight)
+  m1 <- coxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + dm_age")),
+              data = df
+              # weights = pooled_weight,
+              )
   
-  m2 <- coxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster + gender + dm_age + smoke_current")),
-              data = df, 
-              weights = pooled_weight)
+  m2 <- coxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + gender + dm_age + smoke_current")),
+              data = df 
+              # weights = pooled_weight,
+              )
   
-  m0 <- coxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster")),
-              data = df, 
-              weights = pooled_weight)
+  m0 <- coxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD")),
+              data = df
+              # weights = pooled_weight,
+              )
+  
+  s2 <- svycoxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + gender + dm_age + smoke_current")),
+                 design = des
+  )
+  
+  s0 <- svycoxph(as.formula(paste0("Surv(censoring_time_10y, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD")),
+                 design = des
+  )
+  
+  
+  NPH_CHECK = cox.zph(s2)
+  NPH_CHECK_unweighted = cox.zph(m2)
+  
+  
+  par(mfrow=c(2,3))
+  plot(NPH_CHECK_unweighted)
+  mtext(paste0(disease_labels[outcome_var]," - 10 year (Unweighted)"), side = 3, line = - 2, outer = TRUE)
+  
+  par(mfrow=c(2,3))
+  plot(NPH_CHECK)
+  mtext(paste0(disease_labels[outcome_var]," - 10 year (Weighted)"), side = 3, line = - 2, outer = TRUE)
+  
   
   # Combine model results
   bind_rows(broom::tidy(m0) %>% mutate(model = "m0"),
             broom::tidy(m1) %>% mutate(model = "m1"),
-            broom::tidy(m2) %>% mutate(model = "m2")) %>% 
+            broom::tidy(m2) %>% mutate(model = "m2"),
+            broom::tidy(s0) %>% mutate(model = "s0"),
+            broom::tidy(s2) %>% mutate(model = "s2")) %>% 
     mutate(outcome = outcome_var) %>% 
     return(.)
 }
 
 # Run regression for each disease and save results
 regression_results_10y <- list()
+pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncan04_PH Assumption 10y.pdf"))
 for (i in seq_along(diseases)) {
   print(i)
   regression_results_10y[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
                                                                 df = analytic_sample_10y)
 }
-
+dev.off()
 # Save regression results to CSV
 regression_results_10y %>% 
   bind_rows() %>% 
@@ -80,10 +110,12 @@ regression_results_10y %>%
          model = case_when(model == "m0" ~ "Unadjusted",
                            model == "m1" ~ "Age-adjusted",
                            model == "m2" ~ "Age-, sex-, and smoking-adjusted",
+                           model == "s0" ~ "Survey Unadjusted",
+                           model == "s2" ~ "Survey Age-, sex-, and smoking-adjusted",
                            TRUE ~ NA_character_)) %>% 
   dplyr::filter(model == "Age-, sex-, and smoking-adjusted",
                 str_detect(term, "cluster")) %>% 
-  mutate(cluster = str_replace(term, "cluster", "")) %>% 
+  mutate(cluster = str_replace(term, "cluster_", "")) %>% 
   mutate(coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")"),
          outcome = factor(outcome, levels = diseases, labels = diseases)) %>% 
   dplyr::select(outcome, cluster, coef_ci) %>% 
@@ -104,7 +136,7 @@ regression_results_10y %>%
                            TRUE ~ NA_character_)) %>% 
   dplyr::filter(model == "Unadjusted",
                 str_detect(term, "cluster")) %>% 
-  mutate(cluster = str_replace(term, "cluster", "")) %>% 
+  mutate(cluster = str_replace(term, "cluster_", "")) %>% 
   mutate(coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")"),
          outcome = factor(outcome, levels = diseases, labels = diseases)) %>% 
   dplyr::select(outcome, cluster, coef_ci) %>% 
