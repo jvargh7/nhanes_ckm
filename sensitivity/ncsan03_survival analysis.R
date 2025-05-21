@@ -6,13 +6,13 @@ library(ggsurvfit)
 
 ######################## R script for Kaplan-Meier curve ################################
 
-source("analysis/ncan_analytic sample for survival.R")
+source("sensitivity/ncsan_analytic sample for survival.R")
 
 source("functions/regression_mortality.R")
 
 analytic_sample %>%
   summarize(across(diseases, ~mean(., na.rm = TRUE))) %>%
-  write_csv(., "analysis/ncan03_overall rates for all follow-up.csv")
+  write_csv(., "sensitivity/ncsan03_overall rates for all follow-up.csv")
 
 analytic_sample %>% 
   dplyr::select(one_of(diseases)) %>% 
@@ -25,17 +25,17 @@ analytic_sample %>%
 
 regression_results <- list()
 
-pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncan03_PH Assumption.pdf"))
+pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncsan03_PH Assumption.pdf"))
 for (i in c(1:4)) {
   regression_results[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
-                                                            df = analytic_sample)
+                                                            df = analytic_sample,include_s3 = TRUE)
 }
 dev.off()
 
 
 regression_results %>%
   bind_rows() %>%
-  write_csv(., "analysis/ncan03_survival analysis results.csv")
+  write_csv(., "sensitivity/ncsan03_survival analysis results.csv")
 
-# regression_results <- read_csv("analysis/ncan03_survival analysis results.csv")
+# regression_results <- read_csv("sensitivity/ncsan03_survival analysis results.csv")
 

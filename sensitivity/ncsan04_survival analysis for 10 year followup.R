@@ -1,4 +1,4 @@
-# Purpose: Template for Kaplan-Meier curve and Cox PH regression analysis with survey weights
+# Purpose: Template for Kaplan-Meier curve and Cox PH regression sensitivity with survey weights
 rm(list=ls()); gc(); source(".Rprofile")
 
 # Load the required libraries
@@ -8,7 +8,7 @@ library(dplyr)
 library(broom)
 library(tidyr)
 
-source("analysis/ncan_analytic sample for survival.R")
+source("sensitivity/ncsan_analytic sample for survival.R")
 
 # Define only the four outcomes of interest
 diseases <- c("mortstat", "mortality_heart", "mortality_malignant_neoplasms", "mortality_any_other")
@@ -27,7 +27,7 @@ analytic_sample_10y <- analytic_sample %>%
 # Save overall rates for 10-year follow-up
 analytic_sample_10y %>% 
   summarize(across(diseases, ~mean(.))) %>% 
-  write_csv("analysis/ncan04_overall rates for 10 year follow-up.csv")
+  write_csv("sensitivity/ncsan04_overall rates for 10 year follow-up.csv")
 
 
 analytic_sample_10y %>% 
@@ -36,20 +36,19 @@ analytic_sample_10y %>%
 
 source("functions/regression_mortality.R")
 
-
 # Run regression for each disease and save results
 regression_results_10y <- list()
-pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncan04_PH Assumption 10y.pdf"))
+pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncsan04_PH Assumption 10y.pdf"))
 for (i in seq_along(diseases)) {
   print(i)
   regression_results_10y[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
-                                                                df = analytic_sample_10y)
+                                                                df = analytic_sample_10y,include_s3 = TRUE)
 }
 dev.off()
 # Save regression results to CSV
 regression_results_10y %>% 
   bind_rows() %>% 
-  write_csv("analysis/ncan04_survival analysis for 10 year follow-up.csv")
+  write_csv("sensitivity/ncsan04_survival sensitivity for 10 year follow-up.csv")
 
 
-read_csv("analysis/ncan04_survival analysis for 10 year follow-up.csv") %>% View()
+read_csv("sensitivity/ncsan04_survival sensitivity for 10 year follow-up.csv") %>% View()

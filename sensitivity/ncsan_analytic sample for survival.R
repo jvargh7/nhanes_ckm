@@ -1,4 +1,4 @@
-new_or_undiagnosed_dm <- readRDS(file = paste0(path_nhanes_ckm_newdm,"/new_or_undiagnosed_dm.rds")) %>% 
+all_dm <- readRDS(file = paste0(path_nhanes_ckm_alldm,"/ncsen14_all dm.rds")) %>% 
   dplyr::filter(!year %in% c("2017Mar2020","2019Mar2020","20212023")) %>% 
   dplyr::select(respondentid,year,interview_period, mec4yweight, mec2yweight) %>% 
   mutate(median_date = case_when(interview_period == 1 ~ paste0(str_sub(year,5,8),"-01-30"),
@@ -12,9 +12,11 @@ new_or_undiagnosed_dm <- readRDS(file = paste0(path_nhanes_ckm_newdm,"/new_or_un
     ))
 
 # Load in the imputed and clustered data set:
-clustered_set <- read_csv(paste0(path_nhanes_ckm_newdm, "/knn clusters.csv"))  %>% 
+clustered_set <- read_csv(paste0(path_nhanes_ckm_alldm, "/ncsen17_knn clusters.csv"))  %>% 
+  # rename_with(~str_replace(.,"\\.+[0-9]+","")) %>% 
   distinct(respondentid, .keep_all = TRUE) %>%
   mutate(cluster = as.factor(cluster))
+
 
 # Ref: https://www.cdc.gov/nchs/data-linkage/mortality-public.htm
 
@@ -33,7 +35,7 @@ mortality_data <- read_rds(paste0(path_nhanes_ckm_folder,"/working/cleaned/ncdat
   distinct(respondentid, .keep_all = TRUE)
 
 # Convert the year column in both data frames to character to match types
-new_or_undiagnosed_dm <- new_or_undiagnosed_dm %>%
+all_dm <- all_dm %>%
   mutate(year = as.character(year))
 
 mortality_data <- mortality_data %>%
@@ -45,7 +47,7 @@ clustered_set <- clustered_set %>%
 analytic_sample <- left_join(clustered_set,
                              mortality_data %>% dplyr::select(-year),
                              by = c("respondentid")) %>% 
-  left_join(new_or_undiagnosed_dm,
+  left_join(all_dm,
             by=c("respondentid","year")) %>% 
   # event status
   mutate(mortstat = case_when(is.na(mortstat) ~ 0,
@@ -72,11 +74,14 @@ analytic_sample <- left_join(clustered_set,
     ),
     gender = gender - 1
   )  %>% 
-  mutate(cluster_MOD = case_when(cluster == "MOD" ~ 1,TRUE ~ 0),
+  # There is no MOD as such in the all dm dataset
+  mutate(cluster_MOD = case_when(cluster == "MD" ~ 1,TRUE ~ 0),
          cluster_SIDD = case_when(cluster == "SIDD" ~ 1,TRUE ~ 0),
          cluster_SIRD = case_when(cluster == "SIRD" ~ 1,TRUE ~ 0),
          cluster_MARD = case_when(cluster == "MARD" ~ 1,TRUE ~ 0),
          year_fe = case_when(year %in% c(19992000,20012002,20032004,20052006,20072008) ~ 0,
-                             TRUE ~ 1)) 
+                             TRUE ~ 1),
+         duration = case_when(duration >= 2 ~ 1,
+                              TRUE ~ 0)) 
   
 

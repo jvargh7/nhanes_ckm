@@ -2,9 +2,9 @@
 rm(list=ls());gc();source(".Rprofile")
 
 
-ncan03 <- read_csv("analysis/ncan03_coefficients of aft analysis for overall.csv")
-ncan04 <- read_csv("analysis/ncan04_coefficients of aft analysis for 10y followup.csv")
-ncan05 <- read_csv("analysis/ncan05_coefficients of aft analysis for 5y followup.csv")
+ncan03 <- read_csv("analysis/archive/ncan03_coefficients of aft analysis for overall.csv")
+ncan04 <- read_csv("analysis/archive/ncan04_coefficients of aft analysis for 10y followup.csv")
+ncan05 <- read_csv("analysis/archive/ncan05_coefficients of aft analysis for 5y followup.csv")
 
 
 table_df <- bind_rows(ncan03 %>% mutate(period = "Overall"),

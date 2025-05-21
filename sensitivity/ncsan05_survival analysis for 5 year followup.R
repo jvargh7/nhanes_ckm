@@ -1,4 +1,4 @@
-# Purpose: Template for Kaplan-Meier curve and Cox PH regression analysis with survey weights
+# Purpose: Template for Kaplan-Meier curve and Cox PH regression sensitivity with survey weights
 rm(list=ls()); gc(); source(".Rprofile")
 
 # Load the required libraries
@@ -8,7 +8,7 @@ library(dplyr)
 library(broom)
 library(tidyr)
 
-source("analysis/ncan_analytic sample for survival.R")
+source("sensitivity/ncsan_analytic sample for survival.R")
 
 # Define only the four outcomes of interest
 diseases <- c("mortstat", "mortality_heart", "mortality_malignant_neoplasms", "mortality_any_other")
@@ -27,7 +27,7 @@ analytic_sample_5y <- analytic_sample %>%
 # Save overall rates for 5-year follow-up
 analytic_sample_5y %>% 
   summarize(across(diseases, ~mean(.))) %>% 
-  write_csv("analysis/ncan05_overall rates for 5 year follow-up.csv")
+  write_csv("sensitivity/ncsan05_overall rates for 5 year follow-up.csv")
 
 analytic_sample_5y %>% 
   dplyr::select(one_of(diseases)) %>% 
@@ -37,20 +37,21 @@ analytic_sample_5y %>%
 # Define the regression function with survey weights
 source("functions/regression_mortality.R")
 
+
 # Run regression for each disease and save results
 regression_results_5y <- list()
-pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncan05_PH Assumption 5y.pdf"))
+pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncsan05_PH Assumption 5y.pdf"))
 
 for (i in seq_along(diseases)) {
   print(i)
   regression_results_5y[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
-                                                               df = analytic_sample_5y)
+                                                               df = analytic_sample_5y,include_s3 = TRUE)
 }
 dev.off()
 # Save regression results to CSV
 regression_results_5y %>% 
   bind_rows() %>% 
-  write_csv("analysis/ncan05_survival analysis for 5 year follow-up.csv")
+  write_csv("sensitivity/ncsan05_survival sensitivity for 5 year follow-up.csv")
 
 
-regression_results_5y = read_csv("analysis/ncan05_survival analysis for 5 year follow-up.csv")
+regression_results_5y = read_csv("sensitivity/ncsan05_survival sensitivity for 5 year follow-up.csv")
