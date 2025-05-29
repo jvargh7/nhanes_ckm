@@ -3,7 +3,7 @@ rm(list = ls()); gc(); source(".Rprofile")
 # Load the combined NHANES data sample:
 source((paste0(path_nhanes_body_composition,"/run all nsbdat.R")))
         
-combined_nhanes <- readRDS("/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES Subtypes Body Composition/working/cleaned/combined_nhanes.rds")
+combined_nhanes <- readRDS("/Users/ksanaka/Library/CloudStorage/OneDrive-Emory/NHANES Subtypes Body Composition/working/cleaned/combined_nhanes.rds")
 
 # Load the analytic sample
 source(".Rprofile")
@@ -20,6 +20,14 @@ subset_combined_nhanes <- combined_nhanes %>%
     left_leg_fat_percentage,
     right_leg_fat_percentage,
     trunk_fat_percentage,
+    left_arm_fat_mass,
+    right_arm_fat_mass,
+    left_leg_fat_mass,
+    right_leg_fat_mass,
+    left_arm_total_mass,
+    right_arm_total_mass,
+    left_leg_total_mass,
+    right_leg_total_mass,
     height,
     left_arm_lean_mass_with_body_mineral_content,
     right_arm_lean_mass_with_bone_mineral_content,
@@ -35,20 +43,18 @@ joined_sample <- analytic_sample %>%
 # Calculating new variables:
 joined_sample <- joined_sample %>%
   mutate(
-    percentage_arm_and_leg_fat = left_arm_fat_percentage +
-      right_arm_fat_percentage +
-      left_leg_fat_percentage +
-      right_leg_fat_percentage,
+    percentage_arm_and_leg_fat = (left_arm_fat_mass + right_arm_fat_mass + left_leg_fat_mass + right_leg_fat_mass) / (left_arm_total_mass + right_arm_total_mass + left_leg_total_mass + right_leg_total_mass)*100,
+    trunk_to_limb_fat_ratio = (trunk_fat_percentage) / percentage_arm_and_leg_fat,
     
-    trunk_to_limb_fat_ratio = trunk_fat_percentage / percentage_arm_and_leg_fat,
-    
-    fat_mass_index = total_fat / (height^2),
+    fat_mass_index = (total_fat/1000) / ((height/100)^2),
     
     leg_to_trunk_lean_mass_ratio = (left_leg_lean_mass_with_bone_mineral_content +
                                       right_leg_lean_mass_with_bone_mineral_content) /
       trunk_lean_mass_with_bone_mineral_content,
     
-    lean_mass_index = total_lean / (height^2)
+    total_lean = total_lean/1000,
+    
+    lean_mass_index = total_lean / ((height/100)^2)
   )
 
 # Create survey design object for joined sample
@@ -78,8 +84,8 @@ overall_summary <- data.frame(
   Central_Fat = mean_sd_ci_survey("trunk_fat_percentage", joined_sample_svy),
   Trunk_To_Limb_Fat_Ratio = mean_sd_ci_survey("trunk_to_limb_fat_ratio", joined_sample_svy),
   Fat_Mass_Index = mean_sd_ci_survey("fat_mass_index", joined_sample_svy),
-  Leg_To_Trunk_Lean_Mass_Ratio = mean_sd_ci_survey("sbp", joined_sample_svy),
-  Total_Lean_Mass = mean_sd_ci_survey("leg_to_trunk_lean_mass_ratio", joined_sample_svy),
+  Leg_To_Trunk_Lean_Mass_Ratio = mean_sd_ci_survey("leg_to_trunk_lean_mass_ratio", joined_sample_svy),
+  Total_Lean_Mass = mean_sd_ci_survey("total_lean", joined_sample_svy),
   Lean_Mass_Index = mean_sd_ci_survey("lean_mass_index", joined_sample_svy)
 )
 
@@ -99,8 +105,8 @@ for (cluster_id in clusters) {
     Central_Fat = mean_sd_ci_survey("trunk_fat_percentage", cluster_design),
     Trunk_To_Limb_Fat_Ratio = mean_sd_ci_survey("trunk_to_limb_fat_ratio", cluster_design),
     Fat_Mass_Index = mean_sd_ci_survey("fat_mass_index", cluster_design),
-    Leg_To_Trunk_Lean_Mass_Ratio = mean_sd_ci_survey("sbp", cluster_design),
-    Total_Lean_Mass = mean_sd_ci_survey("leg_to_trunk_lean_mass_ratio", cluster_design),
+    Leg_To_Trunk_Lean_Mass_Ratio = mean_sd_ci_survey("leg_to_trunk_lean_mass_ratio", cluster_design),
+    Total_Lean_Mass = mean_sd_ci_survey("total_lean", cluster_design),
     Lean_Mass_Index = mean_sd_ci_survey("lean_mass_index", cluster_design)
   )
   

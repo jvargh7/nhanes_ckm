@@ -3,7 +3,6 @@ library(tidyverse)
 library(survey)
 library(srvyr)
 library(lubridate)
-library(reticulate)
 
 options(survey.adjust.domain.lonely=TRUE)
 options(survey.lonely.psu="adjust")
@@ -23,15 +22,12 @@ if(Sys.info()["user"] == "JVARGH7"){
   path_nhanes_nsb_folder <- "C:/Cloud/OneDrive - Emory University/Papers/_Dropped/NHANES Subtypes Body Composition"
   
 }
-if(Sys.info()["user"] == "krishnasanaka"){
-  # Install the necessary Python packages
-  reticulate::use_virtualenv("~/.virtualenvs/r-reticulate", required = TRUE)
-  reticulate::py_install(c("numpy", "pandas", "scikit-learn", "matplotlib", "seaborn", "kneed"), pip = TRUE)
+if(Sys.info()["user"] == "ksanaka"){
   
-  path_nhanes_ckm_folder <- "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES CKM Cascade"
-  path_nhanes_ckm_repo <- "/Users/krishnasanaka/nhanes_ckm"
+  path_nhanes_ckm_folder <- "/Users/ksanaka/Library/CloudStorage/OneDrive-Emory/NHANES CKM Cascade"
+  path_nhanes_ckm_repo <- "/Users/ksanaka/Desktop/Research/nhanes_ckm"
   
-  path_nhanes_nsb_folder <- "/Users/krishnasanaka/Library/CloudStorage/OneDrive-Emory/NHANES Subtypes Body Composition"
+  path_nhanes_nsb_folder <- "/Users/ksanaka/Library/CloudStorage/OneDrive-Emory/NHANES Subtypes Body Composition"
   path_nhanes_nsb_repo <- "/Users/krishnasanaka/nhanes_subtypes_bodycomp"
   
   path_nhanes_ckm_raw <- paste0(path_nhanes_ckm_folder,"/working/raw")
