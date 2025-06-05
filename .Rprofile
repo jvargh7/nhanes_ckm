@@ -71,6 +71,8 @@ if(Sys.info()["user"] == "carolinechizak"){
 
 cluster_colors_cosmos_all <- c("MOD"="#F8BDA4","SIRD"="#A1C3AC","SIDD"="#ACD9EA","MARD"="#D0ACC9")  
 
+cluster_colors_not2d <- c("MOD"="#F8BDA4","SIRD"="#A1C3AC","SIDD"="#ACD9EA","MARD"="#D0ACC9","NoT2D" = "black")
+
 diseases <- c("mortstat",paste0("mortality_",c("heart", "malignant_neoplasms", "any_other")))
 disease_labels = c("All Cause","Heart Disease","Cancer","Other")
 

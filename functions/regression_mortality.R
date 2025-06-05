@@ -1,36 +1,40 @@
-regression_mortality <- function(outcome_var, df,include_s3 = FALSE) {
+regression_mortality <- function(outcome_var, df,include_s3 = FALSE, cluster_vars = c("cluster_MOD","cluster_SIDD","cluster_SIRD")) {
   
   des = svydesign(id = ~psu, strata = ~pseudostratum, weights = ~pooled_weight, data = df, nest = TRUE)
   
   
-  s0 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD")),
+  
+  
+  
+  s0 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ ",paste0(cluster_vars,collapse = " + "))),
                  design = des
   )
   
-  s1 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + dm_age + year_fe")),
+  s1 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ ",paste0(cluster_vars,collapse = " + "), "+ dm_age + year_fe")),
                  design = des
   )
   
-  s2 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + gender + dm_age + smoke_current + year_fe")),
+  s2 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ ",paste0(cluster_vars,collapse = " + "), "+ gender + dm_age + smoke_current + year_fe")),
                  design = des
   )
+  
 
 
   
   
-  m0 <- coxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD")),
+  m0 <- coxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ ",paste0(cluster_vars,collapse = " + "))),
               data = df
   )
   
-  m1 <- coxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + dm_age + year_fe")),
+  m1 <- coxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ ",paste0(cluster_vars,collapse = " + "), "+ dm_age + year_fe")),
               data = df
   )
   
-  m2 <- coxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + gender + dm_age + smoke_current + year_fe")),
+  m2 <- coxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ ",paste0(cluster_vars,collapse = " + "), "+ gender + dm_age + smoke_current + year_fe")),
               data = df
-  )  
+  )
   
-  
+
   
   
   NPH_CHECK = cox.zph(s2)
@@ -55,9 +59,12 @@ regression_mortality <- function(outcome_var, df,include_s3 = FALSE) {
   if(include_s3){
     # Only for sensitivity/ncsan...
     # + duration
-    s3 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ cluster_MOD + cluster_SIDD + cluster_SIRD + gender + dm_age + smoke_current + rx_insulin + rx_otherdm + rx_chol + rx_htn + year_fe + duration")),
+    
+    s3 <- svycoxph(as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ ",paste0(cluster_vars,collapse = " + "), "+ gender + dm_age + smoke_current + rx_insulin + rx_otherdm + rx_chol + rx_htn + year_fe + duration")),
                    design = des
     )
+    
+
     
     regression_output = regression_output %>% 
       bind_rows(broom::tidy(s3) %>% mutate(model = "s3")) %>% 

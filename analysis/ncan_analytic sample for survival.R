@@ -1,6 +1,7 @@
+
 new_or_undiagnosed_dm <- readRDS(file = paste0(path_nhanes_ckm_newdm,"/new_or_undiagnosed_dm.rds")) %>% 
   dplyr::filter(!year %in% c("2017Mar2020","2019Mar2020","20212023")) %>% 
-  dplyr::select(respondentid,year,interview_period, mec4yweight, mec2yweight) %>% 
+  dplyr::select(respondentid,year,interview_period, mec4yweight, mec2yweight,chol_med_taking,htn_med_taking,dm_insulin_taking, dm_bloodsugar_taking) %>% 
   mutate(median_date = case_when(interview_period == 1 ~ paste0(str_sub(year,5,8),"-01-30"),
                                  interview_period == 2 ~ paste0(str_sub(year,5,8),"-07-31"),
                                  TRUE ~ paste0(str_sub(year,5,8),"-04-30"))) %>% 
@@ -9,7 +10,15 @@ new_or_undiagnosed_dm <- readRDS(file = paste0(path_nhanes_ckm_newdm,"/new_or_un
     pooled_weight = case_when(
       year %in% c("1999-2000", "2001-2002") ~ mec4yweight / 10,
       TRUE ~ mec2yweight / 10
-    ))
+    )) %>% 
+  mutate(rx_chol = case_when(chol_med_taking == 1 ~ 1,
+                             TRUE ~ 0),
+         rx_htn = case_when(htn_med_taking == 1 ~ 1,
+                            TRUE ~ 0),
+         rx_insulin=  case_when(dm_insulin_taking == 1 ~ 1,
+                                TRUE ~ 0),
+         rx_otherdm = case_when(dm_bloodsugar_taking == 1 ~ 1,
+                             TRUE ~ 0))
 
 # Load in the imputed and clustered data set:
 clustered_set <- read_csv(paste0(path_nhanes_ckm_newdm, "/knn clusters.csv"))  %>% 
@@ -80,3 +89,82 @@ analytic_sample <- left_join(clustered_set,
                              TRUE ~ 1)) 
   
 
+
+# NO T2D ------------------
+
+
+combined_nhanes_selected <- readRDS(paste0(path_nhanes_ckm_newdm,"/combined_nhanes_over18.rds"))  %>% 
+  anti_join(new_or_undiagnosed_dm,
+            by = c("respondentid","year")) %>%
+  dplyr::filter((pregnant %in% c(2,3) | is.na(pregnant)),dm_doc_told %in% c(2,3,9)) %>% 
+  dplyr::filter(!year %in% c("2017Mar2020","2019Mar2020","20212023")) %>% 
+  dplyr::filter(age >= 40) %>% 
+  dplyr::select(respondentid,year,interview_period, mec4yweight, mec2yweight,chol_med_taking,htn_med_taking,dm_insulin_taking, dm_bloodsugar_taking,
+                # Additional variables
+                smoke_currently, smoke_history, gender,age, psu, pseudostratum
+  ) %>% 
+  mutate(median_date = case_when(interview_period == 1 ~ paste0(str_sub(year,5,8),"-01-30"),
+                                 interview_period == 2 ~ paste0(str_sub(year,5,8),"-07-31"),
+                                 TRUE ~ paste0(str_sub(year,5,8),"-04-30"))) %>% 
+  mutate(median_date = ymd(median_date)) %>%
+  mutate(
+    pooled_weight = case_when(
+      year %in% c("1999-2000", "2001-2002") ~ mec4yweight / 10,
+      TRUE ~ mec2yweight / 10
+    )) %>% 
+  mutate(rx_chol = case_when(chol_med_taking == 1 ~ 1,
+                             TRUE ~ 0),
+         rx_htn = case_when(htn_med_taking == 1 ~ 1,
+                            TRUE ~ 0),
+         rx_insulin=  case_when(dm_insulin_taking == 1 ~ 1,
+                                TRUE ~ 0),
+         rx_otherdm = case_when(dm_bloodsugar_taking == 1 ~ 1,
+                                TRUE ~ 0))
+
+
+
+
+
+analytic_not2d <- combined_nhanes_selected %>% 
+  mutate(year = str_replace(year,"-","")) %>% 
+  left_join(mortality_data %>% 
+              dplyr::select(-year),
+            by=c("respondentid")) %>% 
+  # event status
+  mutate(mortstat = case_when(is.na(mortstat) ~ 0,
+                              TRUE ~ mortstat),
+         mortality_heart = case_when(ucod_leading == 1 ~ 1,
+                                     TRUE ~ 0),
+         mortality_malignant_neoplasms = case_when(ucod_leading == 2 ~ 1,
+                                                   TRUE ~ 0),
+         mortality_any_other = case_when(ucod_leading %in% c(3, 4, 5, 6, 7, 8, 9, 10) ~ 1,
+                                         TRUE ~ 0),
+         censoring_time = case_when(!is.na(permth_int) ~ permth_int,
+                                    permth_int >= 300 ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4,
+                                    TRUE ~ as.numeric(difftime(ymd("2019-12-31"),median_date,units="weeks"))/4)) %>% 
+  dplyr::filter(!is.na(censoring_time)) %>%
+  mutate(
+    # New smoking status based on combination of variables
+    smoke_current = case_when(
+      smoke_currently %in% c(1, 2) ~ 1,  # currently smokes every day or some days
+      smoke_currently == 3 ~ 0,         # does not currently smoke
+      smoke_history == 2 ~ 0,           # never smoked (even if smoke_currently is NA)
+      smoke_history == 1 ~ 1,
+      is.na(smoke_currently) ~ 0,  # missing but has history → likely a smoker
+      TRUE ~ 0
+    ),
+    gender = gender - 1
+  )  %>% 
+  mutate(cluster_MOD = 0,
+         cluster_SIDD = 0,
+         cluster_SIRD = 0,
+         cluster_MARD = 0,
+         year_fe = case_when(year %in% c(19992000,20012002,20032004,20052006,20072008) ~ 0,
+                             TRUE ~ 1)) %>% 
+  mutate(dm_age = age)
+
+analytic_sample_with_not2d = bind_rows(analytic_sample,
+                                       analytic_not2d) %>% 
+  mutate(cluster = case_when(is.na(cluster) ~ "NoT2D",
+                             TRUE ~ cluster)) %>% 
+  mutate(cluster = factor(cluster,levels=c("NoT2D","MARD","MOD","SIDD","SIRD")))

@@ -1,9 +1,10 @@
+rm(list=ls());gc();source(".Rprofile")
 
-
+library(ggsurvfit)
 
 source("analysis/ncan_analytic sample for survival.R")
 
-unadjusted_curves_mortality <- function(outcome_var, analytic_sample, outcome_label) {
+unadjusted_curves_mortality <- function(outcome_var, analytic_sample, outcome_label,cluster_colors = cluster_colors_cosmos_all) {
   
   cox_reg <- coxph(
     as.formula(paste0("Surv(censoring_time, ", outcome_var, ") ~ strata(cluster)")),
@@ -25,8 +26,8 @@ unadjusted_curves_mortality <- function(outcome_var, analytic_sample, outcome_la
     ylab("Event (proportion)") +
     add_confidence_interval() +
     theme_bw() +
-    scale_color_manual(name = "", values = cluster_colors_cosmos_all) +
-    scale_fill_manual(name = "", values = cluster_colors_cosmos_all) +
+    scale_color_manual(name = "", values = cluster_colors) +
+    scale_fill_manual(name = "", values = cluster_colors) +
     theme(axis.text = element_text(size = 8),
           legend.text = element_text(size = 8),
           legend.position = c(0.2, 0.8),
@@ -37,6 +38,8 @@ unadjusted_curves_mortality <- function(outcome_var, analytic_sample, outcome_la
   
   return(fig_out)
 }
+
+# Unadjusted plots only NEW T2D ---------
 
 unadjusted_plots <- list()
 for (i in 1:4){
@@ -72,5 +75,39 @@ ggsave(combined_unadjusted_plot,
        height = 6,  # Slightly increased height for x-axis labels
        dpi = 300)   # High resolution for clarity
 
+
+# Unadjusted plots with no T2D ----------------------
+
+unadjusted_plots_with_not2d <- list()
+for (i in 1:4){
+  unadjusted_plots_with_not2d[[diseases[i]]] <- unadjusted_curves_mortality(outcome_var = diseases[i],
+                                                                 analytic_sample = analytic_sample_with_not2d,
+                                                                 outcome_label = disease_labels[i],
+                                                                 cluster_colors = cluster_colors_not2d)
+  
+}
+
+
+
+# Increase font sizes and add margins to prevent labels from being cut off
+combined_unadjusted_plot_not2d <- do.call(ggarrange, 
+                                    c(unadjusted_plots_with_not2d, 
+                                      list(ncol = 4, 
+                                           nrow = 1, 
+                                           common.legend = TRUE, 
+                                           legend = "bottom"))) +
+  theme(plot.title = element_text(size = 14),  # Adjust the title font size
+        axis.title = element_text(size = 12), # Adjust axis title font size
+        axis.text = element_text(size = 10),  # Adjust axis tick labels font size
+        legend.text = element_text(size = 12),# Adjust legend font size
+        legend.title = element_text(size = 12),
+        plot.margin = margin(10, 10, 20, 10)) # Add extra space at the bottom
+
+# Save the plot with adjusted dimensions and margins
+ggsave(combined_unadjusted_plot_not2d, 
+       filename = paste0(path_nhanes_ckm_folder, "/figures/KM curve by cause of death with no T2D.png"), 
+       width = 10,  # Adjusted width
+       height = 6,  # Slightly increased height for x-axis labels
+       dpi = 300)   # High resolution for clarity
 
 
