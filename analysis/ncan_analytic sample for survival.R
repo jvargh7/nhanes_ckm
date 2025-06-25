@@ -167,4 +167,5 @@ analytic_sample_with_not2d = bind_rows(analytic_sample,
                                        analytic_not2d) %>% 
   mutate(cluster = case_when(is.na(cluster) ~ "NoT2D",
                              TRUE ~ cluster)) %>% 
-  mutate(cluster = factor(cluster,levels=c("NoT2D","MARD","MOD","SIDD","SIRD")))
+  mutate(cluster = factor(cluster,levels=c("NoT2D","MARD","MOD","SIDD","SIRD"))) %>% 
+  mutate(duration = 1)

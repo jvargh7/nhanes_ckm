@@ -35,7 +35,7 @@ table_df_noT2D <- bind_rows(ncan13 %>% mutate(period = "Overall"),
   mutate(HR = exp(estimate),
          lci = exp(estimate - 1.96 * std.error),
          uci = exp(estimate + 1.96 * std.error))  %>% 
-  dplyr::filter(model %in% c("s0","s2","m0","m2"),
+  dplyr::filter(model %in% c("s0","s3","m0","m3"),
                 str_detect(term, "cluster")) %>% 
   mutate(cluster = str_replace(term, "cluster_", ""),
          coef_ci = paste0(round(HR, 2), " (", round(lci, 2), ", ", round(uci, 2), ")")) %>% 

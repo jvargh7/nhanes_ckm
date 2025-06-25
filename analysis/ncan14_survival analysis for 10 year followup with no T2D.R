@@ -44,7 +44,7 @@ for (i in seq_along(diseases)) {
   print(i)
   regression_results_10y[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
                                                                 df = analytic_sample_10y,
-                                                                cluster_vars = c("cluster_MARD","cluster_MOD","cluster_SIDD","cluster_SIRD"))
+                                                                cluster_vars = c("cluster_MARD","cluster_MOD","cluster_SIDD","cluster_SIRD"), include_s3_wo_duration = TRUE)
 }
 dev.off()
 # Save regression results to CSV

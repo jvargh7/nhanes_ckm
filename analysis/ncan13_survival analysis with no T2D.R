@@ -29,7 +29,7 @@ pdf(file=paste0(path_nhanes_ckm_folder,"/figures/ncan13_PH Assumption.pdf"))
 for (i in c(1:4)) {
   regression_results[[diseases[i]]] <- regression_mortality(outcome_var = diseases[i],
                                                             df = analytic_sample_with_not2d,
-                                                            cluster_vars = c("cluster_MARD","cluster_MOD","cluster_SIDD","cluster_SIRD"))
+                                                            cluster_vars = c("cluster_MARD","cluster_MOD","cluster_SIDD","cluster_SIRD"), include_s3_wo_duration = TRUE)
 }
 dev.off()
 
