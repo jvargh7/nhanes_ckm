@@ -28,6 +28,7 @@ subset_combined_nhanes <- combined_nhanes %>%
     right_arm_total_mass,
     left_leg_total_mass,
     right_leg_total_mass,
+    trunk_fat_mass,
     height,
     left_arm_lean_mass_with_body_mineral_content,
     right_arm_lean_mass_with_bone_mineral_content,
@@ -44,7 +45,7 @@ joined_sample <- analytic_sample %>%
 joined_sample <- joined_sample %>%
   mutate(
     percentage_arm_and_leg_fat = (left_arm_fat_mass + right_arm_fat_mass + left_leg_fat_mass + right_leg_fat_mass) / (left_arm_total_mass + right_arm_total_mass + left_leg_total_mass + right_leg_total_mass)*100,
-    trunk_to_limb_fat_ratio = (trunk_fat_percentage) / percentage_arm_and_leg_fat,
+    trunk_to_limb_fat_ratio = (trunk_fat_mass) / (left_arm_fat_mass + right_arm_fat_mass + left_leg_fat_mass + right_leg_fat_mass),
     
     fat_mass_index = (total_fat/1000) / ((height/100)^2),
     

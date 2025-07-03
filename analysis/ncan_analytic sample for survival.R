@@ -94,34 +94,26 @@ analytic_sample <- left_join(clustered_set,
 
 
 combined_nhanes_selected <- readRDS(paste0(path_nhanes_ckm_newdm,"/combined_nhanes_over18.rds"))  %>% 
-  anti_join(new_or_undiagnosed_dm,
-            by = c("respondentid","year")) %>%
-  dplyr::filter((pregnant %in% c(2,3) | is.na(pregnant)),dm_doc_told %in% c(2,3,9)) %>% 
+  anti_join(new_or_undiagnosed_dm, by = c("respondentid","year")) %>%
+  dplyr::filter((pregnant %in% c(2,3) | is.na(pregnant)), dm_doc_told %in% c(2,3,9)) %>% 
   dplyr::filter(!year %in% c("2017Mar2020","2019Mar2020","20212023")) %>% 
   dplyr::filter(age >= 40) %>% 
-  dplyr::select(respondentid,year,interview_period, mec4yweight, mec2yweight,chol_med_taking,htn_med_taking,dm_insulin_taking, dm_bloodsugar_taking,
-                # Additional variables
-                smoke_currently, smoke_history, gender,age, psu, pseudostratum
-  ) %>% 
-  mutate(median_date = case_when(interview_period == 1 ~ paste0(str_sub(year,5,8),"-01-30"),
-                                 interview_period == 2 ~ paste0(str_sub(year,5,8),"-07-31"),
-                                 TRUE ~ paste0(str_sub(year,5,8),"-04-30"))) %>% 
+  dplyr::rename(egfr = eGFR) %>%
+  mutate(median_date = case_when(
+    interview_period == 1 ~ paste0(str_sub(year,5,8),"-01-30"),
+    interview_period == 2 ~ paste0(str_sub(year,5,8),"-07-31"),
+    TRUE ~ paste0(str_sub(year,5,8),"-04-30"))) %>%
   mutate(median_date = ymd(median_date)) %>%
   mutate(
     pooled_weight = case_when(
       year %in% c("1999-2000", "2001-2002") ~ mec4yweight / 10,
       TRUE ~ mec2yweight / 10
-    )) %>% 
-  mutate(rx_chol = case_when(chol_med_taking == 1 ~ 1,
-                             TRUE ~ 0),
-         rx_htn = case_when(htn_med_taking == 1 ~ 1,
-                            TRUE ~ 0),
-         rx_insulin=  case_when(dm_insulin_taking == 1 ~ 1,
-                                TRUE ~ 0),
-         rx_otherdm = case_when(dm_bloodsugar_taking == 1 ~ 1,
-                                TRUE ~ 0))
-
-
+    ),
+    rx_chol = case_when(chol_med_taking == 1 ~ 1, TRUE ~ 0),
+    rx_htn = case_when(htn_med_taking == 1 ~ 1, TRUE ~ 0),
+    rx_insulin = case_when(dm_insulin_taking == 1 ~ 1, TRUE ~ 0),
+    rx_otherdm = case_when(dm_bloodsugar_taking == 1 ~ 1, TRUE ~ 0)
+  )
 
 
 

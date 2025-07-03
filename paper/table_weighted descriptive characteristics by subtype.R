@@ -5,7 +5,7 @@ rm(list=ls()); gc(); source(".Rprofile")
 source("analysis/ncan_analytic sample for survival.R")
 
 # Define survey design
-analytic_sample_svy <- svydesign(id = ~psu, strata = ~pseudostratum, weights = ~pooled_weight, data = analytic_sample, nest = TRUE)
+analytic_sample_svy <- svydesign(id = ~psu, strata = ~pseudostratum, weights = ~pooled_weight, data = analytic_sample_with_not2d, nest = TRUE)
 
 # Functions to calculate survey mean and proportion with confidence intervals
 mean_sd_ci_survey <- function(variable_name, survey_design) {
@@ -33,7 +33,7 @@ overall_summary <- data.frame(
   cluster = "Overall",
   N = weighted_n(analytic_sample_svy),
   Male = prop_ci_category_survey("gender", 1, analytic_sample_svy),
-  Female = prop_ci_category_survey("gender", 2, analytic_sample_svy),
+  Female = prop_ci_category_survey("gender", 0, analytic_sample_svy),
   NH_White = prop_ci_category_survey("race", 3, analytic_sample_svy),
   NH_Black = prop_ci_category_survey("race", 4, analytic_sample_svy),
   Hispanic = prop_ci_category_survey("race", c(1, 2), analytic_sample_svy),
@@ -65,11 +65,12 @@ overall_summary <- data.frame(
   HOMA2_IR = mean_sd_ci_survey("homa2ir", analytic_sample_svy),
   eGFR = mean_sd_ci_survey("egfr", analytic_sample_svy),
   ALT = mean_sd_ci_survey("alt", analytic_sample_svy),
-  AST = mean_sd_ci_survey("ast", analytic_sample_svy)
+  AST = mean_sd_ci_survey("ast", analytic_sample_svy),
+  Follow_Up = mean_sd_ci_survey("permth_int", analytic_sample_svy)
 )
 
 # Create cluster-specific summary table using weighted survey design
-clusters <- unique(analytic_sample$cluster)
+clusters <- unique(analytic_sample_with_not2d$cluster)
 cluster_summary <- data.frame()
 
 for (cluster_id in clusters) {
@@ -81,7 +82,7 @@ for (cluster_id in clusters) {
     cluster = cluster_id,
     N = weighted_n(cluster_design),
     Male = prop_ci_category_survey("gender", 1, cluster_design),
-    Female = prop_ci_category_survey("gender", 2, cluster_design),
+    Female = prop_ci_category_survey("gender", 0, cluster_design),
     NH_White = prop_ci_category_survey("race", 3, cluster_design),
     NH_Black = prop_ci_category_survey("race", 4, cluster_design),
     Hispanic = prop_ci_category_survey("race", c(1, 2), cluster_design),
@@ -113,7 +114,8 @@ for (cluster_id in clusters) {
     HOMA2_IR = mean_sd_ci_survey("homa2ir", cluster_design),
     eGFR = mean_sd_ci_survey("egfr", cluster_design),
     ALT = mean_sd_ci_survey("alt", cluster_design),
-    AST = mean_sd_ci_survey("ast", cluster_design)
+    AST = mean_sd_ci_survey("ast", cluster_design),
+    Follow_Up = mean_sd_ci_survey("permth_int", cluster_design)
   )
   
   # Append cluster data to the cluster summary table
