@@ -9,17 +9,6 @@
 - write to path_nhanes_ckm_folder/working/cleaned
 - Each dataset has one .R/.py script
 
-### ~/preprocessing
-
-- Order of code as ncpre01_, ncpre02_ ....
-- Harmonize variables across waves
-    - Variable names 
-    - Variable units (e.g. HbA1c)
-    - Variable levels (e.g. race & ethnicity)
-    
-- write to path_nhanes_ckm_folder/working/processed
-- Every script should output a dataset or feed into another script
-
 ### ~/analysis
 
 - Order of code as ncana01_, ncana02_...
